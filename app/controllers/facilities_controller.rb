@@ -1,6 +1,7 @@
 class FacilitiesController < ApplicationController
   def show
     @facility = current_user.facility
+    @facility_availability = @facility.facility_availability
   end
 
   def edit

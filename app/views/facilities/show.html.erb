@@ -8,4 +8,136 @@
   <li>Contact Number: <%= @facility.Phone %></li>
   <li>Website: <%= @facility.Website %></li>
 </ul>
-<%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_hours_start_time) %>
+<div class="container">
+  <div class='row'>
+    <div class='col'><h2>Hours of Operation</h2></div>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'><h3>Weekday</h3></div>
+    <div class='col-md-1'><h3>Open?</h3></div>
+    <div class='col-md-5'><h3>Hours</h3></div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[1]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.monday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[2]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.tuesday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.tuesday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.tuesday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[3]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.wednesday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.wednesday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.wednesday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[4]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.thursday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.thursday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.thursday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[5]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.friday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.friday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.friday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[6]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.saturday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.saturday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.saturday_hours_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[0]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.sunday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.sunday_hours_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.sunday_hours_end_time) %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class='row'>
+    <div class='col'><h2>Preferred remote gaming hours</h2></div>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'><h3>Weekday</h3></div>
+    <div class='col-md-1'><h3>Open?</h3></div>
+    <div class='col-md-5'><h3>Hours</h3></div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[1]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.monday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[2]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.tuesday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.tuesday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.tuesday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[3]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.wednesday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.wednesday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.wednesday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[4]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.thursday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.thursday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.thursday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[5]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.friday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.friday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.friday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[6]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.saturday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.saturday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.saturday_availability_end_time) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[0]}" %></div>
+    <div class='col col-md-1'><%= @facility.facility_availability.sunday_open? %></div>
+    <div class='col col-md-5'>
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.sunday_availability_start_time) %>-
+      <%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.sunday_availability_end_time) %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Change your preferred hours.', edit_facility_availability_path(@facility_availability) %>
