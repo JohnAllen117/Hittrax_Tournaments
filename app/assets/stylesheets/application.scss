@@ -1,0 +1,17 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-default {
+  background-color: #222;
+  height: 70px;
+}
+
+.navbar-brand {
+  padding: 10px;
+}
+
+.landing-page-banner{
+  width: 1440px;
+  height: auto;
+  right: 0px;
+}

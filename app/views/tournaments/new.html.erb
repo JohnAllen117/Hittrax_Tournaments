@@ -1,0 +1,7 @@
+<% provide(:title, "Create New List") %>
+<%= simple_form_for(@tournament) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :date, as: :date, required: true %>
+  <%= f.button :submit, class: "button expand" %>
+<% end %>
