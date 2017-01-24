@@ -3384,19 +3384,6 @@ class CreateDatabaseStructure < ActiveRecord::Migration[5.0]
       t.integer  "Team18_UnitId",                        null: false
     end
 
-    create_table "RemoteTournaments", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-      t.integer  "SId",                                                         null: false
-      t.integer  "CompanyId",                                                   null: false
-      t.integer  "PlayoffType",                                                 null: false
-      t.string   "Name",        limit: 50, default: "",                         null: false
-      t.datetime "TS",                     default: -> { "CURRENT_TIMESTAMP" }, null: false
-      t.date     "StartDate",                                                   null: false
-      t.integer  "Finished",               default: 0,                          null: false
-      t.integer  "Format",                                                      null: false
-      t.integer  "WinnerId"
-      t.integer  "WinnerUId"
-    end
-
     create_table "RemoteTournamentsAuxOld", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
       t.integer  "Id"
       t.integer  "UId",        null: false
