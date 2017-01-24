@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124171142) do
+ActiveRecord::Schema.define(version: 20170124161400) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -3384,7 +3384,6 @@ ActiveRecord::Schema.define(version: 20170124171142) do
   end
 
   create_table "RemoteTournaments", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "UId",                                                         null: false
     t.integer  "SId",                                                         null: false
     t.integer  "CompanyId",                                                   null: false
     t.integer  "PlayoffType",                                                 null: false
@@ -5828,6 +5827,441 @@ ActiveRecord::Schema.define(version: 20170124171142) do
     t.float    "BARSP_b",        limit: 24, default: 0.0, null: false
   end
 
+  create_table "Tournaments", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "Id"
+    t.integer  "UId",                                            null: false
+    t.integer  "SId",                                            null: false
+    t.integer  "CompanyId",                                      null: false
+    t.integer  "RemoteId",                           default: 0, null: false
+    t.integer  "PlayoffType",                                    null: false
+    t.string   "Name",                    limit: 50,             null: false, collation: "utf8_unicode_ci"
+    t.datetime "TS"
+    t.date     "StartDate"
+    t.integer  "Finished",                                       null: false
+    t.integer  "Format",                                         null: false
+    t.integer  "WinnerId",                                       null: false
+    t.integer  "WinnerUnitId",                                   null: false
+    t.integer  "PostToWeb",                          default: 0, null: false
+    t.integer  "Team1_Id",                                       null: false
+    t.integer  "Team2_Id",                                       null: false
+    t.integer  "Team3_Id",                                       null: false
+    t.integer  "Team4_Id",                                       null: false
+    t.integer  "Team5_Id",                                       null: false
+    t.integer  "Team6_Id",                                       null: false
+    t.integer  "Team7_Id",                                       null: false
+    t.integer  "Team8_Id",                                       null: false
+    t.integer  "Team9_Id",                                       null: false
+    t.integer  "Team10_Id",                                      null: false
+    t.integer  "Team11_Id",                                      null: false
+    t.integer  "Team12_Id",                                      null: false
+    t.integer  "Team13_Id",                                      null: false
+    t.integer  "Team14_Id",                                      null: false
+    t.integer  "Team15_Id",                                      null: false
+    t.integer  "Team16_Id",                                      null: false
+    t.integer  "Team17_Id",                                      null: false
+    t.integer  "Team18_Id",                                      null: false
+    t.integer  "Team1_UnitId",                                   null: false
+    t.integer  "Team2_UnitId",                                   null: false
+    t.integer  "Team3_UnitId",                                   null: false
+    t.integer  "Team4_UnitId",                                   null: false
+    t.integer  "Team5_UnitId",                                   null: false
+    t.integer  "Team6_UnitId",                                   null: false
+    t.integer  "Team7_UnitId",                                   null: false
+    t.integer  "Team8_UnitId",                                   null: false
+    t.integer  "Team9_UnitId",                                   null: false
+    t.integer  "Team10_UnitId",                                  null: false
+    t.integer  "Team11_UnitId",                                  null: false
+    t.integer  "Team12_UnitId",                                  null: false
+    t.integer  "Team13_UnitId",                                  null: false
+    t.integer  "Team14_UnitId",                                  null: false
+    t.integer  "Team15_UnitId",                                  null: false
+    t.integer  "Team16_UnitId",                                  null: false
+    t.integer  "Team17_UnitId",                                  null: false
+    t.integer  "Team18_UnitId",                                  null: false
+    t.integer  "Playoff_Team_1",                                 null: false
+    t.integer  "Playoff_Team_2",                                 null: false
+    t.integer  "Playoff_Team_3",                                 null: false
+    t.integer  "Playoff_Team_4",                                 null: false
+    t.integer  "Playoff_Team_5",                                 null: false
+    t.integer  "Playoff_Team_6",                                 null: false
+    t.integer  "Playoff_Team_7",                                 null: false
+    t.integer  "Playoff_Team_8",                                 null: false
+    t.integer  "Playoff_Team_9",                                 null: false
+    t.integer  "Playoff_Team_10",                                null: false
+    t.integer  "Round1_Game1_Id",                                null: false
+    t.integer  "Round1_Game2_Id",                                null: false
+    t.integer  "Round1_Game3_Id",                                null: false
+    t.integer  "Round1_Game4_Id",                                null: false
+    t.integer  "Round1_Game5_Id",                                null: false
+    t.integer  "Round2_Game1_Id",                                null: false
+    t.integer  "Round2_Game2_Id",                                null: false
+    t.integer  "Round2_Game3_Id",                                null: false
+    t.integer  "Round2_Game4_Id",                                null: false
+    t.integer  "Round2_Game5_Id",                                null: false
+    t.integer  "Round3_Game1_Id",                                null: false
+    t.integer  "Round3_Game2_Id",                                null: false
+    t.integer  "Round3_Game3_Id",                                null: false
+    t.integer  "Round3_Game4_Id",                                null: false
+    t.integer  "Round3_Game5_Id",                                null: false
+    t.integer  "Round4_Game1_Id",                                null: false
+    t.integer  "Round4_Game2_Id",                                null: false
+    t.integer  "Round4_Game3_Id",                                null: false
+    t.integer  "Round4_Game4_Id",                                null: false
+    t.integer  "Round4_Game5_Id",                                null: false
+    t.integer  "Round5_Game1_Id",                                null: false
+    t.integer  "Round5_Game2_Id",                                null: false
+    t.integer  "Round5_Game3_Id",                                null: false
+    t.integer  "Round5_Game4_Id",                                null: false
+    t.integer  "Round5_Game5_Id",                                null: false
+    t.integer  "Round6_Game1_Id",                                null: false
+    t.integer  "Round6_Game2_Id",                                null: false
+    t.integer  "Round6_Game3_Id",                                null: false
+    t.integer  "Round6_Game4_Id",                                null: false
+    t.integer  "Round6_Game5_Id",                                null: false
+    t.integer  "Round7_Game1_Id",                                null: false
+    t.integer  "Round7_Game2_Id",                                null: false
+    t.integer  "Round7_Game3_Id",                                null: false
+    t.integer  "Round7_Game4_Id",                                null: false
+    t.integer  "Round7_Game5_Id",                                null: false
+    t.integer  "Round8_Game1_Id",                                null: false
+    t.integer  "Round8_Game2_Id",                                null: false
+    t.integer  "Round8_Game3_Id",                                null: false
+    t.integer  "Round8_Game4_Id",                                null: false
+    t.integer  "Round8_Game5_Id",                                null: false
+    t.integer  "Round9_Game1_Id",                                null: false
+    t.integer  "Round9_Game2_Id",                                null: false
+    t.integer  "Round9_Game3_Id",                                null: false
+    t.integer  "Round9_Game4_Id",                                null: false
+    t.integer  "Round9_Game5_Id",                                null: false
+    t.integer  "Round10_Game1_Id",                               null: false
+    t.integer  "Round10_Game2_Id",                               null: false
+    t.integer  "Round10_Game3_Id",                               null: false
+    t.integer  "Round1_Game1_UnitId",                            null: false
+    t.integer  "Round1_Game2_UnitId",                            null: false
+    t.integer  "Round1_Game3_UnitId",                            null: false
+    t.integer  "Round1_Game4_UnitId",                            null: false
+    t.integer  "Round1_Game5_UnitId",                            null: false
+    t.integer  "Round2_Game1_UnitId",                            null: false
+    t.integer  "Round2_Game2_UnitId",                            null: false
+    t.integer  "Round2_Game3_UnitId",                            null: false
+    t.integer  "Round2_Game4_UnitId",                            null: false
+    t.integer  "Round2_Game5_UnitId",                            null: false
+    t.integer  "Round3_Game1_UnitId",                            null: false
+    t.integer  "Round3_Game2_UnitId",                            null: false
+    t.integer  "Round3_Game3_UnitId",                            null: false
+    t.integer  "Round3_Game4_UnitId",                            null: false
+    t.integer  "Round3_Game5_UnitId",                            null: false
+    t.integer  "Round4_Game1_UnitId",                            null: false
+    t.integer  "Round4_Game2_UnitId",                            null: false
+    t.integer  "Round4_Game3_UnitId",                            null: false
+    t.integer  "Round4_Game4_UnitId",                            null: false
+    t.integer  "Round4_Game5_UnitId",                            null: false
+    t.integer  "Round5_Game1_UnitId",                            null: false
+    t.integer  "Round5_Game2_UnitId",                            null: false
+    t.integer  "Round5_Game3_UnitId",                            null: false
+    t.integer  "Round5_Game4_UnitId",                            null: false
+    t.integer  "Round5_Game5_UnitId",                            null: false
+    t.integer  "Round6_Game1_UnitId",                            null: false
+    t.integer  "Round6_Game2_UnitId",                            null: false
+    t.integer  "Round6_Game3_UnitId",                            null: false
+    t.integer  "Round6_Game4_UnitId",                            null: false
+    t.integer  "Round6_Game5_UnitId",                            null: false
+    t.integer  "Round7_Game1_UnitId",                            null: false
+    t.integer  "Round7_Game2_UnitId",                            null: false
+    t.integer  "Round7_Game3_UnitId",                            null: false
+    t.integer  "Round7_Game4_UnitId",                            null: false
+    t.integer  "Round7_Game5_UnitId",                            null: false
+    t.integer  "Round8_Game1_UnitId",                            null: false
+    t.integer  "Round8_Game2_UnitId",                            null: false
+    t.integer  "Round8_Game3_UnitId",                            null: false
+    t.integer  "Round8_Game4_UnitId",                            null: false
+    t.integer  "Round8_Game5_UnitId",                            null: false
+    t.integer  "Round9_Game1_UnitId",                            null: false
+    t.integer  "Round9_Game2_UnitId",                            null: false
+    t.integer  "Round9_Game3_UnitId",                            null: false
+    t.integer  "Round9_Game4_UnitId",                            null: false
+    t.integer  "Round9_Game5_UnitId",                            null: false
+    t.integer  "Round10_Game1_UnitId",                           null: false
+    t.integer  "Round10_Game2_UnitId",                           null: false
+    t.integer  "Round10_Game3_UnitId",                           null: false
+    t.integer  "Playoff1_Game1_Id",                              null: false
+    t.integer  "Playoff1_Game2_Id",                              null: false
+    t.integer  "Playoff1_Game3_Id",                              null: false
+    t.integer  "Playoff1_Game4_Id",                              null: false
+    t.integer  "Playoff1_Game5_Id",                              null: false
+    t.integer  "Playoff1_Game6_Id",                              null: false
+    t.integer  "Playoff1_Game7_Id",                              null: false
+    t.integer  "Playoff1_Game8_Id",                              null: false
+    t.integer  "Playoff1_Game9_Id",                              null: false
+    t.integer  "Playoff1_Game10_Id",                             null: false
+    t.integer  "Playoff1_Game11_Id",                             null: false
+    t.integer  "Playoff1_Game12_Id",                             null: false
+    t.integer  "Playoff1_Game13_Id",                             null: false
+    t.integer  "Playoff1_Game14_Id",                             null: false
+    t.integer  "Playoff1_Game15_Id",                             null: false
+    t.integer  "Playoff1_Game16_Id",                             null: false
+    t.integer  "Playoff1_Game17_Id",                             null: false
+    t.integer  "Playoff1_Game18_Id",                             null: false
+    t.integer  "Playoff1_Game19_Id",                             null: false
+    t.integer  "Playoff1_Game20_Id",                             null: false
+    t.integer  "Playoff1_Game21_Id",                             null: false
+    t.integer  "Playoff1_Game22_Id",                             null: false
+    t.integer  "Playoff1_Game23_Id",                             null: false
+    t.integer  "Playoff1_Game24_Id",                             null: false
+    t.integer  "Playoff1_Game25_Id",                             null: false
+    t.integer  "Playoff1_Game26_Id",                             null: false
+    t.integer  "Playoff1_Game27_Id",                             null: false
+    t.integer  "Playoff1_Game28_Id",                             null: false
+    t.integer  "Playoff1_Game29_Id",                             null: false
+    t.integer  "Playoff1_Game30_Id",                             null: false
+    t.integer  "Playoff2_Game1_Id",                              null: false
+    t.integer  "Playoff2_Game2_Id",                              null: false
+    t.integer  "Playoff3_Game1_Id",                              null: false
+    t.integer  "Playoff1_Game1_UnitId",                          null: false
+    t.integer  "Playoff1_Game2_UnitId",                          null: false
+    t.integer  "Playoff1_Game3_UnitId",                          null: false
+    t.integer  "Playoff1_Game4_UnitId",                          null: false
+    t.integer  "Playoff1_Game5_UnitId",                          null: false
+    t.integer  "Playoff1_Game6_UnitId",                          null: false
+    t.integer  "Playoff1_Game7_UnitId",                          null: false
+    t.integer  "Playoff1_Game8_UnitId",                          null: false
+    t.integer  "Playoff1_Game9_UnitId",                          null: false
+    t.integer  "Playoff1_Game10_UnitId",                         null: false
+    t.integer  "Playoff1_Game11_UnitId",                         null: false
+    t.integer  "Playoff1_Game12_UnitId",                         null: false
+    t.integer  "Playoff1_Game13_UnitId",                         null: false
+    t.integer  "Playoff1_Game14_UnitId",                         null: false
+    t.integer  "Playoff1_Game15_UnitId",                         null: false
+    t.integer  "Playoff1_Game16_UnitId",                         null: false
+    t.integer  "Playoff1_Game17_UnitId",                         null: false
+    t.integer  "Playoff1_Game18_UnitId",                         null: false
+    t.integer  "Playoff1_Game19_UnitId",                         null: false
+    t.integer  "Playoff1_Game20_UnitId",                         null: false
+    t.integer  "Playoff1_Game21_UnitId",                         null: false
+    t.integer  "Playoff1_Game22_UnitId",                         null: false
+    t.integer  "Playoff1_Game23_UnitId",                         null: false
+    t.integer  "Playoff1_Game25_UnitId",                         null: false
+    t.integer  "Playoff1_Game24_UnitId",                         null: false
+    t.integer  "Playoff1_Game26_UnitId",                         null: false
+    t.integer  "Playoff1_Game27_UnitId",                         null: false
+    t.integer  "Playoff1_Game28_UnitId",                         null: false
+    t.integer  "Playoff1_Game29_UnitId",                         null: false
+    t.integer  "Playoff1_Game30_UnitId",                         null: false
+    t.integer  "Playoff2_Game1_UnitId",                          null: false
+    t.integer  "Playoff2_Game2_UnitId",                          null: false
+    t.integer  "Playoff3_Game1_UnitId",                          null: false
+    t.integer  "Tiebreaker_Game1_Id",                            null: false
+    t.integer  "Tiebreaker_Game1_UnitId",                        null: false
+    t.integer  "Tiebreaker_Game2_Id",                            null: false
+    t.integer  "Tiebreaker_Game2_UnitId",                        null: false
+    t.integer  "Tiebreaker_Game3_Id",                            null: false
+    t.integer  "Tiebreaker_Game3_UnitId",                        null: false
+    t.integer  "Tiebreaker_Game4_Id",                            null: false
+    t.integer  "Tiebreaker_Game4_UnitId",                        null: false
+    t.integer  "Tiebreaker_Game5_Id",                            null: false
+    t.integer  "Tiebreaker_Game5_UnitId",                        null: false
+    t.integer  "RoundM_Game1_Id",                                null: false
+    t.integer  "RoundM_Game2_Id",                                null: false
+    t.integer  "RoundM_Game3_Id",                                null: false
+    t.integer  "RoundM_Game4_Id",                                null: false
+    t.integer  "RoundM_Game5_Id",                                null: false
+    t.integer  "RoundM_Game6_Id",                                null: false
+    t.integer  "RoundM_Game7_Id",                                null: false
+    t.integer  "RoundM_Game8_Id",                                null: false
+    t.integer  "RoundM_Game9_Id",                                null: false
+    t.integer  "RoundM_Game10_Id",                               null: false
+    t.integer  "RoundM_Game11_Id",                               null: false
+    t.integer  "RoundM_Game12_Id",                               null: false
+    t.integer  "RoundM_Game13_Id",                               null: false
+    t.integer  "RoundM_Game14_Id",                               null: false
+    t.integer  "RoundM_Game15_Id",                               null: false
+    t.integer  "RoundM_Game16_Id",                               null: false
+    t.integer  "RoundM_Game17_Id",                               null: false
+    t.integer  "RoundM_Game18_Id",                               null: false
+    t.integer  "RoundM_Game19_Id",                               null: false
+    t.integer  "RoundM_Game20_Id",                               null: false
+    t.integer  "RoundM_Game21_Id",                               null: false
+    t.integer  "RoundM_Game22_Id",                               null: false
+    t.integer  "RoundM_Game23_Id",                               null: false
+    t.integer  "RoundM_Game24_Id",                               null: false
+    t.integer  "RoundM_Game25_Id",                               null: false
+    t.integer  "RoundM_Game26_Id",                               null: false
+    t.integer  "RoundM_Game27_Id",                               null: false
+    t.integer  "RoundM_Game28_Id",                               null: false
+    t.integer  "RoundM_Game29_Id",                               null: false
+    t.integer  "RoundM_Game30_Id",                               null: false
+    t.integer  "RoundM_Game31_Id",                               null: false
+    t.integer  "RoundM_Game32_Id",                               null: false
+    t.integer  "RoundM_Game33_Id",                               null: false
+    t.integer  "RoundM_Game34_Id",                               null: false
+    t.integer  "RoundM_Game35_Id",                               null: false
+    t.integer  "RoundM_Game36_Id",                               null: false
+    t.integer  "RoundM_Game37_Id",                               null: false
+    t.integer  "RoundM_Game38_Id",                               null: false
+    t.integer  "RoundM_Game39_Id",                               null: false
+    t.integer  "RoundM_Game40_Id",                               null: false
+    t.integer  "RoundM_Game41_Id",                               null: false
+    t.integer  "RoundM_Game42_Id",                               null: false
+    t.integer  "RoundM_Game43_Id",                               null: false
+    t.integer  "RoundM_Game44_Id",                               null: false
+    t.integer  "RoundM_Game45_Id",                               null: false
+    t.integer  "RoundM_Game46_Id",                               null: false
+    t.integer  "RoundM_Game47_Id",                               null: false
+    t.integer  "RoundM_Game48_Id",                               null: false
+    t.integer  "RoundM_Game49_Id",                               null: false
+    t.integer  "RoundM_Game50_Id",                               null: false
+    t.integer  "RoundM_Game51_Id",                               null: false
+    t.integer  "RoundM_Game52_Id",                               null: false
+    t.integer  "RoundM_Game53_Id",                               null: false
+    t.integer  "RoundM_Game54_Id",                               null: false
+    t.integer  "RoundM_Game55_Id",                               null: false
+    t.integer  "RoundM_Game56_Id",                               null: false
+    t.integer  "RoundM_Game57_Id",                               null: false
+    t.integer  "RoundM_Game58_Id",                               null: false
+    t.integer  "RoundM_Game59_Id",                               null: false
+    t.integer  "RoundM_Game60_Id",                               null: false
+    t.integer  "RoundM_Game61_Id",                               null: false
+    t.integer  "RoundM_Game62_Id",                               null: false
+    t.integer  "RoundM_Game63_Id",                               null: false
+    t.integer  "RoundM_Game64_Id",                               null: false
+    t.integer  "RoundM_Game65_Id",                               null: false
+    t.integer  "RoundM_Game66_Id",                               null: false
+    t.integer  "RoundM_Game67_Id",                               null: false
+    t.integer  "RoundM_Game68_Id",                               null: false
+    t.integer  "RoundM_Game69_Id",                               null: false
+    t.integer  "RoundM_Game70_Id",                               null: false
+    t.integer  "RoundM_Game71_Id",                               null: false
+    t.integer  "RoundM_Game72_Id",                               null: false
+    t.integer  "RoundM_Game73_Id",                               null: false
+    t.integer  "RoundM_Game74_Id",                               null: false
+    t.integer  "RoundM_Game75_Id",                               null: false
+    t.integer  "RoundM_Game76_Id",                               null: false
+    t.integer  "RoundM_Game77_Id",                               null: false
+    t.integer  "RoundM_Game78_Id",                               null: false
+    t.integer  "RoundM_Game79_Id",                               null: false
+    t.integer  "RoundM_Game80_Id",                               null: false
+    t.integer  "RoundM_Game81_Id",                               null: false
+    t.integer  "RoundM_Game82_Id",                               null: false
+    t.integer  "RoundM_Game83_Id",                               null: false
+    t.integer  "RoundM_Game84_Id",                               null: false
+    t.integer  "RoundM_Game85_Id",                               null: false
+    t.integer  "RoundM_Game86_Id",                               null: false
+    t.integer  "RoundM_Game87_Id",                               null: false
+    t.integer  "RoundM_Game88_Id",                               null: false
+    t.integer  "RoundM_Game89_Id",                               null: false
+    t.integer  "RoundM_Game90_Id",                               null: false
+    t.integer  "RoundM_Game91_Id",                               null: false
+    t.integer  "RoundM_Game92_Id",                               null: false
+    t.integer  "RoundM_Game93_Id",                               null: false
+    t.integer  "RoundM_Game94_Id",                               null: false
+    t.integer  "RoundM_Game95_Id",                               null: false
+    t.integer  "RoundM_Game96_Id",                               null: false
+    t.integer  "RoundM_Game97_Id",                               null: false
+    t.integer  "RoundM_Game98_Id",                               null: false
+    t.integer  "RoundM_Game99_Id",                               null: false
+    t.integer  "RoundM_Game100_Id",                              null: false
+    t.integer  "RoundM_Game1_UnitId",                            null: false
+    t.integer  "RoundM_Game2_UnitId",                            null: false
+    t.integer  "RoundM_Game3_UnitId",                            null: false
+    t.integer  "RoundM_Game4_UnitId",                            null: false
+    t.integer  "RoundM_Game5_UnitId",                            null: false
+    t.integer  "RoundM_Game6_UnitId",                            null: false
+    t.integer  "RoundM_Game7_UnitId",                            null: false
+    t.integer  "RoundM_Game8_UnitId",                            null: false
+    t.integer  "RoundM_Game9_UnitId",                            null: false
+    t.integer  "RoundM_Game10_UnitId",                           null: false
+    t.integer  "RoundM_Game11_UnitId",                           null: false
+    t.integer  "RoundM_Game12_UnitId",                           null: false
+    t.integer  "RoundM_Game13_UnitId",                           null: false
+    t.integer  "RoundM_Game14_UnitId",                           null: false
+    t.integer  "RoundM_Game15_UnitId",                           null: false
+    t.integer  "RoundM_Game16_UnitId",                           null: false
+    t.integer  "RoundM_Game17_UnitId",                           null: false
+    t.integer  "RoundM_Game18_UnitId",                           null: false
+    t.integer  "RoundM_Game19_UnitId",                           null: false
+    t.integer  "RoundM_Game20_UnitId",                           null: false
+    t.integer  "RoundM_Game21_UnitId",                           null: false
+    t.integer  "RoundM_Game22_UnitId",                           null: false
+    t.integer  "RoundM_Game23_UnitId",                           null: false
+    t.integer  "RoundM_Game24_UnitId",                           null: false
+    t.integer  "RoundM_Game25_UnitId",                           null: false
+    t.integer  "RoundM_Game26_UnitId",                           null: false
+    t.integer  "RoundM_Game27_UnitId",                           null: false
+    t.integer  "RoundM_Game28_UnitId",                           null: false
+    t.integer  "RoundM_Game29_UnitId",                           null: false
+    t.integer  "RoundM_Game30_UnitId",                           null: false
+    t.integer  "RoundM_Game31_UnitId",                           null: false
+    t.integer  "RoundM_Game32_UnitId",                           null: false
+    t.integer  "RoundM_Game33_UnitId",                           null: false
+    t.integer  "RoundM_Game34_UnitId",                           null: false
+    t.integer  "RoundM_Game35_UnitId",                           null: false
+    t.integer  "RoundM_Game40_UnitId",                           null: false
+    t.integer  "RoundM_Game36_UnitId",                           null: false
+    t.integer  "RoundM_Game37_UnitId",                           null: false
+    t.integer  "RoundM_Game38_UnitId",                           null: false
+    t.integer  "RoundM_Game39_UnitId",                           null: false
+    t.integer  "RoundM_Game42_UnitId",                           null: false
+    t.integer  "RoundM_Game41_UnitId",                           null: false
+    t.integer  "RoundM_Game43_UnitId",                           null: false
+    t.integer  "RoundM_Game44_UnitId",                           null: false
+    t.integer  "RoundM_Game45_UnitId",                           null: false
+    t.integer  "RoundM_Game46_UnitId",                           null: false
+    t.integer  "RoundM_Game47_UnitId",                           null: false
+    t.integer  "RoundM_Game48_UnitId",                           null: false
+    t.integer  "RoundM_Game49_UnitId",                           null: false
+    t.integer  "RoundM_Game50_UnitId",                           null: false
+    t.integer  "RoundM_Game51_UnitId",                           null: false
+    t.integer  "RoundM_Game52_UnitId",                           null: false
+    t.integer  "RoundM_Game53_UnitId",                           null: false
+    t.integer  "RoundM_Game54_UnitId",                           null: false
+    t.integer  "RoundM_Game55_UnitId",                           null: false
+    t.integer  "RoundM_Game56_UnitId",                           null: false
+    t.integer  "RoundM_Game57_UnitId",                           null: false
+    t.integer  "RoundM_Game58_UnitId",                           null: false
+    t.integer  "RoundM_Game59_UnitId",                           null: false
+    t.integer  "RoundM_Game60_UnitId",                           null: false
+    t.integer  "RoundM_Game61_UnitId",                           null: false
+    t.integer  "RoundM_Game62_UnitId",                           null: false
+    t.integer  "RoundM_Game63_UnitId",                           null: false
+    t.integer  "RoundM_Game64_UnitId",                           null: false
+    t.integer  "RoundM_Game65_UnitId",                           null: false
+    t.integer  "RoundM_Game66_UnitId",                           null: false
+    t.integer  "RoundM_Game67_UnitId",                           null: false
+    t.integer  "RoundM_Game68_UnitId",                           null: false
+    t.integer  "RoundM_Game69_UnitId",                           null: false
+    t.integer  "RoundM_Game70_UnitId",                           null: false
+    t.integer  "RoundM_Game71_UnitId",                           null: false
+    t.integer  "RoundM_Game72_UnitId",                           null: false
+    t.integer  "RoundM_Game73_UnitId",                           null: false
+    t.integer  "RoundM_Game74_UnitId",                           null: false
+    t.integer  "RoundM_Game75_UnitId",                           null: false
+    t.integer  "RoundM_Game76_UnitId",                           null: false
+    t.integer  "RoundM_Game77_UnitId",                           null: false
+    t.integer  "RoundM_Game78_UnitId",                           null: false
+    t.integer  "RoundM_Game79_UnitId",                           null: false
+    t.integer  "RoundM_Game80_UnitId",                           null: false
+    t.integer  "RoundM_Game81_UnitId",                           null: false
+    t.integer  "RoundM_Game82_UnitId",                           null: false
+    t.integer  "RoundM_Game83_UnitId",                           null: false
+    t.integer  "RoundM_Game84_UnitId",                           null: false
+    t.integer  "RoundM_Game85_UnitId",                           null: false
+    t.integer  "RoundM_Game86_UnitId",                           null: false
+    t.integer  "RoundM_Game87_UnitId",                           null: false
+    t.integer  "RoundM_Game88_UnitId",                           null: false
+    t.integer  "RoundM_Game89_UnitId",                           null: false
+    t.integer  "RoundM_Game90_UnitId",                           null: false
+    t.integer  "RoundM_Game91_UnitId",                           null: false
+    t.integer  "RoundM_Game92_UnitId",                           null: false
+    t.integer  "RoundM_Game93_UnitId",                           null: false
+    t.integer  "RoundM_Game94_UnitId",                           null: false
+    t.integer  "RoundM_Game95_UnitId",                           null: false
+    t.integer  "RoundM_Game96_UnitId",                           null: false
+    t.integer  "RoundM_Game97_UnitId",                           null: false
+    t.integer  "RoundM_Game98_UnitId",                           null: false
+    t.integer  "RoundM_Game99_UnitId",                           null: false
+    t.integer  "RoundM_Game100_UnitId",                          null: false
+  end
+
   create_table "UserMembershipAudit", primary_key: "ID", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "MasterID",       limit: 20, default: ""
     t.string   "CompanyID",      limit: 20, default: ""
@@ -5836,47 +6270,62 @@ ActiveRecord::Schema.define(version: 20170124171142) do
     t.datetime "CreatedOn"
   end
 
+  create_table "Users", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "Id",                                                                      null: false
+    t.integer  "UId",                                                                     null: false
+    t.integer  "SId",                                                                     null: false
+    t.integer  "CompanyId",                                                               null: false
+    t.integer  "Local",                                                                   null: false
+    t.integer  "Role",                                    default: 0,                     null: false
+    t.string   "Consent",                      limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.integer  "Active",                                  default: 1,                     null: false
+    t.string   "Uuid",                         limit: 50,                                 null: false
+    t.integer  "Disable",                                 default: 0,                     null: false
+    t.string   "FirstName",                    limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.string   "LastName",                     limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.string   "UserName",                     limit: 50,                                              collation: "utf8_unicode_ci"
+    t.string   "Hash",                         limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.datetime "TS"
+    t.datetime "Updated",                                 default: '1900-01-01 00:00:00', null: false
+    t.string   "Email",                        limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.string   "Email2",                       limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.string   "DKEmail",                      limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+    t.string   "ScreenName",                   limit: 50,                                              collation: "utf8_unicode_ci"
+    t.string   "resetToken",                   limit: 50
+    t.integer  "Stadium",                                                                 null: false
+    t.integer  "SkillLevel",                                                              null: false
+    t.integer  "GameType",                                                                null: false
+    t.integer  "Gender",                                  default: 0,                     null: false
+    t.integer  "Bats",                                    default: 0,                     null: false
+    t.integer  "Throws",                                  default: 0,                     null: false
+    t.integer  "Position",                                default: 0,                     null: false
+    t.integer  "GraduationYear",                          default: 0,                     null: false
+    t.float    "Height",                       limit: 24
+    t.float    "HHVel",                        limit: 24
+    t.string   "School",                       limit: 50,                                              collation: "utf8_unicode_ci"
+    t.string   "HomeTown",                     limit: 50,                                              collation: "utf8_unicode_ci"
+    t.integer  "Certified",                               default: 0,                     null: false
+    t.datetime "BirthDate",                               default: '1900-01-01 00:00:00', null: false
+    t.datetime "SubscriptionStart"
+    t.integer  "SubscriptionType",                        default: 0
+    t.integer  "SubscriptionLevel",            limit: 2,  default: 0,                     null: false
+    t.datetime "Subscription"
+    t.integer  "AuthorizeNetProfileID"
+    t.integer  "AuthorizeNetPaymentProfileID"
+    t.string   "EmailSent",                    limit: 1,  default: "N"
+    t.string   "SubscriptionLevelPurchased",   limit: 50
+    t.string   "Subscribe",                    limit: 1,  default: "Y"
+    t.string   "MembershipThruFacility",       limit: 1,  default: "N"
+    t.datetime "Last MailChimp Update"
+    t.string   "InvalidEmail",                 limit: 1
+    t.index ["CompanyId"], name: "IndexCId", using: :btree
+    t.index ["SId"], name: "IndexSId", using: :btree
+  end
+
   create_table "Zip_Code", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "zip"
     t.string  "latitude",  limit: 20
     t.string  "longitude", limit: 20
-  end
-
-  create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "sid",                                                          null: false
-    t.integer  "company_id",                                                   null: false
-    t.integer  "playoff_type",                                                 null: false
-    t.string   "name",         limit: 50, default: "",                         null: false
-    t.datetime "ts",                      default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.date     "start_date",                                                   null: false
-    t.integer  "finished",                default: 0,                          null: false
-    t.integer  "format",                                                       null: false
-    t.integer  "winner_id"
-    t.integer  "winner_uid"
-  end
-
-  create_table "tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.datetime "date",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "uid",                                null: false
-    t.string   "name",                               null: false
-    t.string   "email",                              null: false
-    t.string   "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer  "invitation_limit"
-    t.string   "invited_by_type"
-    t.integer  "invited_by_id"
-    t.integer  "invitations_count",      default: 0
-    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
-    t.index ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
-    t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   end
 
 end
