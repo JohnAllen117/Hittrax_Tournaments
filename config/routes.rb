@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources :remote_tournaments, only: [:new, :create, :edit, :update, :destroy, :index, :show]
-  resources :schedules, only: [:new, :create, :edit, :update, :destroy]
+  resources :schedules, only: [:create, :edit, :update, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
