@@ -32,6 +32,7 @@ test:
   password: <%= Rails.application.secrets[:database][:password] %>
 
 production:
+  <<: *default
   database: hittrax_centralDB
   username: <%= Rails.application.secrets.hittrax_username %>
   password: <%= Rails.application.secrets.hittrax_password %>

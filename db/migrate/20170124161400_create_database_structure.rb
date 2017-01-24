@@ -12,7 +12,7 @@ class CreateDatabaseStructure < ActiveRecord::Migration[5.0]
     #
     # It's strongly recommended that you check this file into your version control system.
 
-    ActiveRecord::Schema.define(version: 0) do
+    ActiveRecord::Schema.define(version: 20170113034144) do
 
       create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
         t.bigint   "Id"
@@ -3385,209 +3385,1228 @@ class CreateDatabaseStructure < ActiveRecord::Migration[5.0]
         t.integer  "Team18_UnitId",                        null: false
       end
 
-      create_table "RemoteTournaments", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+      create_table "RemoteTournaments", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.integer  "UId",                                                         null: false
+        t.integer  "SId",                                                         null: false
+        t.integer  "CompanyId",                                                   null: false
+        t.integer  "PlayoffType",                                                 null: false
+        t.string   "Name",        limit: 50, default: "",                         null: false
+        t.datetime "TS",                     default: -> { "CURRENT_TIMESTAMP" }, null: false
+        t.date     "StartDate",                                                   null: false
+        t.integer  "Finished",               default: 0,                          null: false
+        t.integer  "Format",                                                      null: false
+        t.integer  "WinnerId"
+        t.integer  "WinnerUId"
+      end
+
+      create_table "RemoteTournamentsAuxOld", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
         t.integer  "Id"
-        t.integer  "UId",                                  null: false
-        t.integer  "SId",                                  null: false
-        t.integer  "CompanyId",                            null: false
-        t.integer  "PlayoffType",                          null: false
-        t.string   "Name",        limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "UId",        null: false
+        t.integer  "SId",        null: false
+        t.integer  "CompanyId",  null: false
+        t.datetime "TS"
+        t.datetime "G1_Date"
+        t.datetime "G2_Date"
+        t.datetime "G3_Date"
+        t.datetime "G4_Date"
+        t.datetime "G5_Date"
+        t.datetime "G6_Date"
+        t.datetime "G7_Date"
+        t.datetime "G8_Date"
+        t.datetime "G9_Date"
+        t.datetime "G10_Date"
+        t.datetime "G11_Date"
+        t.datetime "G12_Date"
+        t.datetime "G13_Date"
+        t.datetime "G14_Date"
+        t.datetime "G15_Date"
+        t.datetime "G16_Date"
+        t.datetime "G17_Date"
+        t.datetime "G18_Date"
+        t.datetime "G19_Date"
+        t.datetime "G20_Date"
+        t.datetime "G21_Date"
+        t.datetime "G22_Date"
+        t.datetime "G23_Date"
+        t.datetime "G24_Date"
+        t.datetime "G25_Date"
+        t.datetime "G26_Date"
+        t.datetime "G27_Date"
+        t.datetime "G28_Date"
+        t.datetime "G29_Date"
+        t.datetime "G30_Date"
+        t.datetime "G31_Date"
+        t.datetime "G32_Date"
+        t.datetime "G33_Date"
+        t.datetime "G34_Date"
+        t.datetime "G35_Date"
+        t.datetime "G36_Date"
+        t.datetime "G37_Date"
+        t.datetime "G38_Date"
+        t.datetime "G39_Date"
+        t.datetime "G40_Date"
+        t.datetime "G41_Date"
+        t.datetime "G42_Date"
+        t.datetime "G43_Date"
+        t.datetime "G44_Date"
+        t.datetime "G45_Date"
+        t.datetime "G46_Date"
+        t.datetime "G47_Date"
+        t.datetime "G48_Date"
+        t.datetime "G49_Date"
+        t.datetime "G50_Date"
+        t.datetime "G51_Date"
+        t.datetime "G52_Date"
+        t.datetime "G53_Date"
+        t.datetime "G54_Date"
+        t.datetime "G55_Date"
+        t.datetime "G56_Date"
+        t.datetime "G57_Date"
+        t.datetime "G58_Date"
+        t.datetime "G59_Date"
+        t.datetime "G60_Date"
+        t.datetime "G61_Date"
+        t.datetime "G62_Date"
+        t.datetime "G63_Date"
+        t.datetime "G64_Date"
+        t.datetime "G65_Date"
+        t.datetime "G66_Date"
+        t.datetime "G67_Date"
+        t.datetime "G68_Date"
+        t.datetime "G69_Date"
+        t.datetime "G70_Date"
+        t.datetime "G71_Date"
+        t.datetime "G72_Date"
+        t.datetime "G73_Date"
+        t.datetime "G74_Date"
+        t.datetime "G75_Date"
+        t.datetime "G76_Date"
+        t.datetime "G77_Date"
+        t.datetime "G78_Date"
+        t.datetime "G79_Date"
+        t.datetime "G80_Date"
+        t.datetime "G81_Date"
+        t.datetime "G82_Date"
+        t.datetime "G83_Date"
+        t.datetime "G84_Date"
+        t.datetime "G85_Date"
+        t.datetime "G86_Date"
+        t.datetime "G87_Date"
+        t.datetime "G88_Date"
+        t.datetime "G89_Date"
+        t.datetime "G90_Date"
+        t.datetime "G91_Date"
+        t.datetime "G92_Date"
+        t.datetime "G93_Date"
+        t.datetime "G94_Date"
+        t.datetime "G95_Date"
+        t.datetime "G96_Date"
+        t.datetime "G97_Date"
+        t.datetime "G98_Date"
+        t.datetime "G99_Date"
+        t.datetime "G100_Date"
+        t.datetime "G101_Date"
+        t.datetime "G102_Date"
+        t.datetime "G103_Date"
+        t.datetime "G104_Date"
+        t.datetime "G105_Date"
+        t.datetime "G106_Date"
+        t.datetime "G107_Date"
+        t.datetime "G108_Date"
+        t.datetime "G109_Date"
+        t.datetime "G110_Date"
+        t.datetime "G111_Date"
+        t.datetime "G112_Date"
+        t.datetime "G113_Date"
+        t.datetime "G114_Date"
+        t.datetime "G115_Date"
+        t.datetime "G116_Date"
+        t.datetime "G117_Date"
+        t.datetime "G118_Date"
+        t.datetime "G119_Date"
+        t.datetime "G120_Date"
+        t.datetime "G121_Date"
+        t.datetime "G122_Date"
+        t.datetime "G123_Date"
+        t.datetime "G124_Date"
+        t.datetime "G125_Date"
+        t.datetime "G126_Date"
+        t.datetime "G127_Date"
+        t.datetime "G128_Date"
+        t.datetime "G129_Date"
+        t.datetime "G130_Date"
+        t.datetime "G131_Date"
+        t.datetime "G132_Date"
+        t.datetime "G133_Date"
+        t.datetime "G134_Date"
+        t.datetime "G135_Date"
+        t.datetime "G136_Date"
+        t.datetime "G137_Date"
+        t.datetime "G138_Date"
+        t.datetime "G139_Date"
+        t.datetime "G140_Date"
+        t.datetime "G141_Date"
+        t.datetime "G142_Date"
+        t.datetime "G143_Date"
+        t.datetime "G144_Date"
+        t.datetime "G145_Date"
+        t.datetime "G146_Date"
+        t.datetime "G147_Date"
+        t.datetime "G148_Date"
+        t.datetime "G149_Date"
+        t.datetime "G150_Date"
+        t.datetime "G151_Date"
+        t.datetime "G152_Date"
+        t.datetime "G153_Date"
+        t.datetime "G154_Date"
+        t.datetime "G155_Date"
+        t.datetime "G156_Date"
+        t.datetime "G157_Date"
+        t.datetime "G158_Date"
+        t.datetime "G159_Date"
+        t.datetime "G160_Date"
+        t.datetime "G161_Date"
+        t.datetime "G162_Date"
+        t.datetime "G163_Date"
+        t.datetime "G164_Date"
+        t.datetime "G165_Date"
+        t.datetime "G166_Date"
+        t.datetime "G167_Date"
+        t.datetime "G168_Date"
+        t.datetime "G169_Date"
+        t.datetime "G170_Date"
+        t.datetime "G171_Date"
+        t.datetime "G172_Date"
+        t.datetime "G173_Date"
+        t.datetime "G174_Date"
+        t.datetime "G175_Date"
+        t.datetime "G176_Date"
+        t.datetime "G177_Date"
+        t.datetime "G178_Date"
+        t.datetime "G179_Date"
+        t.datetime "G180_Date"
+        t.datetime "G181_Date"
+        t.datetime "G182_Date"
+        t.datetime "G183_Date"
+        t.datetime "G184_Date"
+        t.datetime "G185_Date"
+        t.datetime "G186_Date"
+        t.datetime "G187_Date"
+        t.datetime "G188_Date"
+        t.datetime "G189_Date"
+        t.datetime "G190_Date"
+        t.datetime "G191_Date"
+        t.datetime "G192_Date"
+        t.datetime "G193_Date"
+        t.datetime "G194_Date"
+        t.datetime "G195_Date"
+        t.integer  "G1_TAId",    null: false
+        t.integer  "G2_TAId",    null: false
+        t.integer  "G3_TAId",    null: false
+        t.integer  "G4_TAId",    null: false
+        t.integer  "G5_TAId",    null: false
+        t.integer  "G6_TAId",    null: false
+        t.integer  "G7_TAId",    null: false
+        t.integer  "G8_TAId",    null: false
+        t.integer  "G9_TAId",    null: false
+        t.integer  "G10_TAId",   null: false
+        t.integer  "G11_TAId",   null: false
+        t.integer  "G12_TAId",   null: false
+        t.integer  "G13_TAId",   null: false
+        t.integer  "G14_TAId",   null: false
+        t.integer  "G15_TAId",   null: false
+        t.integer  "G16_TAId",   null: false
+        t.integer  "G17_TAId",   null: false
+        t.integer  "G18_TAId",   null: false
+        t.integer  "G19_TAId",   null: false
+        t.integer  "G20_TAId",   null: false
+        t.integer  "G21_TAId",   null: false
+        t.integer  "G23_TAId",   null: false
+        t.integer  "G22_TAId",   null: false
+        t.integer  "G24_TAId",   null: false
+        t.integer  "G25_TAId",   null: false
+        t.integer  "G26_TAId",   null: false
+        t.integer  "G27_TAId",   null: false
+        t.integer  "G28_TAId",   null: false
+        t.integer  "G29_TAId",   null: false
+        t.integer  "G30_TAId",   null: false
+        t.integer  "G32_TAId",   null: false
+        t.integer  "G31_TAId",   null: false
+        t.integer  "G33_TAId",   null: false
+        t.integer  "G34_TAId",   null: false
+        t.integer  "G35_TAId",   null: false
+        t.integer  "G36_TAId",   null: false
+        t.integer  "G37_TAId",   null: false
+        t.integer  "G38_TAId",   null: false
+        t.integer  "G39_TAId",   null: false
+        t.integer  "G40_TAId",   null: false
+        t.integer  "G41_TAId",   null: false
+        t.integer  "G42_TAId",   null: false
+        t.integer  "G43_TAId",   null: false
+        t.integer  "G44_TAId",   null: false
+        t.integer  "G45_TAId",   null: false
+        t.integer  "G46_TAId",   null: false
+        t.integer  "G47_TAId",   null: false
+        t.integer  "G48_TAId",   null: false
+        t.integer  "G49_TAId",   null: false
+        t.integer  "G50_TAId",   null: false
+        t.integer  "G51_TAId",   null: false
+        t.integer  "G52_TAId",   null: false
+        t.integer  "G53_TAId",   null: false
+        t.integer  "G54_TAId",   null: false
+        t.integer  "G55_TAId",   null: false
+        t.integer  "G56_TAId",   null: false
+        t.integer  "G57_TAId",   null: false
+        t.integer  "G58_TAId",   null: false
+        t.integer  "G59_TAId",   null: false
+        t.integer  "G60_TAId",   null: false
+        t.integer  "G61_TAId",   null: false
+        t.integer  "G62_TAId",   null: false
+        t.integer  "G63_TAId",   null: false
+        t.integer  "G64_TAId",   null: false
+        t.integer  "G65_TAId",   null: false
+        t.integer  "G66_TAId",   null: false
+        t.integer  "G67_TAId",   null: false
+        t.integer  "G68_TAId",   null: false
+        t.integer  "G69_TAId",   null: false
+        t.integer  "G70_TAId",   null: false
+        t.integer  "G71_TAId",   null: false
+        t.integer  "G72_TAId",   null: false
+        t.integer  "G73_TAId",   null: false
+        t.integer  "G74_TAId",   null: false
+        t.integer  "G75_TAId",   null: false
+        t.integer  "G76_TAId",   null: false
+        t.integer  "G77_TAId",   null: false
+        t.integer  "G78_TAId",   null: false
+        t.integer  "G79_TAId",   null: false
+        t.integer  "G80_TAId",   null: false
+        t.integer  "G81_TAId",   null: false
+        t.integer  "G82_TAId",   null: false
+        t.integer  "G83_TAId",   null: false
+        t.integer  "G84_TAId",   null: false
+        t.integer  "G85_TAId",   null: false
+        t.integer  "G86_TAId",   null: false
+        t.integer  "G87_TAId",   null: false
+        t.integer  "G88_TAId",   null: false
+        t.integer  "G89_TAId",   null: false
+        t.integer  "G90_TAId",   null: false
+        t.integer  "G91_TAId",   null: false
+        t.integer  "G92_TAId",   null: false
+        t.integer  "G93_TAId",   null: false
+        t.integer  "G94_TAId",   null: false
+        t.integer  "G95_TAId",   null: false
+        t.integer  "G96_TAId",   null: false
+        t.integer  "G97_TAId",   null: false
+        t.integer  "G98_TAId",   null: false
+        t.integer  "G99_TAId",   null: false
+        t.integer  "G100_TAId",  null: false
+        t.integer  "G101_TAId",  null: false
+        t.integer  "G102_TAId",  null: false
+        t.integer  "G103_TAId",  null: false
+        t.integer  "G104_TAId",  null: false
+        t.integer  "G105_TAId",  null: false
+        t.integer  "G106_TAId",  null: false
+        t.integer  "G107_TAId",  null: false
+        t.integer  "G108_TAId",  null: false
+        t.integer  "G109_TAId",  null: false
+        t.integer  "G110_TAId",  null: false
+        t.integer  "G111_TAId",  null: false
+        t.integer  "G112_TAId",  null: false
+        t.integer  "G113_TAId",  null: false
+        t.integer  "G114_TAId",  null: false
+        t.integer  "G115_TAId",  null: false
+        t.integer  "G116_TAId",  null: false
+        t.integer  "G117_TAId",  null: false
+        t.integer  "G118_TAId",  null: false
+        t.integer  "G119_TAId",  null: false
+        t.integer  "G120_TAId",  null: false
+        t.integer  "G121_TAId",  null: false
+        t.integer  "G122_TAId",  null: false
+        t.integer  "G123_TAId",  null: false
+        t.integer  "G124_TAId",  null: false
+        t.integer  "G125_TAId",  null: false
+        t.integer  "G126_TAId",  null: false
+        t.integer  "G127_TAId",  null: false
+        t.integer  "G128_TAId",  null: false
+        t.integer  "G129_TAId",  null: false
+        t.integer  "G130_TAId",  null: false
+        t.integer  "G131_TAId",  null: false
+        t.integer  "G132_TAId",  null: false
+        t.integer  "G133_TAId",  null: false
+        t.integer  "G134_TAId",  null: false
+        t.integer  "G135_TAId",  null: false
+        t.integer  "G136_TAId",  null: false
+        t.integer  "G137_TAId",  null: false
+        t.integer  "G138_TAId",  null: false
+        t.integer  "G139_TAId",  null: false
+        t.integer  "G140_TAId",  null: false
+        t.integer  "G141_TAId",  null: false
+        t.integer  "G142_TAId",  null: false
+        t.integer  "G143_TAId",  null: false
+        t.integer  "G144_TAId",  null: false
+        t.integer  "G145_TAId",  null: false
+        t.integer  "G146_TAId",  null: false
+        t.integer  "G147_TAId",  null: false
+        t.integer  "G148_TAId",  null: false
+        t.integer  "G149_TAId",  null: false
+        t.integer  "G150_TAId",  null: false
+        t.integer  "G151_TAId",  null: false
+        t.integer  "G152_TAId",  null: false
+        t.integer  "G153_TAId",  null: false
+        t.integer  "G154_TAId",  null: false
+        t.integer  "G155_TAId",  null: false
+        t.integer  "G156_TAId",  null: false
+        t.integer  "G157_TAId",  null: false
+        t.integer  "G158_TAId",  null: false
+        t.integer  "G159_TAId",  null: false
+        t.integer  "G160_TAId",  null: false
+        t.integer  "G161_TAId",  null: false
+        t.integer  "G162_TAId",  null: false
+        t.integer  "G163_TAId",  null: false
+        t.integer  "G164_TAId",  null: false
+        t.integer  "G165_TAId",  null: false
+        t.integer  "G166_TAId",  null: false
+        t.integer  "G167_TAId",  null: false
+        t.integer  "G168_TAId",  null: false
+        t.integer  "G169_TAId",  null: false
+        t.integer  "G170_TAId",  null: false
+        t.integer  "G171_TAId",  null: false
+        t.integer  "G172_TAId",  null: false
+        t.integer  "G173_TAId",  null: false
+        t.integer  "G174_TAId",  null: false
+        t.integer  "G175_TAId",  null: false
+        t.integer  "G176_TAId",  null: false
+        t.integer  "G177_TAId",  null: false
+        t.integer  "G178_TAId",  null: false
+        t.integer  "G179_TAId",  null: false
+        t.integer  "G180_TAId",  null: false
+        t.integer  "G181_TAId",  null: false
+        t.integer  "G182_TAId",  null: false
+        t.integer  "G183_TAId",  null: false
+        t.integer  "G184_TAId",  null: false
+        t.integer  "G185_TAId",  null: false
+        t.integer  "G186_TAId",  null: false
+        t.integer  "G187_TAId",  null: false
+        t.integer  "G188_TAId",  null: false
+        t.integer  "G189_TAId",  null: false
+        t.integer  "G190_TAId",  null: false
+        t.integer  "G191_TAId",  null: false
+        t.integer  "G192_TAId",  null: false
+        t.integer  "G193_TAId",  null: false
+        t.integer  "G194_TAId",  null: false
+        t.integer  "G195_TAId",  null: false
+        t.integer  "G1_TAUId",   null: false
+        t.integer  "G2_TAUId",   null: false
+        t.integer  "G3_TAUId",   null: false
+        t.integer  "G4_TAUId",   null: false
+        t.integer  "G5_TAUId",   null: false
+        t.integer  "G6_TAUId",   null: false
+        t.integer  "G7_TAUId",   null: false
+        t.integer  "G8_TAUId",   null: false
+        t.integer  "G9_TAUId",   null: false
+        t.integer  "G10_TAUId",  null: false
+        t.integer  "G11_TAUId",  null: false
+        t.integer  "G12_TAUId",  null: false
+        t.integer  "G13_TAUId",  null: false
+        t.integer  "G14_TAUId",  null: false
+        t.integer  "G15_TAUId",  null: false
+        t.integer  "G16_TAUId",  null: false
+        t.integer  "G17_TAUId",  null: false
+        t.integer  "G18_TAUId",  null: false
+        t.integer  "G19_TAUId",  null: false
+        t.integer  "G20_TAUId",  null: false
+        t.integer  "G21_TAUId",  null: false
+        t.integer  "G22_TAUId",  null: false
+        t.integer  "G23_TAUId",  null: false
+        t.integer  "G24_TAUId",  null: false
+        t.integer  "G25_TAUId",  null: false
+        t.integer  "G26_TAUId",  null: false
+        t.integer  "G27_TAUId",  null: false
+        t.integer  "G28_TAUId",  null: false
+        t.integer  "G29_TAUId",  null: false
+        t.integer  "G30_TAUId",  null: false
+        t.integer  "G31_TAUId",  null: false
+        t.integer  "G32_TAUId",  null: false
+        t.integer  "G33_TAUId",  null: false
+        t.integer  "G34_TAUId",  null: false
+        t.integer  "G35_TAUId",  null: false
+        t.integer  "G36_TAUId",  null: false
+        t.integer  "G37_TAUId",  null: false
+        t.integer  "G38_TAUId",  null: false
+        t.integer  "G39_TAUId",  null: false
+        t.integer  "G40_TAUId",  null: false
+        t.integer  "G41_TAUId",  null: false
+        t.integer  "G42_TAUId",  null: false
+        t.integer  "G43_TAUId",  null: false
+        t.integer  "G44_TAUId",  null: false
+        t.integer  "G45_TAUId",  null: false
+        t.integer  "G46_TAUId",  null: false
+        t.integer  "G47_TAUId",  null: false
+        t.integer  "G48_TAUId",  null: false
+        t.integer  "G49_TAUId",  null: false
+        t.integer  "G50_TAUId",  null: false
+        t.integer  "G51_TAUId",  null: false
+        t.integer  "G52_TAUId",  null: false
+        t.integer  "G53_TAUId",  null: false
+        t.integer  "G54_TAUId",  null: false
+        t.integer  "G55_TAUId",  null: false
+        t.integer  "G56_TAUId",  null: false
+        t.integer  "G57_TAUId",  null: false
+        t.integer  "G58_TAUId",  null: false
+        t.integer  "G59_TAUId",  null: false
+        t.integer  "G60_TAUId",  null: false
+        t.integer  "G61_TAUId",  null: false
+        t.integer  "G62_TAUId",  null: false
+        t.integer  "G63_TAUId",  null: false
+        t.integer  "G64_TAUId",  null: false
+        t.integer  "G65_TAUId",  null: false
+        t.integer  "G66_TAUId",  null: false
+        t.integer  "G67_TAUId",  null: false
+        t.integer  "G68_TAUId",  null: false
+        t.integer  "G69_TAUId",  null: false
+        t.integer  "G70_TAUId",  null: false
+        t.integer  "G71_TAUId",  null: false
+        t.integer  "G72_TAUId",  null: false
+        t.integer  "G73_TAUId",  null: false
+        t.integer  "G74_TAUId",  null: false
+        t.integer  "G75_TAUId",  null: false
+        t.integer  "G76_TAUId",  null: false
+        t.integer  "G77_TAUId",  null: false
+        t.integer  "G78_TAUId",  null: false
+        t.integer  "G79_TAUId",  null: false
+        t.integer  "G80_TAUId",  null: false
+        t.integer  "G81_TAUId",  null: false
+        t.integer  "G82_TAUId",  null: false
+        t.integer  "G83_TAUId",  null: false
+        t.integer  "G84_TAUId",  null: false
+        t.integer  "G85_TAUId",  null: false
+        t.integer  "G86_TAUId",  null: false
+        t.integer  "G87_TAUId",  null: false
+        t.integer  "G88_TAUId",  null: false
+        t.integer  "G89_TAUId",  null: false
+        t.integer  "G90_TAUId",  null: false
+        t.integer  "G91_TAUId",  null: false
+        t.integer  "G92_TAUId",  null: false
+        t.integer  "G93_TAUId",  null: false
+        t.integer  "G94_TAUId",  null: false
+        t.integer  "G95_TAUId",  null: false
+        t.integer  "G96_TAUId",  null: false
+        t.integer  "G97_TAUId",  null: false
+        t.integer  "G98_TAUId",  null: false
+        t.integer  "G99_TAUId",  null: false
+        t.integer  "G100_TAUId", null: false
+        t.integer  "G101_TAUId", null: false
+        t.integer  "G102_TAUId", null: false
+        t.integer  "G103_TAUId", null: false
+        t.integer  "G104_TAUId", null: false
+        t.integer  "G105_TAUId", null: false
+        t.integer  "G106_TAUId", null: false
+        t.integer  "G107_TAUId", null: false
+        t.integer  "G108_TAUId", null: false
+        t.integer  "G109_TAUId", null: false
+        t.integer  "G110_TAUId", null: false
+        t.integer  "G111_TAUId", null: false
+        t.integer  "G112_TAUId", null: false
+        t.integer  "G113_TAUId", null: false
+        t.integer  "G114_TAUId", null: false
+        t.integer  "G115_TAUId", null: false
+        t.integer  "G116_TAUId", null: false
+        t.integer  "G117_TAUId", null: false
+        t.integer  "G118_TAUId", null: false
+        t.integer  "G119_TAUId", null: false
+        t.integer  "G120_TAUId", null: false
+        t.integer  "G121_TAUId", null: false
+        t.integer  "G122_TAUId", null: false
+        t.integer  "G123_TAUId", null: false
+        t.integer  "G124_TAUId", null: false
+        t.integer  "G125_TAUId", null: false
+        t.integer  "G126_TAUId", null: false
+        t.integer  "G127_TAUId", null: false
+        t.integer  "G128_TAUId", null: false
+        t.integer  "G129_TAUId", null: false
+        t.integer  "G130_TAUId", null: false
+        t.integer  "G131_TAUId", null: false
+        t.integer  "G132_TAUId", null: false
+        t.integer  "G133_TAUId", null: false
+        t.integer  "G134_TAUId", null: false
+        t.integer  "G135_TAUId", null: false
+        t.integer  "G136_TAUId", null: false
+        t.integer  "G137_TAUId", null: false
+        t.integer  "G138_TAUId", null: false
+        t.integer  "G139_TAUId", null: false
+        t.integer  "G140_TAUId", null: false
+        t.integer  "G141_TAUId", null: false
+        t.integer  "G142_TAUId", null: false
+        t.integer  "G143_TAUId", null: false
+        t.integer  "G144_TAUId", null: false
+        t.integer  "G145_TAUId", null: false
+        t.integer  "G146_TAUId", null: false
+        t.integer  "G147_TAUId", null: false
+        t.integer  "G148_TAUId", null: false
+        t.integer  "G149_TAUId", null: false
+        t.integer  "G150_TAUId", null: false
+        t.integer  "G151_TAUId", null: false
+        t.integer  "G152_TAUId", null: false
+        t.integer  "G153_TAUId", null: false
+        t.integer  "G154_TAUId", null: false
+        t.integer  "G155_TAUId", null: false
+        t.integer  "G156_TAUId", null: false
+        t.integer  "G157_TAUId", null: false
+        t.integer  "G158_TAUId", null: false
+        t.integer  "G159_TAUId", null: false
+        t.integer  "G160_TAUId", null: false
+        t.integer  "G161_TAUId", null: false
+        t.integer  "G162_TAUId", null: false
+        t.integer  "G163_TAUId", null: false
+        t.integer  "G164_TAUId", null: false
+        t.integer  "G165_TAUId", null: false
+        t.integer  "G166_TAUId", null: false
+        t.integer  "G167_TAUId", null: false
+        t.integer  "G168_TAUId", null: false
+        t.integer  "G169_TAUId", null: false
+        t.integer  "G170_TAUId", null: false
+        t.integer  "G171_TAUId", null: false
+        t.integer  "G172_TAUId", null: false
+        t.integer  "G173_TAUId", null: false
+        t.integer  "G174_TAUId", null: false
+        t.integer  "G175_TAUId", null: false
+        t.integer  "G176_TAUId", null: false
+        t.integer  "G177_TAUId", null: false
+        t.integer  "G178_TAUId", null: false
+        t.integer  "G179_TAUId", null: false
+        t.integer  "G180_TAUId", null: false
+        t.integer  "G181_TAUId", null: false
+        t.integer  "G182_TAUId", null: false
+        t.integer  "G183_TAUId", null: false
+        t.integer  "G184_TAUId", null: false
+        t.integer  "G185_TAUId", null: false
+        t.integer  "G186_TAUId", null: false
+        t.integer  "G187_TAUId", null: false
+        t.integer  "G188_TAUId", null: false
+        t.integer  "G189_TAUId", null: false
+        t.integer  "G190_TAUId", null: false
+        t.integer  "G191_TAUId", null: false
+        t.integer  "G192_TAUId", null: false
+        t.integer  "G193_TAUId", null: false
+        t.integer  "G194_TAUId", null: false
+        t.integer  "G195_TAUId", null: false
+        t.integer  "G1_THId",    null: false
+        t.integer  "G2_THId",    null: false
+        t.integer  "G3_THId",    null: false
+        t.integer  "G4_THId",    null: false
+        t.integer  "G5_THId",    null: false
+        t.integer  "G6_THId",    null: false
+        t.integer  "G7_THId",    null: false
+        t.integer  "G8_THId",    null: false
+        t.integer  "G9_THId",    null: false
+        t.integer  "G10_THId",   null: false
+        t.integer  "G11_THId",   null: false
+        t.integer  "G12_THId",   null: false
+        t.integer  "G13_THId",   null: false
+        t.integer  "G14_THId",   null: false
+        t.integer  "G15_THId",   null: false
+        t.integer  "G16_THId",   null: false
+        t.integer  "G17_THId",   null: false
+        t.integer  "G18_THId",   null: false
+        t.integer  "G19_THId",   null: false
+        t.integer  "G20_THId",   null: false
+        t.integer  "G21_THId",   null: false
+        t.integer  "G22_THId",   null: false
+        t.integer  "G23_THId",   null: false
+        t.integer  "G24_THId",   null: false
+        t.integer  "G25_THId",   null: false
+        t.integer  "G26_THId",   null: false
+        t.integer  "G27_THId",   null: false
+        t.integer  "G28_THId",   null: false
+        t.integer  "G29_THId",   null: false
+        t.integer  "G30_THId",   null: false
+        t.integer  "G31_THId",   null: false
+        t.integer  "G32_THId",   null: false
+        t.integer  "G33_THId",   null: false
+        t.integer  "G34_THId",   null: false
+        t.integer  "G35_THId",   null: false
+        t.integer  "G36_THId",   null: false
+        t.integer  "G37_THId",   null: false
+        t.integer  "G38_THId",   null: false
+        t.integer  "G39_THId",   null: false
+        t.integer  "G40_THId",   null: false
+        t.integer  "G41_THId",   null: false
+        t.integer  "G42_THId",   null: false
+        t.integer  "G43_THId",   null: false
+        t.integer  "G44_THId",   null: false
+        t.integer  "G45_THId",   null: false
+        t.integer  "G46_THId",   null: false
+        t.integer  "G47_THId",   null: false
+        t.integer  "G48_THId",   null: false
+        t.integer  "G49_THId",   null: false
+        t.integer  "G50_THId",   null: false
+        t.integer  "G51_THId",   null: false
+        t.integer  "G52_THId",   null: false
+        t.integer  "G53_THId",   null: false
+        t.integer  "G54_THId",   null: false
+        t.integer  "G55_THId",   null: false
+        t.integer  "G56_THId",   null: false
+        t.integer  "G57_THId",   null: false
+        t.integer  "G58_THId",   null: false
+        t.integer  "G59_THId",   null: false
+        t.integer  "G60_THId",   null: false
+        t.integer  "G61_THId",   null: false
+        t.integer  "G62_THId",   null: false
+        t.integer  "G63_THId",   null: false
+        t.integer  "G64_THId",   null: false
+        t.integer  "G65_THId",   null: false
+        t.integer  "G66_THId",   null: false
+        t.integer  "G67_THId",   null: false
+        t.integer  "G68_THId",   null: false
+        t.integer  "G69_THId",   null: false
+        t.integer  "G70_THId",   null: false
+        t.integer  "G71_THId",   null: false
+        t.integer  "G72_THId",   null: false
+        t.integer  "G73_THId",   null: false
+        t.integer  "G74_THId",   null: false
+        t.integer  "G75_THId",   null: false
+        t.integer  "G76_THId",   null: false
+        t.integer  "G77_THId",   null: false
+        t.integer  "G78_THId",   null: false
+        t.integer  "G79_THId",   null: false
+        t.integer  "G80_THId",   null: false
+        t.integer  "G81_THId",   null: false
+        t.integer  "G82_THId",   null: false
+        t.integer  "G83_THId",   null: false
+        t.integer  "G84_THId",   null: false
+        t.integer  "G85_THId",   null: false
+        t.integer  "G86_THId",   null: false
+        t.integer  "G87_THId",   null: false
+        t.integer  "G88_THId",   null: false
+        t.integer  "G89_THId",   null: false
+        t.integer  "G90_THId",   null: false
+        t.integer  "G91_THId",   null: false
+        t.integer  "G92_THId",   null: false
+        t.integer  "G93_THId",   null: false
+        t.integer  "G94_THId",   null: false
+        t.integer  "G95_THId",   null: false
+        t.integer  "G96_THId",   null: false
+        t.integer  "G97_THId",   null: false
+        t.integer  "G98_THId",   null: false
+        t.integer  "G99_THId",   null: false
+        t.integer  "G100_THId",  null: false
+        t.integer  "G101_THId",  null: false
+        t.integer  "G102_THId",  null: false
+        t.integer  "G103_THId",  null: false
+        t.integer  "G104_THId",  null: false
+        t.integer  "G105_THId",  null: false
+        t.integer  "G106_THId",  null: false
+        t.integer  "G107_THId",  null: false
+        t.integer  "G108_THId",  null: false
+        t.integer  "G109_THId",  null: false
+        t.integer  "G110_THId",  null: false
+        t.integer  "G111_THId",  null: false
+        t.integer  "G112_THId",  null: false
+        t.integer  "G113_THId",  null: false
+        t.integer  "G114_THId",  null: false
+        t.integer  "G115_THId",  null: false
+        t.integer  "G116_THId",  null: false
+        t.integer  "G117_THId",  null: false
+        t.integer  "G118_THId",  null: false
+        t.integer  "G119_THId",  null: false
+        t.integer  "G120_THId",  null: false
+        t.integer  "G121_THId",  null: false
+        t.integer  "G122_THId",  null: false
+        t.integer  "G123_THId",  null: false
+        t.integer  "G124_THId",  null: false
+        t.integer  "G125_THId",  null: false
+        t.integer  "G126_THId",  null: false
+        t.integer  "G127_THId",  null: false
+        t.integer  "G128_THId",  null: false
+        t.integer  "G129_THId",  null: false
+        t.integer  "G130_THId",  null: false
+        t.integer  "G131_THId",  null: false
+        t.integer  "G132_THId",  null: false
+        t.integer  "G133_THId",  null: false
+        t.integer  "G134_THId",  null: false
+        t.integer  "G135_THId",  null: false
+        t.integer  "G136_THId",  null: false
+        t.integer  "G137_THId",  null: false
+        t.integer  "G138_THId",  null: false
+        t.integer  "G139_THId",  null: false
+        t.integer  "G140_THId",  null: false
+        t.integer  "G141_THId",  null: false
+        t.integer  "G142_THId",  null: false
+        t.integer  "G143_THId",  null: false
+        t.integer  "G144_THId",  null: false
+        t.integer  "G145_THId",  null: false
+        t.integer  "G146_THId",  null: false
+        t.integer  "G147_THId",  null: false
+        t.integer  "G148_THId",  null: false
+        t.integer  "G149_THId",  null: false
+        t.integer  "G150_THId",  null: false
+        t.integer  "G151_THId",  null: false
+        t.integer  "G152_THId",  null: false
+        t.integer  "G153_THId",  null: false
+        t.integer  "G154_THId",  null: false
+        t.integer  "G155_THId",  null: false
+        t.integer  "G156_THId",  null: false
+        t.integer  "G157_THId",  null: false
+        t.integer  "G158_THId",  null: false
+        t.integer  "G159_THId",  null: false
+        t.integer  "G160_THId",  null: false
+        t.integer  "G161_THId",  null: false
+        t.integer  "G162_THId",  null: false
+        t.integer  "G163_THId",  null: false
+        t.integer  "G164_THId",  null: false
+        t.integer  "G165_THId",  null: false
+        t.integer  "G166_THId",  null: false
+        t.integer  "G167_THId",  null: false
+        t.integer  "G168_THId",  null: false
+        t.integer  "G169_THId",  null: false
+        t.integer  "G170_THId",  null: false
+        t.integer  "G171_THId",  null: false
+        t.integer  "G172_THId",  null: false
+        t.integer  "G173_THId",  null: false
+        t.integer  "G174_THId",  null: false
+        t.integer  "G175_THId",  null: false
+        t.integer  "G176_THId",  null: false
+        t.integer  "G177_THId",  null: false
+        t.integer  "G178_THId",  null: false
+        t.integer  "G179_THId",  null: false
+        t.integer  "G180_THId",  null: false
+        t.integer  "G181_THId",  null: false
+        t.integer  "G182_THId",  null: false
+        t.integer  "G183_THId",  null: false
+        t.integer  "G184_THId",  null: false
+        t.integer  "G185_THId",  null: false
+        t.integer  "G186_THId",  null: false
+        t.integer  "G187_THId",  null: false
+        t.integer  "G188_THId",  null: false
+        t.integer  "G189_THId",  null: false
+        t.integer  "G190_THId",  null: false
+        t.integer  "G191_THId",  null: false
+        t.integer  "G192_THId",  null: false
+        t.integer  "G193_THId",  null: false
+        t.integer  "G194_THId",  null: false
+        t.integer  "G195_THId",  null: false
+        t.integer  "G1_THUId",   null: false
+        t.integer  "G2_THUId",   null: false
+        t.integer  "G3_THUId",   null: false
+        t.integer  "G4_THUId",   null: false
+        t.integer  "G5_THUId",   null: false
+        t.integer  "G6_THUId",   null: false
+        t.integer  "G7_THUId",   null: false
+        t.integer  "G8_THUId",   null: false
+        t.integer  "G9_THUId",   null: false
+        t.integer  "G10_THUId",  null: false
+        t.integer  "G11_THUId",  null: false
+        t.integer  "G12_THUId",  null: false
+        t.integer  "G13_THUId",  null: false
+        t.integer  "G14_THUId",  null: false
+        t.integer  "G15_THUId",  null: false
+        t.integer  "G16_THUId",  null: false
+        t.integer  "G17_THUId",  null: false
+        t.integer  "G18_THUId",  null: false
+        t.integer  "G19_THUId",  null: false
+        t.integer  "G20_THUId",  null: false
+        t.integer  "G21_THUId",  null: false
+        t.integer  "G22_THUId",  null: false
+        t.integer  "G23_THUId",  null: false
+        t.integer  "G24_THUId",  null: false
+        t.integer  "G25_THUId",  null: false
+        t.integer  "G26_THUId",  null: false
+        t.integer  "G27_THUId",  null: false
+        t.integer  "G28_THUId",  null: false
+        t.integer  "G29_THUId",  null: false
+        t.integer  "G30_THUId",  null: false
+        t.integer  "G31_THUId",  null: false
+        t.integer  "G32_THUId",  null: false
+        t.integer  "G33_THUId",  null: false
+        t.integer  "G34_THUId",  null: false
+        t.integer  "G35_THUId",  null: false
+        t.integer  "G36_THUId",  null: false
+        t.integer  "G37_THUId",  null: false
+        t.integer  "G38_THUId",  null: false
+        t.integer  "G39_THUId",  null: false
+        t.integer  "G40_THUId",  null: false
+        t.integer  "G41_THUId",  null: false
+        t.integer  "G42_THUId",  null: false
+        t.integer  "G43_THUId",  null: false
+        t.integer  "G44_THUId",  null: false
+        t.integer  "G45_THUId",  null: false
+        t.integer  "G46_THUId",  null: false
+        t.integer  "G47_THUId",  null: false
+        t.integer  "G48_THUId",  null: false
+        t.integer  "G49_THUId",  null: false
+        t.integer  "G50_THUId",  null: false
+        t.integer  "G51_THUId",  null: false
+        t.integer  "G52_THUId",  null: false
+        t.integer  "G53_THUId",  null: false
+        t.integer  "G54_THUId",  null: false
+        t.integer  "G55_THUId",  null: false
+        t.integer  "G56_THUId",  null: false
+        t.integer  "G57_THUId",  null: false
+        t.integer  "G58_THUId",  null: false
+        t.integer  "G59_THUId",  null: false
+        t.integer  "G60_THUId",  null: false
+        t.integer  "G61_THUId",  null: false
+        t.integer  "G62_THUId",  null: false
+        t.integer  "G63_THUId",  null: false
+        t.integer  "G64_THUId",  null: false
+        t.integer  "G65_THUId",  null: false
+        t.integer  "G66_THUId",  null: false
+        t.integer  "G67_THUId",  null: false
+        t.integer  "G68_THUId",  null: false
+        t.integer  "G69_THUId",  null: false
+        t.integer  "G70_THUId",  null: false
+        t.integer  "G71_THUId",  null: false
+        t.integer  "G72_THUId",  null: false
+        t.integer  "G73_THUId",  null: false
+        t.integer  "G74_THUId",  null: false
+        t.integer  "G75_THUId",  null: false
+        t.integer  "G76_THUId",  null: false
+        t.integer  "G77_THUId",  null: false
+        t.integer  "G78_THUId",  null: false
+        t.integer  "G79_THUId",  null: false
+        t.integer  "G80_THUId",  null: false
+        t.integer  "G81_THUId",  null: false
+        t.integer  "G82_THUId",  null: false
+        t.integer  "G83_THUId",  null: false
+        t.integer  "G84_THUId",  null: false
+        t.integer  "G85_THUId",  null: false
+        t.integer  "G86_THUId",  null: false
+        t.integer  "G87_THUId",  null: false
+        t.integer  "G88_THUId",  null: false
+        t.integer  "G89_THUId",  null: false
+        t.integer  "G90_THUId",  null: false
+        t.integer  "G91_THUId",  null: false
+        t.integer  "G92_THUId",  null: false
+        t.integer  "G93_THUId",  null: false
+        t.integer  "G94_THUId",  null: false
+        t.integer  "G95_THUId",  null: false
+        t.integer  "G96_THUId",  null: false
+        t.integer  "G97_THUId",  null: false
+        t.integer  "G98_THUId",  null: false
+        t.integer  "G99_THUId",  null: false
+        t.integer  "G100_THUId", null: false
+        t.integer  "G101_THUId", null: false
+        t.integer  "G102_THUId", null: false
+        t.integer  "G103_THUId", null: false
+        t.integer  "G104_THUId", null: false
+        t.integer  "G105_THUId", null: false
+        t.integer  "G106_THUId", null: false
+        t.integer  "G107_THUId", null: false
+        t.integer  "G108_THUId", null: false
+        t.integer  "G109_THUId", null: false
+        t.integer  "G110_THUId", null: false
+        t.integer  "G111_THUId", null: false
+        t.integer  "G112_THUId", null: false
+        t.integer  "G113_THUId", null: false
+        t.integer  "G114_THUId", null: false
+        t.integer  "G115_THUId", null: false
+        t.integer  "G116_THUId", null: false
+        t.integer  "G117_THUId", null: false
+        t.integer  "G118_THUId", null: false
+        t.integer  "G119_THUId", null: false
+        t.integer  "G120_THUId", null: false
+        t.integer  "G121_THUId", null: false
+        t.integer  "G122_THUId", null: false
+        t.integer  "G123_THUId", null: false
+        t.integer  "G124_THUId", null: false
+        t.integer  "G125_THUId", null: false
+        t.integer  "G126_THUId", null: false
+        t.integer  "G127_THUId", null: false
+        t.integer  "G128_THUId", null: false
+        t.integer  "G129_THUId", null: false
+        t.integer  "G130_THUId", null: false
+        t.integer  "G131_THUId", null: false
+        t.integer  "G132_THUId", null: false
+        t.integer  "G133_THUId", null: false
+        t.integer  "G134_THUId", null: false
+        t.integer  "G135_THUId", null: false
+        t.integer  "G136_THUId", null: false
+        t.integer  "G137_THUId", null: false
+        t.integer  "G138_THUId", null: false
+        t.integer  "G139_THUId", null: false
+        t.integer  "G140_THUId", null: false
+        t.integer  "G141_THUId", null: false
+        t.integer  "G142_THUId", null: false
+        t.integer  "G143_THUId", null: false
+        t.integer  "G144_THUId", null: false
+        t.integer  "G145_THUId", null: false
+        t.integer  "G146_THUId", null: false
+        t.integer  "G147_THUId", null: false
+        t.integer  "G148_THUId", null: false
+        t.integer  "G149_THUId", null: false
+        t.integer  "G150_THUId", null: false
+        t.integer  "G151_THUId", null: false
+        t.integer  "G152_THUId", null: false
+        t.integer  "G153_THUId", null: false
+        t.integer  "G154_THUId", null: false
+        t.integer  "G155_THUId", null: false
+        t.integer  "G156_THUId", null: false
+        t.integer  "G157_THUId", null: false
+        t.integer  "G158_THUId", null: false
+        t.integer  "G159_THUId", null: false
+        t.integer  "G160_THUId", null: false
+        t.integer  "G161_THUId", null: false
+        t.integer  "G162_THUId", null: false
+        t.integer  "G163_THUId", null: false
+        t.integer  "G164_THUId", null: false
+        t.integer  "G165_THUId", null: false
+        t.integer  "G166_THUId", null: false
+        t.integer  "G167_THUId", null: false
+        t.integer  "G168_THUId", null: false
+        t.integer  "G169_THUId", null: false
+        t.integer  "G170_THUId", null: false
+        t.integer  "G171_THUId", null: false
+        t.integer  "G172_THUId", null: false
+        t.integer  "G173_THUId", null: false
+        t.integer  "G174_THUId", null: false
+        t.integer  "G175_THUId", null: false
+        t.integer  "G176_THUId", null: false
+        t.integer  "G177_THUId", null: false
+        t.integer  "G178_THUId", null: false
+        t.integer  "G179_THUId", null: false
+        t.integer  "G180_THUId", null: false
+        t.integer  "G181_THUId", null: false
+        t.integer  "G182_THUId", null: false
+        t.integer  "G183_THUId", null: false
+        t.integer  "G184_THUId", null: false
+        t.integer  "G185_THUId", null: false
+        t.integer  "G186_THUId", null: false
+        t.integer  "G187_THUId", null: false
+        t.integer  "G188_THUId", null: false
+        t.integer  "G189_THUId", null: false
+        t.integer  "G190_THUId", null: false
+        t.integer  "G191_THUId", null: false
+        t.integer  "G192_THUId", null: false
+        t.integer  "G193_THUId", null: false
+        t.integer  "G194_THUId", null: false
+        t.integer  "G195_THUId", null: false
+      end
+
+      create_table "RemoteTournamentsGames", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.integer  "TournamentId",                                      null: false
+        t.integer  "GameId",                                            null: false
+        t.integer  "GameUId",                                           null: false
+        t.datetime "TS",           default: -> { "CURRENT_TIMESTAMP" }, null: false
+      end
+
+      create_table "RemoteTournamentsOld", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id"
+        t.integer  "UId",                                null: false
+        t.integer  "SId",                                null: false
+        t.integer  "CompanyId",                          null: false
+        t.integer  "PlayoffType",                        null: false
+        t.string   "Name",        limit: 50,             null: false, collation: "utf8_unicode_ci"
         t.datetime "TS"
         t.date     "StartDate"
-        t.integer  "Finished",                             null: false
-        t.integer  "Format",                 default: 1,   null: false
-        t.integer  "WinnerId",                             null: false
-        t.integer  "WinnerUId",                            null: false
-        t.integer  "Team1_Id",               default: 0,   null: false
-        t.integer  "Team2_Id",               default: 0,   null: false
-        t.integer  "Team3_Id",               default: 0,   null: false
-        t.integer  "Team4_Id",               default: 0,   null: false
-        t.integer  "Team5_Id",               default: 0,   null: false
-        t.integer  "Team6_Id",               default: 0,   null: false
-        t.integer  "Team7_Id",               default: 0,   null: false
-        t.integer  "Team8_Id",               default: 0,   null: false
-        t.integer  "Team9_Id",               default: 0,   null: false
-        t.integer  "Team10_Id",              default: 0,   null: false
-        t.integer  "Team11_Id",              default: 0,   null: false
-        t.integer  "Team12_Id",              default: 0,   null: false
-        t.integer  "Team13_Id",              default: 0,   null: false
-        t.integer  "Team14_Id",              default: 0,   null: false
-        t.integer  "Team15_Id",              default: 0,   null: false
-        t.integer  "Team16_Id",              default: 0,   null: false
-        t.integer  "Team17_Id",              default: 0,   null: false
-        t.integer  "Team18_Id",              default: 0,   null: false
-        t.integer  "Team19_Id",              default: 0,   null: false
-        t.integer  "Team20_Id",              default: 0,   null: false
-        t.integer  "Team21_Id",              default: 0,   null: false
-        t.integer  "Team22_Id",              default: 0,   null: false
-        t.integer  "Team23_Id",              default: 0,   null: false
-        t.integer  "Team24_Id",              default: 0,   null: false
-        t.integer  "Team25_Id",              default: 0,   null: false
-        t.integer  "Team26_Id",              default: 0,   null: false
-        t.integer  "Team27_Id",              default: 0,   null: false
-        t.integer  "Team28_Id",              default: 0,   null: false
-        t.integer  "Team29_Id",              default: 0,   null: false
-        t.integer  "Team30_Id",              default: 0,   null: false
-        t.integer  "Team31_Id",              default: 0,   null: false
-        t.integer  "Team32_Id",              default: 0,   null: false
-        t.integer  "Team33_Id",              default: 0,   null: false
-        t.integer  "Team34_Id",              default: 0,   null: false
-        t.integer  "Team35_Id",              default: 0,   null: false
-        t.integer  "Team36_Id",              default: 0,   null: false
-        t.integer  "Team37_Id",              default: 0,   null: false
-        t.integer  "Team38_Id",              default: 0,   null: false
-        t.integer  "Team39_Id",              default: 0,   null: false
-        t.integer  "Team40_Id",              default: 0,   null: false
-        t.integer  "Team41_Id",              default: 0,   null: false
-        t.integer  "Team42_Id",              default: 0,   null: false
-        t.integer  "Team43_Id",              default: 0,   null: false
-        t.integer  "Team44_Id",              default: 0,   null: false
-        t.integer  "Team45_Id",              default: 0,   null: false
-        t.integer  "Team46_Id",              default: 0,   null: false
-        t.integer  "Team47_Id",              default: 0,   null: false
-        t.integer  "Team48_Id",              default: 0,   null: false
-        t.integer  "Team49_Id",              default: 0,   null: false
-        t.integer  "Team50_Id",              default: 0,   null: false
-        t.integer  "Team51_Id",              default: 0,   null: false
-        t.integer  "Team52_Id",              default: 0,   null: false
-        t.integer  "Team53_Id",              default: 0,   null: false
-        t.integer  "Team54_Id",              default: 0,   null: false
-        t.integer  "Team55_Id",              default: 0,   null: false
-        t.integer  "Team56_Id",              default: 0,   null: false
-        t.integer  "Team57_Id",              default: 0,   null: false
-        t.integer  "Team58_Id",              default: 0,   null: false
-        t.integer  "Team59_Id",              default: 0,   null: false
-        t.integer  "Team60_Id",              default: 0,   null: false
-        t.integer  "Team61_Id",              default: 0,   null: false
-        t.integer  "Team62_Id",              default: 0,   null: false
-        t.integer  "Team63_Id",              default: 0,   null: false
-        t.integer  "Team64_Id",              default: 0,   null: false
-        t.integer  "Team65_Id",              default: 0,   null: false
-        t.integer  "Team66_Id",              default: 0,   null: false
-        t.integer  "Team67_Id",              default: 0,   null: false
-        t.integer  "Team68_Id",              default: 0,   null: false
-        t.integer  "Team69_Id",              default: 0,   null: false
-        t.integer  "Team70_Id",              default: 0,   null: false
-        t.integer  "Team1_UId",              default: 0,   null: false
-        t.integer  "Team2_UId",              default: 0,   null: false
-        t.integer  "Team3_UId",              default: 0,   null: false
-        t.integer  "Team4_UId",              default: 0,   null: false
-        t.integer  "Team5_UId",              default: 0,   null: false
-        t.integer  "Team6_UId",              default: 0,   null: false
-        t.integer  "Team7_UId",              default: 0,   null: false
-        t.integer  "Team8_UId",              default: 0,   null: false
-        t.integer  "Team9_UId",              default: 0,   null: false
-        t.integer  "Team10_UId",             default: 0,   null: false
-        t.integer  "Team11_UId",             default: 0,   null: false
-        t.integer  "Team12_UId",             default: 0,   null: false
-        t.integer  "Team13_UId",             default: 0,   null: false
-        t.integer  "Team14_UId",             default: 0,   null: false
-        t.integer  "Team15_UId",             default: 0,   null: false
-        t.integer  "Team16_UId",             default: 0,   null: false
-        t.integer  "Team17_UId",             default: 0,   null: false
-        t.integer  "Team18_UId",             default: 0,   null: false
-        t.integer  "Team19_UId",             default: 0,   null: false
-        t.integer  "Team20_UId",             default: 0,   null: false
-        t.integer  "Team21_UId",             default: 0,   null: false
-        t.integer  "Team22_UId",             default: 0,   null: false
-        t.integer  "Team23_UId",             default: 0,   null: false
-        t.integer  "Team24_UId",             default: 0,   null: false
-        t.integer  "Team25_UId",             default: 0,   null: false
-        t.integer  "Team26_UId",             default: 0,   null: false
-        t.integer  "Team27_UId",             default: 0,   null: false
-        t.integer  "Team28_UId",             default: 0,   null: false
-        t.integer  "Team29_UId",             default: 0,   null: false
-        t.integer  "Team30_UId",             default: 0,   null: false
-        t.integer  "Team31_UId",             default: 0,   null: false
-        t.integer  "Team32_UId",             default: 0,   null: false
-        t.integer  "Team33_UId",             default: 0,   null: false
-        t.integer  "Team34_UId",             default: 0,   null: false
-        t.integer  "Team35_UId",             default: 0,   null: false
-        t.integer  "Team36_UId",             default: 0,   null: false
-        t.integer  "Team37_UId",             default: 0,   null: false
-        t.integer  "Team38_UId",             default: 0,   null: false
-        t.integer  "Team39_UId",             default: 0,   null: false
-        t.integer  "Team40_UId",             default: 0,   null: false
-        t.integer  "Team41_UId",             default: 0,   null: false
-        t.integer  "Team42_UId",             default: 0,   null: false
-        t.integer  "Team43_UId",             default: 0,   null: false
-        t.integer  "Team44_UId",             default: 0,   null: false
-        t.integer  "Team45_UId",             default: 0,   null: false
-        t.integer  "Team46_UId",             default: 0,   null: false
-        t.integer  "Team47_UId",             default: 0,   null: false
-        t.integer  "Team48_UId",             default: 0,   null: false
-        t.integer  "Team49_UId",             default: 0,   null: false
-        t.integer  "Team50_UId",             default: 0,   null: false
-        t.integer  "Team51_UId",             default: 0,   null: false
-        t.integer  "Team52_UId",             default: 0,   null: false
-        t.integer  "Team53_UId",             default: 0,   null: false
-        t.integer  "Team54_UId",             default: 0,   null: false
-        t.integer  "Team55_UId",             default: 0,   null: false
-        t.integer  "Team56_UId",             default: 0,   null: false
-        t.integer  "Team57_UId",             default: 0,   null: false
-        t.integer  "Team58_UId",             default: 0,   null: false
-        t.integer  "Team59_UId",             default: 0,   null: false
-        t.integer  "Team60_UId",             default: 0,   null: false
-        t.integer  "Team61_UId",             default: 0,   null: false
-        t.integer  "Team62_UId",             default: 0,   null: false
-        t.integer  "Team63_UId",             default: 0,   null: false
-        t.integer  "Team64_UId",             default: 0,   null: false
-        t.integer  "Team65_UId",             default: 0,   null: false
-        t.integer  "Team66_UId",             default: 0,   null: false
-        t.integer  "Team67_UId",             default: 0,   null: false
-        t.integer  "Team68_UId",             default: 0,   null: false
-        t.integer  "Team69_UId",             default: 0,   null: false
-        t.integer  "Team70_UId",             default: 0,   null: false
-        t.string   "PTeam1_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam2_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam3_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam4_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam5_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam6_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam7_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam8_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam9_Id",   limit: 50, default: "0", null: false
-        t.string   "PTeam10_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam11_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam12_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam13_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam14_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam15_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam16_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam17_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam18_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam19_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam20_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam21_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam22_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam23_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam24_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam25_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam26_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam27_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam28_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam29_Id",  limit: 50, default: "0", null: false
-        t.string   "PTeam30_Id",  limit: 50, default: "0", null: false
+        t.integer  "Finished",                           null: false
+        t.integer  "Format",                 default: 1, null: false
+        t.integer  "WinnerId",                           null: false
+        t.integer  "WinnerUId",                          null: false
+        t.integer  "Team1_Id",               default: 0, null: false
+        t.integer  "Team2_Id",               default: 0, null: false
+        t.integer  "Team3_Id",               default: 0, null: false
+        t.integer  "Team4_Id",               default: 0, null: false
+        t.integer  "Team5_Id",               default: 0, null: false
+        t.integer  "Team6_Id",               default: 0, null: false
+        t.integer  "Team7_Id",               default: 0, null: false
+        t.integer  "Team8_Id",               default: 0, null: false
+        t.integer  "Team9_Id",               default: 0, null: false
+        t.integer  "Team10_Id",              default: 0, null: false
+        t.integer  "Team11_Id",              default: 0, null: false
+        t.integer  "Team12_Id",              default: 0, null: false
+        t.integer  "Team13_Id",              default: 0, null: false
+        t.integer  "Team14_Id",              default: 0, null: false
+        t.integer  "Team15_Id",              default: 0, null: false
+        t.integer  "Team16_Id",              default: 0, null: false
+        t.integer  "Team17_Id",              default: 0, null: false
+        t.integer  "Team18_Id",              default: 0, null: false
+        t.integer  "Team19_Id",              default: 0, null: false
+        t.integer  "Team20_Id",              default: 0, null: false
+        t.integer  "Team21_Id",              default: 0, null: false
+        t.integer  "Team22_Id",              default: 0, null: false
+        t.integer  "Team23_Id",              default: 0, null: false
+        t.integer  "Team24_Id",              default: 0, null: false
+        t.integer  "Team25_Id",              default: 0, null: false
+        t.integer  "Team26_Id",              default: 0, null: false
+        t.integer  "Team27_Id",              default: 0, null: false
+        t.integer  "Team28_Id",              default: 0, null: false
+        t.integer  "Team29_Id",              default: 0, null: false
+        t.integer  "Team30_Id",              default: 0, null: false
+        t.integer  "Team31_Id",              default: 0, null: false
+        t.integer  "Team32_Id",              default: 0, null: false
+        t.integer  "Team33_Id",              default: 0, null: false
+        t.integer  "Team34_Id",              default: 0, null: false
+        t.integer  "Team35_Id",              default: 0, null: false
+        t.integer  "Team36_Id",              default: 0, null: false
+        t.integer  "Team37_Id",              default: 0, null: false
+        t.integer  "Team38_Id",              default: 0, null: false
+        t.integer  "Team39_Id",              default: 0, null: false
+        t.integer  "Team40_Id",              default: 0, null: false
+        t.integer  "Team41_Id",              default: 0, null: false
+        t.integer  "Team42_Id",              default: 0, null: false
+        t.integer  "Team43_Id",              default: 0, null: false
+        t.integer  "Team44_Id",              default: 0, null: false
+        t.integer  "Team45_Id",              default: 0, null: false
+        t.integer  "Team46_Id",              default: 0, null: false
+        t.integer  "Team47_Id",              default: 0, null: false
+        t.integer  "Team48_Id",              default: 0, null: false
+        t.integer  "Team49_Id",              default: 0, null: false
+        t.integer  "Team50_Id",              default: 0, null: false
+        t.integer  "Team51_Id",              default: 0, null: false
+        t.integer  "Team52_Id",              default: 0, null: false
+        t.integer  "Team53_Id",              default: 0, null: false
+        t.integer  "Team54_Id",              default: 0, null: false
+        t.integer  "Team55_Id",              default: 0, null: false
+        t.integer  "Team56_Id",              default: 0, null: false
+        t.integer  "Team57_Id",              default: 0, null: false
+        t.integer  "Team58_Id",              default: 0, null: false
+        t.integer  "Team59_Id",              default: 0, null: false
+        t.integer  "Team60_Id",              default: 0, null: false
+        t.integer  "Team61_Id",              default: 0, null: false
+        t.integer  "Team62_Id",              default: 0, null: false
+        t.integer  "Team63_Id",              default: 0, null: false
+        t.integer  "Team64_Id",              default: 0, null: false
+        t.integer  "Team65_Id",              default: 0, null: false
+        t.integer  "Team66_Id",              default: 0, null: false
+        t.integer  "Team67_Id",              default: 0, null: false
+        t.integer  "Team68_Id",              default: 0, null: false
+        t.integer  "Team69_Id",              default: 0, null: false
+        t.integer  "Team70_Id",              default: 0, null: false
+        t.integer  "Team1_UId",              default: 0, null: false
+        t.integer  "Team2_UId",              default: 0, null: false
+        t.integer  "Team3_UId",              default: 0, null: false
+        t.integer  "Team4_UId",              default: 0, null: false
+        t.integer  "Team5_UId",              default: 0, null: false
+        t.integer  "Team6_UId",              default: 0, null: false
+        t.integer  "Team7_UId",              default: 0, null: false
+        t.integer  "Team8_UId",              default: 0, null: false
+        t.integer  "Team9_UId",              default: 0, null: false
+        t.integer  "Team10_UId",             default: 0, null: false
+        t.integer  "Team11_UId",             default: 0, null: false
+        t.integer  "Team12_UId",             default: 0, null: false
+        t.integer  "Team13_UId",             default: 0, null: false
+        t.integer  "Team14_UId",             default: 0, null: false
+        t.integer  "Team15_UId",             default: 0, null: false
+        t.integer  "Team16_UId",             default: 0, null: false
+        t.integer  "Team17_UId",             default: 0, null: false
+        t.integer  "Team18_UId",             default: 0, null: false
+        t.integer  "Team19_UId",             default: 0, null: false
+        t.integer  "Team20_UId",             default: 0, null: false
+        t.integer  "Team21_UId",             default: 0, null: false
+        t.integer  "Team22_UId",             default: 0, null: false
+        t.integer  "Team23_UId",             default: 0, null: false
+        t.integer  "Team24_UId",             default: 0, null: false
+        t.integer  "Team25_UId",             default: 0, null: false
+        t.integer  "Team26_UId",             default: 0, null: false
+        t.integer  "Team27_UId",             default: 0, null: false
+        t.integer  "Team28_UId",             default: 0, null: false
+        t.integer  "Team29_UId",             default: 0, null: false
+        t.integer  "Team30_UId",             default: 0, null: false
+        t.integer  "Team31_UId",             default: 0, null: false
+        t.integer  "Team32_UId",             default: 0, null: false
+        t.integer  "Team33_UId",             default: 0, null: false
+        t.integer  "Team34_UId",             default: 0, null: false
+        t.integer  "Team35_UId",             default: 0, null: false
+        t.integer  "Team36_UId",             default: 0, null: false
+        t.integer  "Team37_UId",             default: 0, null: false
+        t.integer  "Team38_UId",             default: 0, null: false
+        t.integer  "Team39_UId",             default: 0, null: false
+        t.integer  "Team40_UId",             default: 0, null: false
+        t.integer  "Team41_UId",             default: 0, null: false
+        t.integer  "Team42_UId",             default: 0, null: false
+        t.integer  "Team43_UId",             default: 0, null: false
+        t.integer  "Team44_UId",             default: 0, null: false
+        t.integer  "Team45_UId",             default: 0, null: false
+        t.integer  "Team46_UId",             default: 0, null: false
+        t.integer  "Team47_UId",             default: 0, null: false
+        t.integer  "Team48_UId",             default: 0, null: false
+        t.integer  "Team49_UId",             default: 0, null: false
+        t.integer  "Team50_UId",             default: 0, null: false
+        t.integer  "Team51_UId",             default: 0, null: false
+        t.integer  "Team52_UId",             default: 0, null: false
+        t.integer  "Team53_UId",             default: 0, null: false
+        t.integer  "Team54_UId",             default: 0, null: false
+        t.integer  "Team55_UId",             default: 0, null: false
+        t.integer  "Team56_UId",             default: 0, null: false
+        t.integer  "Team57_UId",             default: 0, null: false
+        t.integer  "Team58_UId",             default: 0, null: false
+        t.integer  "Team59_UId",             default: 0, null: false
+        t.integer  "Team60_UId",             default: 0, null: false
+        t.integer  "Team61_UId",             default: 0, null: false
+        t.integer  "Team62_UId",             default: 0, null: false
+        t.integer  "Team63_UId",             default: 0, null: false
+        t.integer  "Team64_UId",             default: 0, null: false
+        t.integer  "Team65_UId",             default: 0, null: false
+        t.integer  "Team66_UId",             default: 0, null: false
+        t.integer  "Team67_UId",             default: 0, null: false
+        t.integer  "Team68_UId",             default: 0, null: false
+        t.integer  "Team69_UId",             default: 0, null: false
+        t.integer  "Team70_UId",             default: 0, null: false
+        t.integer  "PTeam_1",                default: 0, null: false
+        t.integer  "PTeam_2",                default: 0, null: false
+        t.integer  "PTeam_3",                default: 0, null: false
+        t.integer  "PTeam_4",                default: 0, null: false
+        t.integer  "PTeam_5",                default: 0, null: false
+        t.integer  "PTeam_6",                default: 0, null: false
+        t.integer  "PTeam_7",                default: 0, null: false
+        t.integer  "PTeam_8",                default: 0, null: false
+        t.integer  "PTeam_9",                default: 0, null: false
+        t.integer  "PTeam_10",               default: 0, null: false
+        t.integer  "PTeam_11",               default: 0, null: false
+        t.integer  "PTeam_12",               default: 0, null: false
+        t.integer  "PTeam_13",               default: 0, null: false
+        t.integer  "PTeam_14",               default: 0, null: false
+        t.integer  "PTeam_15",               default: 0, null: false
+        t.integer  "PTeam_16",               default: 0, null: false
+        t.integer  "PTeam_17",               default: 0, null: false
+        t.integer  "PTeam_18",               default: 0, null: false
+        t.integer  "PTeam_19",               default: 0, null: false
+        t.integer  "PTeam_20",               default: 0, null: false
+        t.integer  "PTeam_21",               default: 0, null: false
+        t.integer  "PTeam_22",               default: 0, null: false
+        t.integer  "PTeam_23",               default: 0, null: false
+        t.integer  "PTeam_24",               default: 0, null: false
+        t.integer  "PTeam_25",               default: 0, null: false
+        t.integer  "PTeam_26",               default: 0, null: false
+        t.integer  "PTeam_27",               default: 0, null: false
+        t.integer  "PTeam_28",               default: 0, null: false
+        t.integer  "PTeam_29",               default: 0, null: false
+        t.integer  "PTeam_30",               default: 0, null: false
         t.datetime "TG1_Date"
         t.datetime "TG2_Date"
         t.datetime "TG3_Date"
         t.datetime "TG4_Date"
         t.datetime "TG5_Date"
-        t.string   "TG1_Uuid",    limit: 50,               null: false
-        t.string   "TG2_Uuid",    limit: 50,               null: false
-        t.string   "TG3_Uuid",    limit: 50,               null: false
-        t.string   "TG4_Uuid",    limit: 50,               null: false
-        t.string   "TG5_Uuid",    limit: 50,               null: false
-        t.string   "TG1_TAId",    limit: 50,               null: false
-        t.string   "TG2_TAId",    limit: 50,               null: false
-        t.string   "TG3_TAId",    limit: 50,               null: false
-        t.string   "TG4_TAId",    limit: 50,               null: false
-        t.string   "TG5_TAId",    limit: 50,               null: false
-        t.string   "TG1_THId",    limit: 50,               null: false
-        t.string   "TG2_THId",    limit: 50,               null: false
-        t.string   "TG3_THId",    limit: 50,               null: false
-        t.string   "TG4_THId",    limit: 50,               null: false
-        t.string   "TG5_THId",    limit: 50,               null: false
+        t.integer  "TG1_Id",                             null: false
+        t.integer  "TG2_Id",                             null: false
+        t.integer  "TG3_Id",                             null: false
+        t.integer  "TG4_Id",                             null: false
+        t.integer  "TG5_Id",                             null: false
+        t.integer  "TG1_UId",                            null: false
+        t.integer  "TG2_UId",                            null: false
+        t.integer  "TG3_UId",                            null: false
+        t.integer  "TG4_UId",                            null: false
+        t.integer  "TG5_UId",                            null: false
+        t.integer  "TG1_TAId",                           null: false
+        t.integer  "TG2_TAId",                           null: false
+        t.integer  "TG3_TAId",                           null: false
+        t.integer  "TG4_TAId",                           null: false
+        t.integer  "TG5_TAId",                           null: false
+        t.integer  "TG1_TAUId",                          null: false
+        t.integer  "TG2_TAUId",                          null: false
+        t.integer  "TG3_TAUId",                          null: false
+        t.integer  "TG4_TAUId",                          null: false
+        t.integer  "TG5_TAUId",                          null: false
+        t.integer  "TG1_THId",                           null: false
+        t.integer  "TG2_THId",                           null: false
+        t.integer  "TG3_THId",                           null: false
+        t.integer  "TG4_THId",                           null: false
+        t.integer  "TG5_THId",                           null: false
+        t.integer  "TG1_THUId",                          null: false
+        t.integer  "TG2_THUId",                          null: false
+        t.integer  "TG3_THUId",                          null: false
+        t.integer  "TG4_THUId",                          null: false
+        t.integer  "TG5_THUId",                          null: false
         t.datetime "PG1_Date"
         t.datetime "PG2_Date"
         t.datetime "PG3_Date"
@@ -3628,126 +4647,1712 @@ class CreateDatabaseStructure < ActiveRecord::Migration[5.0]
         t.datetime "PG38_Date"
         t.datetime "PG39_Date"
         t.datetime "PG40_Date"
-        t.string   "PG1_Uuid",    limit: 50,               null: false
-        t.string   "PG2_Uuid",    limit: 50,               null: false
-        t.string   "PG3_Uuid",    limit: 50,               null: false
-        t.string   "PG4_Uuid",    limit: 50,               null: false
-        t.string   "PG5_Uuid",    limit: 50,               null: false
-        t.string   "PG6_Uuid",    limit: 50,               null: false
-        t.string   "PG7_Uuid",    limit: 50,               null: false
-        t.string   "PG8_Uuid",    limit: 50,               null: false
-        t.string   "PG9_Uuid",    limit: 50,               null: false
-        t.string   "PG10_Uuid",   limit: 50,               null: false
-        t.string   "PG11_Uuid",   limit: 50,               null: false
-        t.string   "PG12_Uuid",   limit: 50,               null: false
-        t.string   "PG13_Uuid",   limit: 50,               null: false
-        t.string   "PG14_Uuid",   limit: 50,               null: false
-        t.string   "PG15_Uuid",   limit: 50,               null: false
-        t.string   "PG16_Uuid",   limit: 50,               null: false
-        t.string   "PG17_Uuid",   limit: 50,               null: false
-        t.string   "PG18_Uuid",   limit: 50,               null: false
-        t.string   "PG19_Uuid",   limit: 50,               null: false
-        t.string   "PG20_Uuid",   limit: 50,               null: false
-        t.string   "PG21_Uuid",   limit: 50,               null: false
-        t.string   "PG22_Uuid",   limit: 50,               null: false
-        t.string   "PG23_Uuid",   limit: 50,               null: false
-        t.string   "PG24_Uuid",   limit: 50,               null: false
-        t.string   "PG25_Uuid",   limit: 50,               null: false
-        t.string   "PG26_Uuid",   limit: 50,               null: false
-        t.string   "PG27_Uuid",   limit: 50,               null: false
-        t.string   "PG28_Uuid",   limit: 50,               null: false
-        t.string   "PG29_Uuid",   limit: 50,               null: false
-        t.string   "PG30_Uuid",   limit: 50,               null: false
-        t.string   "PG31_Uuid",   limit: 50,               null: false
-        t.string   "PG32_Uuid",   limit: 50,               null: false
-        t.string   "PG33_Uuid",   limit: 50,               null: false
-        t.string   "PG34_Uuid",   limit: 50,               null: false
-        t.string   "PG35_Uuid",   limit: 50,               null: false
-        t.string   "PG36_Uuid",   limit: 50,               null: false
-        t.string   "PG37_Uuid",   limit: 50,               null: false
-        t.string   "PG38_Uuid",   limit: 50,               null: false
-        t.string   "PG39_Uuid",   limit: 50,               null: false
-        t.string   "PG40_Uuid",   limit: 50,               null: false
-        t.string   "PG1_TAId",    limit: 50,               null: false
-        t.string   "PG2_TAId",    limit: 50,               null: false
-        t.string   "PG3_TAId",    limit: 50,               null: false
-        t.string   "PG4_TAId",    limit: 50,               null: false
-        t.string   "PG5_TAId",    limit: 50,               null: false
-        t.string   "PG6_TAId",    limit: 50,               null: false
-        t.string   "PG7_TAId",    limit: 50,               null: false
-        t.string   "PG8_TAId",    limit: 50,               null: false
-        t.string   "PG9_TAId",    limit: 50,               null: false
-        t.string   "PG10_TAId",   limit: 50,               null: false
-        t.string   "PG11_TAId",   limit: 50,               null: false
-        t.string   "PG12_TAId",   limit: 50,               null: false
-        t.string   "PG13_TAId",   limit: 50,               null: false
-        t.string   "PG14_TAId",   limit: 50,               null: false
-        t.string   "PG15_TAId",   limit: 50,               null: false
-        t.string   "PG16_TAId",   limit: 50,               null: false
-        t.string   "PG17_TAId",   limit: 50,               null: false
-        t.string   "PG18_TAId",   limit: 50,               null: false
-        t.string   "PG19_TAId",   limit: 50,               null: false
-        t.string   "PG20_TAId",   limit: 50,               null: false
-        t.string   "PG21_TAId",   limit: 50,               null: false
-        t.string   "PG22_TAId",   limit: 50,               null: false
-        t.string   "PG23_TAId",   limit: 50,               null: false
-        t.string   "PG24_TAId",   limit: 50,               null: false
-        t.string   "PG25_TAId",   limit: 50,               null: false
-        t.string   "PG26_TAId",   limit: 50,               null: false
-        t.string   "PG27_TAId",   limit: 50,               null: false
-        t.string   "PG28_TAId",   limit: 50,               null: false
-        t.string   "PG29_TAId",   limit: 50,               null: false
-        t.string   "PG30_TAId",   limit: 50,               null: false
-        t.string   "PG31_TAId",   limit: 50,               null: false
-        t.string   "PG32_TAId",   limit: 50,               null: false
-        t.string   "PG33_TAId",   limit: 50,               null: false
-        t.string   "PG34_TAId",   limit: 50,               null: false
-        t.string   "PG35_TAId",   limit: 50,               null: false
-        t.string   "PG36_TAId",   limit: 50,               null: false
-        t.string   "PG37_TAId",   limit: 50,               null: false
-        t.string   "PG38_TAId",   limit: 50,               null: false
-        t.string   "PG39_TAId",   limit: 50,               null: false
-        t.string   "PG40_TAId",   limit: 50,               null: false
-        t.string   "PG1_THId",    limit: 50,               null: false
-        t.string   "PG2_THId",    limit: 50,               null: false
-        t.string   "PG3_THId",    limit: 50,               null: false
-        t.string   "PG4_THId",    limit: 50,               null: false
-        t.string   "PG5_THId",    limit: 50,               null: false
-        t.string   "PG6_THId",    limit: 50,               null: false
-        t.string   "PG7_THId",    limit: 50,               null: false
-        t.string   "PG8_THId",    limit: 50,               null: false
-        t.string   "PG9_THId",    limit: 50,               null: false
-        t.string   "PG10_THId",   limit: 50,               null: false
-        t.string   "PG11_THId",   limit: 50,               null: false
-        t.string   "PG12_THId",   limit: 50,               null: false
-        t.string   "PG13_THId",   limit: 50,               null: false
-        t.string   "PG14_THId",   limit: 50,               null: false
-        t.string   "PG15_THId",   limit: 50,               null: false
-        t.string   "PG16_THId",   limit: 50,               null: false
-        t.string   "PG17_THId",   limit: 50,               null: false
-        t.string   "PG18_THId",   limit: 50,               null: false
-        t.string   "PG19_THId",   limit: 50,               null: false
-        t.string   "PG20_THId",   limit: 50,               null: false
-        t.string   "PG21_THId",   limit: 50,               null: false
-        t.string   "PG22_THId",   limit: 50,               null: false
-        t.string   "PG23_THId",   limit: 50,               null: false
-        t.string   "PG24_THId",   limit: 50,               null: false
-        t.string   "PG25_THId",   limit: 50,               null: false
-        t.string   "PG26_THId",   limit: 50,               null: false
-        t.string   "PG27_THId",   limit: 50,               null: false
-        t.string   "PG28_THId",   limit: 50,               null: false
-        t.string   "PG29_THId",   limit: 50,               null: false
-        t.string   "PG30_THId",   limit: 50,               null: false
-        t.string   "PG31_THId",   limit: 50,               null: false
-        t.string   "PG32_THId",   limit: 50,               null: false
-        t.string   "PG33_THId",   limit: 50,               null: false
-        t.string   "PG34_THId",   limit: 50,               null: false
-        t.string   "PG35_THId",   limit: 50,               null: false
-        t.string   "PG36_THId",   limit: 50,               null: false
-        t.string   "PG37_THId",   limit: 50,               null: false
-        t.string   "PG38_THId",   limit: 50,               null: false
-        t.string   "PG39_THId",   limit: 50,               null: false
-        t.string   "PG40_THId",   limit: 50,               null: false
+        t.integer  "PG1_Id",                             null: false
+        t.integer  "PG2_Id",                             null: false
+        t.integer  "PG3_Id",                             null: false
+        t.integer  "PG4_Id",                             null: false
+        t.integer  "PG5_Id",                             null: false
+        t.integer  "PG6_Id",                             null: false
+        t.integer  "PG7_Id",                             null: false
+        t.integer  "PG8_Id",                             null: false
+        t.integer  "PG9_Id",                             null: false
+        t.integer  "PG10_Id",                            null: false
+        t.integer  "PG11_Id",                            null: false
+        t.integer  "PG12_Id",                            null: false
+        t.integer  "PG13_Id",                            null: false
+        t.integer  "PG14_Id",                            null: false
+        t.integer  "PG15_Id",                            null: false
+        t.integer  "PG16_Id",                            null: false
+        t.integer  "PG17_Id",                            null: false
+        t.integer  "PG18_Id",                            null: false
+        t.integer  "PG19_Id",                            null: false
+        t.integer  "PG20_Id",                            null: false
+        t.integer  "PG21_Id",                            null: false
+        t.integer  "PG22_Id",                            null: false
+        t.integer  "PG23_Id",                            null: false
+        t.integer  "PG24_Id",                            null: false
+        t.integer  "PG25_Id",                            null: false
+        t.integer  "PG26_Id",                            null: false
+        t.integer  "PG27_Id",                            null: false
+        t.integer  "PG28_Id",                            null: false
+        t.integer  "PG29_Id",                            null: false
+        t.integer  "PG30_Id",                            null: false
+        t.integer  "PG31_Id",                            null: false
+        t.integer  "PG32_Id",                            null: false
+        t.integer  "PG33_Id",                            null: false
+        t.integer  "PG34_Id",                            null: false
+        t.integer  "PG35_Id",                            null: false
+        t.integer  "PG36_Id",                            null: false
+        t.integer  "PG37_Id",                            null: false
+        t.integer  "PG38_Id",                            null: false
+        t.integer  "PG39_Id",                            null: false
+        t.integer  "PG40_Id",                            null: false
+        t.integer  "PG1_UId",                            null: false
+        t.integer  "PG2_UId",                            null: false
+        t.integer  "PG3_UId",                            null: false
+        t.integer  "PG4_UId",                            null: false
+        t.integer  "PG5_UId",                            null: false
+        t.integer  "PG6_UId",                            null: false
+        t.integer  "PG7_UId",                            null: false
+        t.integer  "PG8_UId",                            null: false
+        t.integer  "PG9_UId",                            null: false
+        t.integer  "PG10_UId",                           null: false
+        t.integer  "PG11_UId",                           null: false
+        t.integer  "PG12_UId",                           null: false
+        t.integer  "PG13_UId",                           null: false
+        t.integer  "PG14_UId",                           null: false
+        t.integer  "PG15_UId",                           null: false
+        t.integer  "PG16_UId",                           null: false
+        t.integer  "PG17_UId",                           null: false
+        t.integer  "PG18_UId",                           null: false
+        t.integer  "PG19_UId",                           null: false
+        t.integer  "PG20_UId",                           null: false
+        t.integer  "PG21_UId",                           null: false
+        t.integer  "PG22_UId",                           null: false
+        t.integer  "PG23_UId",                           null: false
+        t.integer  "PG25_UId",                           null: false
+        t.integer  "PG24_UId",                           null: false
+        t.integer  "PG26_UId",                           null: false
+        t.integer  "PG27_UId",                           null: false
+        t.integer  "PG28_UId",                           null: false
+        t.integer  "PG29_UId",                           null: false
+        t.integer  "PG30_UId",                           null: false
+        t.integer  "PG31_UId",                           null: false
+        t.integer  "PG32_UId",                           null: false
+        t.integer  "PG33_UId",                           null: false
+        t.integer  "PG34_UId",                           null: false
+        t.integer  "PG35_UId",                           null: false
+        t.integer  "PG36_UId",                           null: false
+        t.integer  "PG37_UId",                           null: false
+        t.integer  "PG38_UId",                           null: false
+        t.integer  "PG39_UId",                           null: false
+        t.integer  "PG40_UId",                           null: false
+        t.integer  "PG1_TAId",                           null: false
+        t.integer  "PG2_TAId",                           null: false
+        t.integer  "PG3_TAId",                           null: false
+        t.integer  "PG4_TAId",                           null: false
+        t.integer  "PG5_TAId",                           null: false
+        t.integer  "PG6_TAId",                           null: false
+        t.integer  "PG7_TAId",                           null: false
+        t.integer  "PG8_TAId",                           null: false
+        t.integer  "PG9_TAId",                           null: false
+        t.integer  "PG10_TAId",                          null: false
+        t.integer  "PG11_TAId",                          null: false
+        t.integer  "PG12_TAId",                          null: false
+        t.integer  "PG13_TAId",                          null: false
+        t.integer  "PG14_TAId",                          null: false
+        t.integer  "PG15_TAId",                          null: false
+        t.integer  "PG16_TAId",                          null: false
+        t.integer  "PG17_TAId",                          null: false
+        t.integer  "PG18_TAId",                          null: false
+        t.integer  "PG19_TAId",                          null: false
+        t.integer  "PG20_TAId",                          null: false
+        t.integer  "PG21_TAId",                          null: false
+        t.integer  "PG22_TAId",                          null: false
+        t.integer  "PG23_TAId",                          null: false
+        t.integer  "PG24_TAId",                          null: false
+        t.integer  "PG25_TAId",                          null: false
+        t.integer  "PG26_TAId",                          null: false
+        t.integer  "PG27_TAId",                          null: false
+        t.integer  "PG28_TAId",                          null: false
+        t.integer  "PG29_TAId",                          null: false
+        t.integer  "PG30_TAId",                          null: false
+        t.integer  "PG31_TAId",                          null: false
+        t.integer  "PG32_TAId",                          null: false
+        t.integer  "PG33_TAId",                          null: false
+        t.integer  "PG34_TAId",                          null: false
+        t.integer  "PG35_TAId",                          null: false
+        t.integer  "PG36_TAId",                          null: false
+        t.integer  "PG37_TAId",                          null: false
+        t.integer  "PG38_TAId",                          null: false
+        t.integer  "PG39_TAId",                          null: false
+        t.integer  "PG40_TAId",                          null: false
+        t.integer  "PG1_TAUId",                          null: false
+        t.integer  "PG2_TAUId",                          null: false
+        t.integer  "PG3_TAUId",                          null: false
+        t.integer  "PG4_TAUId",                          null: false
+        t.integer  "PG5_TAUId",                          null: false
+        t.integer  "PG6_TAUId",                          null: false
+        t.integer  "PG7_TAUId",                          null: false
+        t.integer  "PG8_TAUId",                          null: false
+        t.integer  "PG9_TAUId",                          null: false
+        t.integer  "PG10_TAUId",                         null: false
+        t.integer  "PG11_TAUId",                         null: false
+        t.integer  "PG12_TAUId",                         null: false
+        t.integer  "PG13_TAUId",                         null: false
+        t.integer  "PG14_TAUId",                         null: false
+        t.integer  "PG15_TAUId",                         null: false
+        t.integer  "PG16_TAUId",                         null: false
+        t.integer  "PG17_TAUId",                         null: false
+        t.integer  "PG18_TAUId",                         null: false
+        t.integer  "PG19_TAUId",                         null: false
+        t.integer  "PG20_TAUId",                         null: false
+        t.integer  "PG21_TAUId",                         null: false
+        t.integer  "PG22_TAUId",                         null: false
+        t.integer  "PG23_TAUId",                         null: false
+        t.integer  "PG25_TAUId",                         null: false
+        t.integer  "PG24_TAUId",                         null: false
+        t.integer  "PG26_TAUId",                         null: false
+        t.integer  "PG27_TAUId",                         null: false
+        t.integer  "PG28_TAUId",                         null: false
+        t.integer  "PG29_TAUId",                         null: false
+        t.integer  "PG30_TAUId",                         null: false
+        t.integer  "PG31_TAUId",                         null: false
+        t.integer  "PG32_TAUId",                         null: false
+        t.integer  "PG33_TAUId",                         null: false
+        t.integer  "PG34_TAUId",                         null: false
+        t.integer  "PG35_TAUId",                         null: false
+        t.integer  "PG36_TAUId",                         null: false
+        t.integer  "PG37_TAUId",                         null: false
+        t.integer  "PG38_TAUId",                         null: false
+        t.integer  "PG39_TAUId",                         null: false
+        t.integer  "PG40_TAUId",                         null: false
+        t.integer  "PG1_THId",                           null: false
+        t.integer  "PG2_THId",                           null: false
+        t.integer  "PG3_THId",                           null: false
+        t.integer  "PG4_THId",                           null: false
+        t.integer  "PG5_THId",                           null: false
+        t.integer  "PG6_THId",                           null: false
+        t.integer  "PG7_THId",                           null: false
+        t.integer  "PG8_THId",                           null: false
+        t.integer  "PG9_THId",                           null: false
+        t.integer  "PG10_THId",                          null: false
+        t.integer  "PG11_THId",                          null: false
+        t.integer  "PG12_THId",                          null: false
+        t.integer  "PG13_THId",                          null: false
+        t.integer  "PG14_THId",                          null: false
+        t.integer  "PG15_THId",                          null: false
+        t.integer  "PG16_THId",                          null: false
+        t.integer  "PG17_THId",                          null: false
+        t.integer  "PG18_THId",                          null: false
+        t.integer  "PG19_THId",                          null: false
+        t.integer  "PG20_THId",                          null: false
+        t.integer  "PG21_THId",                          null: false
+        t.integer  "PG22_THId",                          null: false
+        t.integer  "PG23_THId",                          null: false
+        t.integer  "PG24_THId",                          null: false
+        t.integer  "PG25_THId",                          null: false
+        t.integer  "PG26_THId",                          null: false
+        t.integer  "PG27_THId",                          null: false
+        t.integer  "PG28_THId",                          null: false
+        t.integer  "PG29_THId",                          null: false
+        t.integer  "PG30_THId",                          null: false
+        t.integer  "PG31_THId",                          null: false
+        t.integer  "PG32_THId",                          null: false
+        t.integer  "PG33_THId",                          null: false
+        t.integer  "PG34_THId",                          null: false
+        t.integer  "PG35_THId",                          null: false
+        t.integer  "PG36_THId",                          null: false
+        t.integer  "PG37_THId",                          null: false
+        t.integer  "PG38_THId",                          null: false
+        t.integer  "PG39_THId",                          null: false
+        t.integer  "PG40_THId",                          null: false
+        t.integer  "PG1_THUId",                          null: false
+        t.integer  "PG2_THUId",                          null: false
+        t.integer  "PG3_THUId",                          null: false
+        t.integer  "PG4_THUId",                          null: false
+        t.integer  "PG5_THUId",                          null: false
+        t.integer  "PG6_THUId",                          null: false
+        t.integer  "PG7_THUId",                          null: false
+        t.integer  "PG8_THUId",                          null: false
+        t.integer  "PG9_THUId",                          null: false
+        t.integer  "PG10_THUId",                         null: false
+        t.integer  "PG11_THUId",                         null: false
+        t.integer  "PG12_THUId",                         null: false
+        t.integer  "PG13_THUId",                         null: false
+        t.integer  "PG14_THUId",                         null: false
+        t.integer  "PG15_THUId",                         null: false
+        t.integer  "PG16_THUId",                         null: false
+        t.integer  "PG17_THUId",                         null: false
+        t.integer  "PG18_THUId",                         null: false
+        t.integer  "PG19_THUId",                         null: false
+        t.integer  "PG20_THUId",                         null: false
+        t.integer  "PG21_THUId",                         null: false
+        t.integer  "PG22_THUId",                         null: false
+        t.integer  "PG23_THUId",                         null: false
+        t.integer  "PG25_THUId",                         null: false
+        t.integer  "PG24_THUId",                         null: false
+        t.integer  "PG26_THUId",                         null: false
+        t.integer  "PG27_THUId",                         null: false
+        t.integer  "PG28_THUId",                         null: false
+        t.integer  "PG29_THUId",                         null: false
+        t.integer  "PG30_THUId",                         null: false
+        t.integer  "PG31_THUId",                         null: false
+        t.integer  "PG32_THUId",                         null: false
+        t.integer  "PG33_THUId",                         null: false
+        t.integer  "PG34_THUId",                         null: false
+        t.integer  "PG35_THUId",                         null: false
+        t.integer  "PG36_THUId",                         null: false
+        t.integer  "PG37_THUId",                         null: false
+        t.integer  "PG38_THUId",                         null: false
+        t.integer  "PG39_THUId",                         null: false
+        t.integer  "PG40_THUId",                         null: false
+        t.integer  "G1_Id",                              null: false
+        t.integer  "G2_Id",                              null: false
+        t.integer  "G3_Id",                              null: false
+        t.integer  "G4_Id",                              null: false
+        t.integer  "G5_Id",                              null: false
+        t.integer  "G6_Id",                              null: false
+        t.integer  "G7_Id",                              null: false
+        t.integer  "G8_Id",                              null: false
+        t.integer  "G9_Id",                              null: false
+        t.integer  "G10_Id",                             null: false
+        t.integer  "G11_Id",                             null: false
+        t.integer  "G12_Id",                             null: false
+        t.integer  "G13_Id",                             null: false
+        t.integer  "G14_Id",                             null: false
+        t.integer  "G15_Id",                             null: false
+        t.integer  "G16_Id",                             null: false
+        t.integer  "G17_Id",                             null: false
+        t.integer  "G18_Id",                             null: false
+        t.integer  "G19_Id",                             null: false
+        t.integer  "G20_Id",                             null: false
+        t.integer  "G21_Id",                             null: false
+        t.integer  "G22_Id",                             null: false
+        t.integer  "G23_Id",                             null: false
+        t.integer  "G24_Id",                             null: false
+        t.integer  "G25_Id",                             null: false
+        t.integer  "G26_Id",                             null: false
+        t.integer  "G27_Id",                             null: false
+        t.integer  "G28_Id",                             null: false
+        t.integer  "G29_Id",                             null: false
+        t.integer  "G30_Id",                             null: false
+        t.integer  "G31_Id",                             null: false
+        t.integer  "G32_Id",                             null: false
+        t.integer  "G33_Id",                             null: false
+        t.integer  "G34_Id",                             null: false
+        t.integer  "G35_Id",                             null: false
+        t.integer  "G36_Id",                             null: false
+        t.integer  "G37_Id",                             null: false
+        t.integer  "G38_Id",                             null: false
+        t.integer  "G39_Id",                             null: false
+        t.integer  "G40_Id",                             null: false
+        t.integer  "G41_Id",                             null: false
+        t.integer  "G42_Id",                             null: false
+        t.integer  "G43_Id",                             null: false
+        t.integer  "G44_Id",                             null: false
+        t.integer  "G45_Id",                             null: false
+        t.integer  "G46_Id",                             null: false
+        t.integer  "G47_Id",                             null: false
+        t.integer  "G48_Id",                             null: false
+        t.integer  "G49_Id",                             null: false
+        t.integer  "G50_Id",                             null: false
+        t.integer  "G51_Id",                             null: false
+        t.integer  "G52_Id",                             null: false
+        t.integer  "G53_Id",                             null: false
+        t.integer  "G54_Id",                             null: false
+        t.integer  "G55_Id",                             null: false
+        t.integer  "G56_Id",                             null: false
+        t.integer  "G57_Id",                             null: false
+        t.integer  "G58_Id",                             null: false
+        t.integer  "G59_Id",                             null: false
+        t.integer  "G60_Id",                             null: false
+        t.integer  "G61_Id",                             null: false
+        t.integer  "G62_Id",                             null: false
+        t.integer  "G63_Id",                             null: false
+        t.integer  "G64_Id",                             null: false
+        t.integer  "G65_Id",                             null: false
+        t.integer  "G66_Id",                             null: false
+        t.integer  "G67_Id",                             null: false
+        t.integer  "G68_Id",                             null: false
+        t.integer  "G69_Id",                             null: false
+        t.integer  "G70_Id",                             null: false
+        t.integer  "G71_Id",                             null: false
+        t.integer  "G72_Id",                             null: false
+        t.integer  "G73_Id",                             null: false
+        t.integer  "G74_Id",                             null: false
+        t.integer  "G75_Id",                             null: false
+        t.integer  "G76_Id",                             null: false
+        t.integer  "G77_Id",                             null: false
+        t.integer  "G78_Id",                             null: false
+        t.integer  "G79_Id",                             null: false
+        t.integer  "G80_Id",                             null: false
+        t.integer  "G81_Id",                             null: false
+        t.integer  "G82_Id",                             null: false
+        t.integer  "G83_Id",                             null: false
+        t.integer  "G84_Id",                             null: false
+        t.integer  "G85_Id",                             null: false
+        t.integer  "G86_Id",                             null: false
+        t.integer  "G87_Id",                             null: false
+        t.integer  "G88_Id",                             null: false
+        t.integer  "G89_Id",                             null: false
+        t.integer  "G90_Id",                             null: false
+        t.integer  "G91_Id",                             null: false
+        t.integer  "G92_Id",                             null: false
+        t.integer  "G93_Id",                             null: false
+        t.integer  "G94_Id",                             null: false
+        t.integer  "G95_Id",                             null: false
+        t.integer  "G96_Id",                             null: false
+        t.integer  "G97_Id",                             null: false
+        t.integer  "G98_Id",                             null: false
+        t.integer  "G99_Id",                             null: false
+        t.integer  "G100_Id",                            null: false
+        t.integer  "G101_Id",                            null: false
+        t.integer  "G102_Id",                            null: false
+        t.integer  "G103_Id",                            null: false
+        t.integer  "G104_Id",                            null: false
+        t.integer  "G105_Id",                            null: false
+        t.integer  "G106_Id",                            null: false
+        t.integer  "G107_Id",                            null: false
+        t.integer  "G108_Id",                            null: false
+        t.integer  "G109_Id",                            null: false
+        t.integer  "G110_Id",                            null: false
+        t.integer  "G111_Id",                            null: false
+        t.integer  "G112_Id",                            null: false
+        t.integer  "G113_Id",                            null: false
+        t.integer  "G114_Id",                            null: false
+        t.integer  "G115_Id",                            null: false
+        t.integer  "G116_Id",                            null: false
+        t.integer  "G117_Id",                            null: false
+        t.integer  "G118_Id",                            null: false
+        t.integer  "G119_Id",                            null: false
+        t.integer  "G120_Id",                            null: false
+        t.integer  "G121_Id",                            null: false
+        t.integer  "G122_Id",                            null: false
+        t.integer  "G123_Id",                            null: false
+        t.integer  "G124_Id",                            null: false
+        t.integer  "G125_Id",                            null: false
+        t.integer  "G126_Id",                            null: false
+        t.integer  "G127_Id",                            null: false
+        t.integer  "G128_Id",                            null: false
+        t.integer  "G129_Id",                            null: false
+        t.integer  "G130_Id",                            null: false
+        t.integer  "G131_Id",                            null: false
+        t.integer  "G132_Id",                            null: false
+        t.integer  "G133_Id",                            null: false
+        t.integer  "G134_Id",                            null: false
+        t.integer  "G135_Id",                            null: false
+        t.integer  "G136_Id",                            null: false
+        t.integer  "G137_Id",                            null: false
+        t.integer  "G138_Id",                            null: false
+        t.integer  "G139_Id",                            null: false
+        t.integer  "G140_Id",                            null: false
+        t.integer  "G141_Id",                            null: false
+        t.integer  "G142_Id",                            null: false
+        t.integer  "G143_Id",                            null: false
+        t.integer  "G144_Id",                            null: false
+        t.integer  "G145_Id",                            null: false
+        t.integer  "G146_Id",                            null: false
+        t.integer  "G147_Id",                            null: false
+        t.integer  "G148_Id",                            null: false
+        t.integer  "G149_Id",                            null: false
+        t.integer  "G150_Id",                            null: false
+        t.integer  "G151_Id",                            null: false
+        t.integer  "G152_Id",                            null: false
+        t.integer  "G153_Id",                            null: false
+        t.integer  "G154_Id",                            null: false
+        t.integer  "G155_Id",                            null: false
+        t.integer  "G156_Id",                            null: false
+        t.integer  "G157_Id",                            null: false
+        t.integer  "G158_Id",                            null: false
+        t.integer  "G159_Id",                            null: false
+        t.integer  "G160_Id",                            null: false
+        t.integer  "G161_Id",                            null: false
+        t.integer  "G162_Id",                            null: false
+        t.integer  "G163_Id",                            null: false
+        t.integer  "G164_Id",                            null: false
+        t.integer  "G165_Id",                            null: false
+        t.integer  "G166_Id",                            null: false
+        t.integer  "G167_Id",                            null: false
+        t.integer  "G168_Id",                            null: false
+        t.integer  "G169_Id",                            null: false
+        t.integer  "G170_Id",                            null: false
+        t.integer  "G171_Id",                            null: false
+        t.integer  "G172_Id",                            null: false
+        t.integer  "G173_Id",                            null: false
+        t.integer  "G174_Id",                            null: false
+        t.integer  "G175_Id",                            null: false
+        t.integer  "G176_Id",                            null: false
+        t.integer  "G177_Id",                            null: false
+        t.integer  "G178_Id",                            null: false
+        t.integer  "G179_Id",                            null: false
+        t.integer  "G180_Id",                            null: false
+        t.integer  "G181_Id",                            null: false
+        t.integer  "G182_Id",                            null: false
+        t.integer  "G183_Id",                            null: false
+        t.integer  "G184_Id",                            null: false
+        t.integer  "G185_Id",                            null: false
+        t.integer  "G186_Id",                            null: false
+        t.integer  "G187_Id",                            null: false
+        t.integer  "G188_Id",                            null: false
+        t.integer  "G189_Id",                            null: false
+        t.integer  "G190_Id",                            null: false
+        t.integer  "G191_Id",                            null: false
+        t.integer  "G192_Id",                            null: false
+        t.integer  "G193_Id",                            null: false
+        t.integer  "G194_Id",                            null: false
+        t.integer  "G195_Id",                            null: false
+        t.integer  "G1_UId",                             null: false
+        t.integer  "G2_UId",                             null: false
+        t.integer  "G3_UId",                             null: false
+        t.integer  "G4_UId",                             null: false
+        t.integer  "G5_UId",                             null: false
+        t.integer  "G6_UId",                             null: false
+        t.integer  "G7_UId",                             null: false
+        t.integer  "G8_UId",                             null: false
+        t.integer  "G9_UId",                             null: false
+        t.integer  "G10_UId",                            null: false
+        t.integer  "G11_UId",                            null: false
+        t.integer  "G12_UId",                            null: false
+        t.integer  "G13_UId",                            null: false
+        t.integer  "G14_UId",                            null: false
+        t.integer  "G15_UId",                            null: false
+        t.integer  "G16_UId",                            null: false
+        t.integer  "G17_UId",                            null: false
+        t.integer  "G18_UId",                            null: false
+        t.integer  "G19_UId",                            null: false
+        t.integer  "G20_UId",                            null: false
+        t.integer  "G21_UId",                            null: false
+        t.integer  "G22_UId",                            null: false
+        t.integer  "G23_UId",                            null: false
+        t.integer  "G24_UId",                            null: false
+        t.integer  "G25_UId",                            null: false
+        t.integer  "G26_UId",                            null: false
+        t.integer  "G27_UId",                            null: false
+        t.integer  "G28_UId",                            null: false
+        t.integer  "G29_UId",                            null: false
+        t.integer  "G30_UId",                            null: false
+        t.integer  "G31_UId",                            null: false
+        t.integer  "G32_UId",                            null: false
+        t.integer  "G33_UId",                            null: false
+        t.integer  "G34_UId",                            null: false
+        t.integer  "G35_UId",                            null: false
+        t.integer  "G40_UId",                            null: false
+        t.integer  "G36_UId",                            null: false
+        t.integer  "G37_UId",                            null: false
+        t.integer  "G38_UId",                            null: false
+        t.integer  "G39_UId",                            null: false
+        t.integer  "G42_UId",                            null: false
+        t.integer  "G41_UId",                            null: false
+        t.integer  "G43_UId",                            null: false
+        t.integer  "G44_UId",                            null: false
+        t.integer  "G45_UId",                            null: false
+        t.integer  "G46_UId",                            null: false
+        t.integer  "G47_UId",                            null: false
+        t.integer  "G48_UId",                            null: false
+        t.integer  "G49_UId",                            null: false
+        t.integer  "G50_UId",                            null: false
+        t.integer  "G51_UId",                            null: false
+        t.integer  "G52_UId",                            null: false
+        t.integer  "G53_UId",                            null: false
+        t.integer  "G54_UId",                            null: false
+        t.integer  "G55_UId",                            null: false
+        t.integer  "G56_UId",                            null: false
+        t.integer  "G57_UId",                            null: false
+        t.integer  "G58_UId",                            null: false
+        t.integer  "G59_UId",                            null: false
+        t.integer  "G60_UId",                            null: false
+        t.integer  "G61_UId",                            null: false
+        t.integer  "G62_UId",                            null: false
+        t.integer  "G63_UId",                            null: false
+        t.integer  "G64_UId",                            null: false
+        t.integer  "G65_UId",                            null: false
+        t.integer  "G66_UId",                            null: false
+        t.integer  "G67_UId",                            null: false
+        t.integer  "G68_UId",                            null: false
+        t.integer  "G69_UId",                            null: false
+        t.integer  "G70_UId",                            null: false
+        t.integer  "G71_UId",                            null: false
+        t.integer  "G72_UId",                            null: false
+        t.integer  "G73_UId",                            null: false
+        t.integer  "G74_UId",                            null: false
+        t.integer  "G75_UId",                            null: false
+        t.integer  "G76_UId",                            null: false
+        t.integer  "G77_UId",                            null: false
+        t.integer  "G78_UId",                            null: false
+        t.integer  "G79_UId",                            null: false
+        t.integer  "G80_UId",                            null: false
+        t.integer  "G81_UId",                            null: false
+        t.integer  "G82_UId",                            null: false
+        t.integer  "G83_UId",                            null: false
+        t.integer  "G84_UId",                            null: false
+        t.integer  "G85_UId",                            null: false
+        t.integer  "G86_UId",                            null: false
+        t.integer  "G87_UId",                            null: false
+        t.integer  "G88_UId",                            null: false
+        t.integer  "G89_UId",                            null: false
+        t.integer  "G90_UId",                            null: false
+        t.integer  "G91_UId",                            null: false
+        t.integer  "G92_UId",                            null: false
+        t.integer  "G93_UId",                            null: false
+        t.integer  "G94_UId",                            null: false
+        t.integer  "G95_UId",                            null: false
+        t.integer  "G96_UId",                            null: false
+        t.integer  "G97_UId",                            null: false
+        t.integer  "G98_UId",                            null: false
+        t.integer  "G99_UId",                            null: false
+        t.integer  "G100_UId",                           null: false
+        t.integer  "G101_UId",                           null: false
+        t.integer  "G102_UId",                           null: false
+        t.integer  "G103_UId",                           null: false
+        t.integer  "G104_UId",                           null: false
+        t.integer  "G105_UId",                           null: false
+        t.integer  "G106_UId",                           null: false
+        t.integer  "G107_UId",                           null: false
+        t.integer  "G108_UId",                           null: false
+        t.integer  "G109_UId",                           null: false
+        t.integer  "G110_UId",                           null: false
+        t.integer  "G111_UId",                           null: false
+        t.integer  "G112_UId",                           null: false
+        t.integer  "G113_UId",                           null: false
+        t.integer  "G114_UId",                           null: false
+        t.integer  "G115_UId",                           null: false
+        t.integer  "G116_UId",                           null: false
+        t.integer  "G117_UId",                           null: false
+        t.integer  "G118_UId",                           null: false
+        t.integer  "G119_UId",                           null: false
+        t.integer  "G120_UId",                           null: false
+        t.integer  "G121_UId",                           null: false
+        t.integer  "G122_UId",                           null: false
+        t.integer  "G123_UId",                           null: false
+        t.integer  "G124_UId",                           null: false
+        t.integer  "G125_UId",                           null: false
+        t.integer  "G126_UId",                           null: false
+        t.integer  "G127_UId",                           null: false
+        t.integer  "G128_UId",                           null: false
+        t.integer  "G129_UId",                           null: false
+        t.integer  "G130_UId",                           null: false
+        t.integer  "G131_UId",                           null: false
+        t.integer  "G132_UId",                           null: false
+        t.integer  "G133_UId",                           null: false
+        t.integer  "G134_UId",                           null: false
+        t.integer  "G135_UId",                           null: false
+        t.integer  "G140_UId",                           null: false
+        t.integer  "G136_UId",                           null: false
+        t.integer  "G137_UId",                           null: false
+        t.integer  "G138_UId",                           null: false
+        t.integer  "G139_UId",                           null: false
+        t.integer  "G141_UId",                           null: false
+        t.integer  "G142_UId",                           null: false
+        t.integer  "G143_UId",                           null: false
+        t.integer  "G144_UId",                           null: false
+        t.integer  "G145_UId",                           null: false
+        t.integer  "G146_UId",                           null: false
+        t.integer  "G147_UId",                           null: false
+        t.integer  "G148_UId",                           null: false
+        t.integer  "G149_UId",                           null: false
+        t.integer  "G150_UId",                           null: false
+        t.integer  "G151_UId",                           null: false
+        t.integer  "G152_UId",                           null: false
+        t.integer  "G153_UId",                           null: false
+        t.integer  "G154_UId",                           null: false
+        t.integer  "G155_UId",                           null: false
+        t.integer  "G156_UId",                           null: false
+        t.integer  "G157_UId",                           null: false
+        t.integer  "G158_UId",                           null: false
+        t.integer  "G159_UId",                           null: false
+        t.integer  "G160_UId",                           null: false
+        t.integer  "G161_UId",                           null: false
+        t.integer  "G162_UId",                           null: false
+        t.integer  "G163_UId",                           null: false
+        t.integer  "G164_UId",                           null: false
+        t.integer  "G165_UId",                           null: false
+        t.integer  "G166_UId",                           null: false
+        t.integer  "G167_UId",                           null: false
+        t.integer  "G168_UId",                           null: false
+        t.integer  "G169_UId",                           null: false
+        t.integer  "G170_UId",                           null: false
+        t.integer  "G171_UId",                           null: false
+        t.integer  "G172_UId",                           null: false
+        t.integer  "G173_UId",                           null: false
+        t.integer  "G174_UId",                           null: false
+        t.integer  "G175_UId",                           null: false
+        t.integer  "G176_UId",                           null: false
+        t.integer  "G177_UId",                           null: false
+        t.integer  "G178_UId",                           null: false
+        t.integer  "G179_UId",                           null: false
+        t.integer  "G180_UId",                           null: false
+        t.integer  "G181_UId",                           null: false
+        t.integer  "G182_UId",                           null: false
+        t.integer  "G183_UId",                           null: false
+        t.integer  "G184_UId",                           null: false
+        t.integer  "G185_UId",                           null: false
+        t.integer  "G186_UId",                           null: false
+        t.integer  "G187_UId",                           null: false
+        t.integer  "G188_UId",                           null: false
+        t.integer  "G189_UId",                           null: false
+        t.integer  "G190_UId",                           null: false
+        t.integer  "G191_UId",                           null: false
+        t.integer  "G192_UId",                           null: false
+        t.integer  "G193_UId",                           null: false
+        t.integer  "G194_UId",                           null: false
+        t.integer  "G195_UId",                           null: false
+      end
+
+      create_table "SavedRecruitingSearches", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.string "MasterID",       limit: 50
+        t.string "SearchName",     limit: 100
+        t.string "SearchFormData", limit: 2000
+      end
+
+      create_table "ScoutingCategories", primary_key: "Uuid", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id",                                 null: false
+        t.integer  "UId",                    default: 0, null: false
+        t.integer  "SId",                    default: 0, null: false
+        t.integer  "CId",                    default: 0, null: false
+        t.datetime "TS",                                 null: false
+        t.datetime "Updated",                            null: false
+        t.string   "Name",        limit: 50,             null: false, collation: "utf8_unicode_ci"
+        t.string   "Description", limit: 50,             null: false, collation: "utf8_unicode_ci"
+        t.integer  "Game",                   default: 0, null: false
+        t.integer  "Role",                   default: 0, null: false
+        t.integer  "Active",                 default: 0, null: false
+        t.string   "Muuid1",      limit: 50,             null: false
+        t.string   "Muuid2",      limit: 50,             null: false
+        t.string   "Muuid3",      limit: 50,             null: false
+        t.string   "Muuid4",      limit: 50,             null: false
+        t.string   "Muuid5",      limit: 50,             null: false
+        t.string   "Muuid6",      limit: 50,             null: false
+        t.string   "Muuid7",      limit: 50,             null: false
+        t.string   "Muuid8",      limit: 50,             null: false
+        t.string   "Muuid9",      limit: 50,             null: false
+        t.string   "Muuid10",     limit: 50,             null: false
+        t.string   "Muuid11",     limit: 50,             null: false
+        t.string   "Muuid12",     limit: 50,             null: false
+        t.string   "Muuid13",     limit: 50,             null: false
+        t.string   "Muuid14",     limit: 50,             null: false
+        t.string   "Muuid15",     limit: 50,             null: false
+        t.string   "Muuid16",     limit: 50,             null: false
+        t.string   "Muuid17",     limit: 50,             null: false
+        t.string   "Muuid18",     limit: 50,             null: false
+        t.string   "Muuid19",     limit: 50,             null: false
+        t.string   "Muuid20",     limit: 50,             null: false
+        t.index ["Id"], name: "Id", using: :btree
+      end
+
+      create_table "ScoutingMetrics", primary_key: "Uuid", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id",                                 null: false
+        t.integer  "UId",                    default: 0, null: false
+        t.integer  "SId",                    default: 0, null: false
+        t.integer  "CId",                    default: 0, null: false
+        t.datetime "TS",                                 null: false
+        t.datetime "Updated",                            null: false
+        t.string   "Name",        limit: 50,             null: false, collation: "utf8_unicode_ci"
+        t.string   "Description", limit: 50,             null: false, collation: "utf8_unicode_ci"
+        t.string   "Label",       limit: 50,             null: false, collation: "utf8_general_ci"
+        t.integer  "Editable",               default: 0, null: false
+        t.integer  "Type",                   default: 0, null: false
+        t.integer  "Units",                  default: 0, null: false
+        t.integer  "Active",                 default: 0, null: false
+        t.index ["Id"], name: "Id", using: :btree
+      end
+
+      create_table "ScoutingReports", primary_key: "Uuid", id: :string, limit: 50, collation: "utf8_unicode_ci", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id",                                           null: false
+        t.integer  "UId",                            default: 0,   null: false
+        t.integer  "SId",                            default: 0,   null: false
+        t.integer  "CId",                            default: 0,   null: false
+        t.datetime "TS",                                           null: false
+        t.integer  "ClinicId",                       default: 0,   null: false
+        t.integer  "ClinicUId",                      default: 0,   null: false
+        t.string   "ClinicUuid",        limit: 50,                 null: false
+        t.integer  "UserId",                         default: 0,   null: false
+        t.integer  "UserUId",                        default: 0,   null: false
+        t.string   "UserUuid",          limit: 50,                 null: false
+        t.string   "Name",              limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Age",               limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Facility",          limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Notes",             limit: 2048,               null: false
+        t.integer  "Game",                           default: 0,   null: false
+        t.integer  "GraduationYear",                 default: 0,   null: false
+        t.integer  "Position",                       default: 0,   null: false
+        t.integer  "Role",                           default: 0,   null: false
+        t.integer  "Active",                         default: 0,   null: false
+        t.float    "MaxExitVel",        limit: 24,   default: 0.0, null: false
+        t.float    "AvgExitVel",        limit: 24,   default: 0.0, null: false
+        t.float    "MaxGroundDist",     limit: 24,   default: 0.0, null: false
+        t.float    "AvgGroundDist",     limit: 24,   default: 0.0, null: false
+        t.float    "MaxExitVelRank",    limit: 24,   default: 0.0, null: false
+        t.float    "AvgExitVelRank",    limit: 24,   default: 0.0, null: false
+        t.float    "MaxGroundDistRank", limit: 24,   default: 0.0, null: false
+        t.float    "AvgGroundDistRank", limit: 24,   default: 0.0, null: false
+        t.float    "HHA",               limit: 24,   default: 0.0, null: false
+        t.float    "LDPercentage",      limit: 24,   default: 0.0, null: false
+        t.float    "GBPercentage",      limit: 24,   default: 0.0, null: false
+        t.float    "FBPercentage",      limit: 24,   default: 0.0, null: false
+        t.float    "Over80",            limit: 24,   default: 0.0, null: false
+        t.float    "Over90",            limit: 24,   default: 0.0, null: false
+        t.float    "Over100",           limit: 24,   default: 0.0, null: false
+        t.float    "LA10",              limit: 24,   default: 0.0, null: false
+        t.float    "LA20",              limit: 24,   default: 0.0, null: false
+        t.float    "LA35",              limit: 24,   default: 0.0, null: false
+        t.float    "LA35Plus",          limit: 24,   default: 0.0, null: false
+        t.string   "Muuid1",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name1",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value1",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid2",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name2",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value2",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid3",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name3",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value3",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid4",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name4",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value4",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid5",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name5",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value5",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid6",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name6",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value6",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid7",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name7",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value7",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid8",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name8",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value8",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid9",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name9",             limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value9",            limit: 24,   default: 0.0, null: false
+        t.string   "Muuid10",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name10",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value10",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid11",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name11",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value11",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid12",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name12",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value12",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid13",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name13",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value13",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid14",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name14",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value14",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid15",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name15",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value15",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid16",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name16",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value16",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid17",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name17",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value17",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid18",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name18",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value18",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid19",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name19",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value19",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid20",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name20",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value20",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid21",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name21",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value21",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid22",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name22",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value22",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid23",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name23",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value23",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid24",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name24",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value24",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid25",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name25",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value25",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid26",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name26",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value26",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid27",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name27",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value27",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid28",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name28",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value28",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid29",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name29",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value29",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid30",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name30",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value30",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid31",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name31",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value31",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid32",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name32",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value32",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid33",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name33",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value33",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid34",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name34",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value34",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid35",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name35",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value35",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid36",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name36",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value36",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid37",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name37",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value37",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid38",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name38",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value38",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid39",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name39",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value39",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid40",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name40",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value40",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid41",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name41",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value41",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid42",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name42",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value42",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid43",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name43",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value43",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid44",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name44",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value44",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid45",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name45",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value45",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid46",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name46",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value46",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid47",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name47",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value47",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid48",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name48",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value48",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid49",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name49",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value49",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid50",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name50",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value50",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid51",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name51",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value51",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid52",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name52",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value52",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid53",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name53",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value53",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid54",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name54",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value54",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid55",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name55",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value55",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid56",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name56",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value56",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid57",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name57",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value57",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid58",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name58",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value58",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid59",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name59",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value59",           limit: 24,   default: 0.0, null: false
+        t.string   "Muuid60",           limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Name60",            limit: 50,                 null: false, collation: "utf8_unicode_ci"
+        t.float    "Value60",           limit: 24,   default: 0.0, null: false
+        t.index ["Id"], name: "Id", using: :btree
+      end
+
+      create_table "Session", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+        t.integer  "Id"
+        t.integer  "UId",                                null: false
+        t.integer  "SId",                                null: false
+        t.integer  "CId",                                null: false
+        t.integer  "UsId",                               null: false, comment: "User ids"
+        t.integer  "UsUId",                              null: false
+        t.string   "UserUuid",  limit: 50,               null: false
+        t.integer  "ClcId",                              null: false, comment: "Clinic ids"
+        t.integer  "ClcUId",                             null: false
+        t.string   "EventUuid", limit: 50,               null: false, comment: "Event uuid"
+        t.integer  "Actv",                               null: false, comment: "1 - Enabled, 0 - Disabled"
+        t.datetime "TS",                                              comment: "Time Stamp"
+        t.integer  "St",                                 null: false, comment: "Stadium"
+        t.integer  "Type",                               null: false, comment: "Session Type"
+        t.integer  "SL",                                 null: false, comment: "Skill Level"
+        t.integer  "GT",                                 null: false, comment: "Game"
+        t.float    "MPV",       limit: 24,               null: false, comment: "Max pitch velo"
+        t.float    "MEV",       limit: 24,               null: false, comment: "Max hit velo"
+        t.float    "MEVT",      limit: 24, default: 0.0, null: false, comment: "Max hit velo from tee"
+        t.float    "APV",       limit: 24,               null: false, comment: "Avg pitch velo"
+        t.float    "AEV",       limit: 24,               null: false, comment: "Average hit velo"
+        t.float    "AElv",      limit: 24,               null: false, comment: "Avg launch angle"
+        t.float    "AD",        limit: 24,               null: false, comment: "Avg distance to impact"
+        t.float    "MD",        limit: 24,               null: false, comment: "Max distance to impact"
+        t.float    "AGD",       limit: 24, default: 0.0, null: false, comment: "Avg ground distance"
+        t.float    "MGD",       limit: 24, default: 0.0, null: false, comment: "Max ground distance"
+        t.integer  "PC",                                 null: false, comment: "Pitch count"
+        t.integer  "HC",                                 null: false, comment: "Hit count"
+        t.integer  "Sing",                               null: false, comment: "Singles"
+        t.integer  "Doub",                               null: false, comment: "Doubles"
+        t.integer  "Trip",                               null: false, comment: "Triples"
+        t.integer  "Home",                               null: false, comment: "Home runs"
+        t.integer  "Foul",                               null: false, comment: "Foul balls"
+        t.integer  "Strk",                               null: false, comment: "Strikes"
+        t.integer  "Ball",                               null: false, comment: "Balls"
+        t.float    "AVG",       limit: 24,               null: false, comment: "Batting average"
+        t.float    "SLG",       limit: 24,               null: false, comment: "Slugging"
+        t.float    "LDP",       limit: 24,               null: false, comment: "Line drive percentage"
+        t.float    "FBP",       limit: 24,               null: false, comment: "Fly ball percentage"
+        t.float    "GBP",       limit: 24,               null: false, comment: "Ground ball percentage"
+        t.float    "LIP",       limit: 24,               null: false, comment: "Left infield percentage"
+        t.float    "RIP",       limit: 24,               null: false, comment: "Right infield percentage"
+        t.float    "CIP",       limit: 24,               null: false, comment: "Center infield percentage"
+        t.float    "LOP",       limit: 24,               null: false, comment: "Left outfield percentage"
+        t.float    "ROP",       limit: 24,               null: false, comment: "Right outfield percentage"
+        t.float    "COP",       limit: 24,               null: false, comment: "Center outfield percentage"
+        t.float    "AHZ1",      limit: 24,               null: false, comment: "Strike zone sections"
+        t.float    "AHZ2",      limit: 24,               null: false
+        t.float    "AHZ3",      limit: 24,               null: false
+        t.float    "AHZ4",      limit: 24,               null: false
+        t.float    "AHZ5",      limit: 24,               null: false
+        t.float    "AHZ6",      limit: 24,               null: false
+        t.float    "AHZ7",      limit: 24,               null: false
+        t.float    "AHZ8",      limit: 24,               null: false
+        t.float    "AHZ9",      limit: 24,               null: false
+        t.float    "AHZ10",     limit: 24,               null: false
+        t.float    "AHZ11",     limit: 24,               null: false
+        t.float    "AHZ12",     limit: 24,               null: false
+        t.float    "AHZ13",     limit: 24,               null: false
+        t.string   "Tag",       limit: 50,                            comment: "Comments"
+        t.float    "SZB",       limit: 24,               null: false, comment: "Strike zone bottom"
+        t.float    "SZT",       limit: 24,               null: false, comment: "Strike zone top"
+        t.float    "SZW",       limit: 24,               null: false, comment: "Strike zone width"
+        t.integer  "HHC",                                null: false, comment: "Hard hit count"
+        t.float    "HHV",       limit: 24,               null: false, comment: "Hard hit velo"
+        t.float    "HHVT",      limit: 24, default: 0.0, null: false, comment: "Hard hi velo for tee"
+        t.float    "MBRV",      limit: 24,               null: false, comment: "Max barrel velo"
+        t.float    "ABRV",      limit: 24,               null: false, comment: "Avg barrel velo"
+        t.float    "MIM",       limit: 24,               null: false, comment: "Max impact momentum"
+        t.float    "AIM",       limit: 24,               null: false, comment: "Avg impact momentum"
+        t.integer  "AB",        limit: 2,  default: 0,   null: false, comment: "At bats"
+        t.integer  "SWT",       limit: 2,  default: 0,   null: false, comment: "1 - has swingtracker data"
+        t.integer  "SCR",                  default: 0,   null: false, comment: "Point score"
+        t.integer  "MPTS",                 default: 0,   null: false, comment: "Max points"
+        t.integer  "VB",        limit: 2,                null: false, comment: "Velocity boost"
+        t.index ["UsId", "UsUId"], name: "UsId", using: :btree
+      end
+
+      create_table "Teams", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+        t.integer  "Id"
+        t.integer  "UId",                        null: false
+        t.integer  "SId",                        null: false
+        t.integer  "CompanyId",                  null: false
+        t.datetime "TS"
+        t.string   "Name",           limit: 120, null: false, collation: "utf8_unicode_ci"
+        t.string   "GroupName",      limit: 50,  null: false, collation: "utf8_unicode_ci"
+        t.integer  "HomeStadium",                null: false
+        t.integer  "SkillLevel",                 null: false
+        t.integer  "GameType",                   null: false
+        t.integer  "Active",                     null: false
+        t.integer  "Player1_Id",                 null: false
+        t.integer  "Player1_UnitId",             null: false
+        t.integer  "Player2_Id",                 null: false
+        t.integer  "Player2_UnitId",             null: false
+        t.integer  "Player3_Id",                 null: false
+        t.integer  "Player3_UnitId",             null: false
+        t.integer  "Player4_Id",                 null: false
+        t.integer  "Player4_UnitId",             null: false
+        t.integer  "Player5_Id",                 null: false
+        t.integer  "Player5_UnitId",             null: false
+        t.integer  "Player6_Id",                 null: false
+        t.integer  "Player6_UnitId",             null: false
+        t.integer  "Player7_Id",                 null: false
+        t.integer  "Player7_UnitId",             null: false
+        t.integer  "Player8_Id",                 null: false
+        t.integer  "Player8_UnitId",             null: false
+        t.integer  "Player9_Id",                 null: false
+        t.integer  "Player9_UnitId",             null: false
+        t.integer  "Player1_Order",              null: false
+        t.integer  "Player2_Order",              null: false
+        t.integer  "Player3_Order",              null: false
+        t.integer  "Player4_Order",              null: false
+        t.integer  "Player5_Order",              null: false
+        t.integer  "Player6_Order",              null: false
+        t.integer  "Player7_Order",              null: false
+        t.integer  "Player8_Order",              null: false
+        t.integer  "Player9_Order",              null: false
+      end
+
+      create_table "TournamentLeaders", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id",                        default: 0,   null: false
+        t.integer  "UId",                       default: 0,   null: false
+        t.integer  "SId",                       default: 0,   null: false
+        t.integer  "CId",                       default: 0,   null: false
+        t.datetime "TS",                                      null: false
+        t.datetime "Updated",                                 null: false
+        t.string   "TournamentName", limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "TournamentId",              default: 0,   null: false
+        t.integer  "TournamentUId",             default: 0,   null: false
+        t.integer  "TournamentRId",             default: 0,   null: false
+        t.string   "TeamName",       limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "TeamId",                    default: 0,   null: false
+        t.integer  "TeamUId",                   default: 0,   null: false
+        t.string   "PlayerName",     limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "PlayerId",                  default: 0,   null: false
+        t.integer  "PlayerUId",                 default: 0,   null: false
+        t.string   "UserName",       limit: 50,               null: false
+        t.integer  "UserId",                    default: 0,   null: false
+        t.integer  "UserUId",                   default: 0,   null: false
+        t.integer  "AB_r",                      default: 0,   null: false
+        t.integer  "R_r",                       default: 0,   null: false
+        t.integer  "H_r",                       default: 0,   null: false
+        t.integer  "EBH_r",                     default: 0,   null: false
+        t.integer  "H2B_r",                     default: 0,   null: false
+        t.integer  "H3B_r",                     default: 0,   null: false
+        t.integer  "HR_r",                      default: 0,   null: false
+        t.integer  "RBI_r",                     default: 0,   null: false
+        t.integer  "SO_r",                      default: 0,   null: false
+        t.float    "AVG_r",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_r",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_r",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_r",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_r",        limit: 24, default: 0.0, null: false
+        t.float    "AV_r",           limit: 24, default: 0.0, null: false
+        t.float    "MV_r",           limit: 24, default: 0.0, null: false
+        t.float    "AD_r",           limit: 24, default: 0.0, null: false
+        t.float    "MD_r",           limit: 24, default: 0.0, null: false
+        t.integer  "AB_p",                      default: 0,   null: false
+        t.integer  "R_p",                       default: 0,   null: false
+        t.integer  "H_p",                       default: 0,   null: false
+        t.integer  "EBH_p",                     default: 0,   null: false
+        t.integer  "H2B_p",                     default: 0,   null: false
+        t.integer  "H3B_p",                     default: 0,   null: false
+        t.integer  "HR_p",                      default: 0,   null: false
+        t.integer  "RBI_p",                     default: 0,   null: false
+        t.integer  "SO_p",                      default: 0,   null: false
+        t.float    "AVG_p",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_p",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_p",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_p",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_p",        limit: 24, default: 0.0, null: false
+        t.float    "AV_p",           limit: 24, default: 0.0, null: false
+        t.float    "MV_p",           limit: 24, default: 0.0, null: false
+        t.float    "AD_p",           limit: 24, default: 0.0, null: false
+        t.float    "MD_p",           limit: 24, default: 0.0, null: false
+        t.integer  "AB_b",                      default: 0,   null: false
+        t.integer  "R_b",                       default: 0,   null: false
+        t.integer  "H_b",                       default: 0,   null: false
+        t.integer  "EBH_b",                     default: 0,   null: false
+        t.integer  "H2B_b",                     default: 0,   null: false
+        t.integer  "H3B_b",                     default: 0,   null: false
+        t.integer  "HR_b",                      default: 0,   null: false
+        t.integer  "RBI_b",                     default: 0,   null: false
+        t.integer  "SO_b",                      default: 0,   null: false
+        t.float    "AVG_b",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_b",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_b",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_b",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_b",        limit: 24, default: 0.0, null: false
+        t.float    "AV_b",           limit: 24, default: 0.0, null: false
+        t.float    "MV_b",           limit: 24, default: 0.0, null: false
+        t.float    "AD_b",           limit: 24, default: 0.0, null: false
+        t.float    "MD_b",           limit: 24, default: 0.0, null: false
+      end
+
+      create_table "TournamentTeamStats", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
+        t.integer  "Id",                        default: 0,   null: false
+        t.integer  "UId",                       default: 0,   null: false
+        t.integer  "SId",                       default: 0,   null: false
+        t.integer  "CId",                       default: 0,   null: false
+        t.datetime "TS",                                      null: false
+        t.datetime "Updated",                                 null: false
+        t.string   "TournamentName", limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "TournamentId",              default: 0,   null: false
+        t.integer  "TournamentUId",             default: 0,   null: false
+        t.integer  "TournamentRId",             default: 0,   null: false
+        t.string   "TeamName",       limit: 50,               null: false, collation: "utf8_unicode_ci"
+        t.integer  "TeamId",                    default: 0,   null: false
+        t.integer  "TeamUId",                   default: 0,   null: false
+        t.integer  "InPlayoffs",                default: 0,   null: false
+        t.integer  "Rating_r",                  default: 0,   null: false
+        t.integer  "Wins_r",                    default: 0,   null: false
+        t.integer  "Losses_r",                  default: 0,   null: false
+        t.integer  "Ties_r",                    default: 0,   null: false
+        t.float    "WinP_r",         limit: 24, default: 0.0, null: false
+        t.integer  "AB_r",                      default: 0,   null: false
+        t.integer  "H_r",                       default: 0,   null: false
+        t.integer  "R_r",                       default: 0,   null: false
+        t.integer  "EBH_r",                     default: 0,   null: false
+        t.integer  "H2B_r",                     default: 0,   null: false
+        t.integer  "H3B_r",                     default: 0,   null: false
+        t.integer  "HR_r",                      default: 0,   null: false
+        t.integer  "RBI_r",                     default: 0,   null: false
+        t.integer  "SO_r",                      default: 0,   null: false
+        t.float    "AVG_r",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_r",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_r",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_r",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_r",        limit: 24, default: 0.0, null: false
+        t.integer  "Rating_p",                  default: 0,   null: false
+        t.integer  "Wins_p",                    default: 0,   null: false
+        t.integer  "Losses_p",                  default: 0,   null: false
+        t.integer  "Ties_p",                    default: 0,   null: false
+        t.float    "WinP_p",         limit: 24, default: 0.0, null: false
+        t.integer  "AB_p",                      default: 0,   null: false
+        t.integer  "R_p",                       default: 0,   null: false
+        t.integer  "H_p",                       default: 0,   null: false
+        t.integer  "EBH_p",                     default: 0,   null: false
+        t.integer  "H2B_p",                     default: 0,   null: false
+        t.integer  "H3B_p",                     default: 0,   null: false
+        t.integer  "HR_p",                      default: 0,   null: false
+        t.integer  "RBI_p",                     default: 0,   null: false
+        t.integer  "SO_p",                      default: 0,   null: false
+        t.float    "AVG_p",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_p",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_p",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_p",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_p",        limit: 24, default: 0.0, null: false
+        t.integer  "Rating_b",                  default: 0,   null: false
+        t.integer  "Wins_b",                    default: 0,   null: false
+        t.integer  "Losses_b",                  default: 0,   null: false
+        t.integer  "Ties_b",                    default: 0,   null: false
+        t.float    "WinP_b",         limit: 24, default: 0.0, null: false
+        t.integer  "AB_b",                      default: 0,   null: false
+        t.integer  "R_b",                       default: 0,   null: false
+        t.integer  "H_b",                       default: 0,   null: false
+        t.integer  "EBH_b",                     default: 0,   null: false
+        t.integer  "H2B_b",                     default: 0,   null: false
+        t.integer  "H3B_b",                     default: 0,   null: false
+        t.integer  "HR_b",                      default: 0,   null: false
+        t.integer  "RBI_b",                     default: 0,   null: false
+        t.integer  "SO_b",                      default: 0,   null: false
+        t.float    "AVG_b",          limit: 24, default: 0.0, null: false
+        t.float    "SLG_b",          limit: 24, default: 0.0, null: false
+        t.float    "OPS_b",          limit: 24, default: 0.0, null: false
+        t.float    "OBP_b",          limit: 24, default: 0.0, null: false
+        t.float    "BARSP_b",        limit: 24, default: 0.0, null: false
+      end
+
+      create_table "Tournaments", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+        t.integer  "Id"
+        t.integer  "UId",                                            null: false
+        t.integer  "SId",                                            null: false
+        t.integer  "CompanyId",                                      null: false
+        t.integer  "RemoteId",                           default: 0, null: false
+        t.integer  "PlayoffType",                                    null: false
+        t.string   "Name",                    limit: 50,             null: false, collation: "utf8_unicode_ci"
+        t.datetime "TS"
+        t.date     "StartDate"
+        t.integer  "Finished",                                       null: false
+        t.integer  "Format",                                         null: false
+        t.integer  "WinnerId",                                       null: false
+        t.integer  "WinnerUnitId",                                   null: false
+        t.integer  "PostToWeb",                          default: 0, null: false
+        t.integer  "Team1_Id",                                       null: false
+        t.integer  "Team2_Id",                                       null: false
+        t.integer  "Team3_Id",                                       null: false
+        t.integer  "Team4_Id",                                       null: false
+        t.integer  "Team5_Id",                                       null: false
+        t.integer  "Team6_Id",                                       null: false
+        t.integer  "Team7_Id",                                       null: false
+        t.integer  "Team8_Id",                                       null: false
+        t.integer  "Team9_Id",                                       null: false
+        t.integer  "Team10_Id",                                      null: false
+        t.integer  "Team11_Id",                                      null: false
+        t.integer  "Team12_Id",                                      null: false
+        t.integer  "Team13_Id",                                      null: false
+        t.integer  "Team14_Id",                                      null: false
+        t.integer  "Team15_Id",                                      null: false
+        t.integer  "Team16_Id",                                      null: false
+        t.integer  "Team17_Id",                                      null: false
+        t.integer  "Team18_Id",                                      null: false
+        t.integer  "Team1_UnitId",                                   null: false
+        t.integer  "Team2_UnitId",                                   null: false
+        t.integer  "Team3_UnitId",                                   null: false
+        t.integer  "Team4_UnitId",                                   null: false
+        t.integer  "Team5_UnitId",                                   null: false
+        t.integer  "Team6_UnitId",                                   null: false
+        t.integer  "Team7_UnitId",                                   null: false
+        t.integer  "Team8_UnitId",                                   null: false
+        t.integer  "Team9_UnitId",                                   null: false
+        t.integer  "Team10_UnitId",                                  null: false
+        t.integer  "Team11_UnitId",                                  null: false
+        t.integer  "Team12_UnitId",                                  null: false
+        t.integer  "Team13_UnitId",                                  null: false
+        t.integer  "Team14_UnitId",                                  null: false
+        t.integer  "Team15_UnitId",                                  null: false
+        t.integer  "Team16_UnitId",                                  null: false
+        t.integer  "Team17_UnitId",                                  null: false
+        t.integer  "Team18_UnitId",                                  null: false
+        t.integer  "Playoff_Team_1",                                 null: false
+        t.integer  "Playoff_Team_2",                                 null: false
+        t.integer  "Playoff_Team_3",                                 null: false
+        t.integer  "Playoff_Team_4",                                 null: false
+        t.integer  "Playoff_Team_5",                                 null: false
+        t.integer  "Playoff_Team_6",                                 null: false
+        t.integer  "Playoff_Team_7",                                 null: false
+        t.integer  "Playoff_Team_8",                                 null: false
+        t.integer  "Playoff_Team_9",                                 null: false
+        t.integer  "Playoff_Team_10",                                null: false
+        t.integer  "Round1_Game1_Id",                                null: false
+        t.integer  "Round1_Game2_Id",                                null: false
+        t.integer  "Round1_Game3_Id",                                null: false
+        t.integer  "Round1_Game4_Id",                                null: false
+        t.integer  "Round1_Game5_Id",                                null: false
+        t.integer  "Round2_Game1_Id",                                null: false
+        t.integer  "Round2_Game2_Id",                                null: false
+        t.integer  "Round2_Game3_Id",                                null: false
+        t.integer  "Round2_Game4_Id",                                null: false
+        t.integer  "Round2_Game5_Id",                                null: false
+        t.integer  "Round3_Game1_Id",                                null: false
+        t.integer  "Round3_Game2_Id",                                null: false
+        t.integer  "Round3_Game3_Id",                                null: false
+        t.integer  "Round3_Game4_Id",                                null: false
+        t.integer  "Round3_Game5_Id",                                null: false
+        t.integer  "Round4_Game1_Id",                                null: false
+        t.integer  "Round4_Game2_Id",                                null: false
+        t.integer  "Round4_Game3_Id",                                null: false
+        t.integer  "Round4_Game4_Id",                                null: false
+        t.integer  "Round4_Game5_Id",                                null: false
+        t.integer  "Round5_Game1_Id",                                null: false
+        t.integer  "Round5_Game2_Id",                                null: false
+        t.integer  "Round5_Game3_Id",                                null: false
+        t.integer  "Round5_Game4_Id",                                null: false
+        t.integer  "Round5_Game5_Id",                                null: false
+        t.integer  "Round6_Game1_Id",                                null: false
+        t.integer  "Round6_Game2_Id",                                null: false
+        t.integer  "Round6_Game3_Id",                                null: false
+        t.integer  "Round6_Game4_Id",                                null: false
+        t.integer  "Round6_Game5_Id",                                null: false
+        t.integer  "Round7_Game1_Id",                                null: false
+        t.integer  "Round7_Game2_Id",                                null: false
+        t.integer  "Round7_Game3_Id",                                null: false
+        t.integer  "Round7_Game4_Id",                                null: false
+        t.integer  "Round7_Game5_Id",                                null: false
+        t.integer  "Round8_Game1_Id",                                null: false
+        t.integer  "Round8_Game2_Id",                                null: false
+        t.integer  "Round8_Game3_Id",                                null: false
+        t.integer  "Round8_Game4_Id",                                null: false
+        t.integer  "Round8_Game5_Id",                                null: false
+        t.integer  "Round9_Game1_Id",                                null: false
+        t.integer  "Round9_Game2_Id",                                null: false
+        t.integer  "Round9_Game3_Id",                                null: false
+        t.integer  "Round9_Game4_Id",                                null: false
+        t.integer  "Round9_Game5_Id",                                null: false
+        t.integer  "Round10_Game1_Id",                               null: false
+        t.integer  "Round10_Game2_Id",                               null: false
+        t.integer  "Round10_Game3_Id",                               null: false
+        t.integer  "Round1_Game1_UnitId",                            null: false
+        t.integer  "Round1_Game2_UnitId",                            null: false
+        t.integer  "Round1_Game3_UnitId",                            null: false
+        t.integer  "Round1_Game4_UnitId",                            null: false
+        t.integer  "Round1_Game5_UnitId",                            null: false
+        t.integer  "Round2_Game1_UnitId",                            null: false
+        t.integer  "Round2_Game2_UnitId",                            null: false
+        t.integer  "Round2_Game3_UnitId",                            null: false
+        t.integer  "Round2_Game4_UnitId",                            null: false
+        t.integer  "Round2_Game5_UnitId",                            null: false
+        t.integer  "Round3_Game1_UnitId",                            null: false
+        t.integer  "Round3_Game2_UnitId",                            null: false
+        t.integer  "Round3_Game3_UnitId",                            null: false
+        t.integer  "Round3_Game4_UnitId",                            null: false
+        t.integer  "Round3_Game5_UnitId",                            null: false
+        t.integer  "Round4_Game1_UnitId",                            null: false
+        t.integer  "Round4_Game2_UnitId",                            null: false
+        t.integer  "Round4_Game3_UnitId",                            null: false
+        t.integer  "Round4_Game4_UnitId",                            null: false
+        t.integer  "Round4_Game5_UnitId",                            null: false
+        t.integer  "Round5_Game1_UnitId",                            null: false
+        t.integer  "Round5_Game2_UnitId",                            null: false
+        t.integer  "Round5_Game3_UnitId",                            null: false
+        t.integer  "Round5_Game4_UnitId",                            null: false
+        t.integer  "Round5_Game5_UnitId",                            null: false
+        t.integer  "Round6_Game1_UnitId",                            null: false
+        t.integer  "Round6_Game2_UnitId",                            null: false
+        t.integer  "Round6_Game3_UnitId",                            null: false
+        t.integer  "Round6_Game4_UnitId",                            null: false
+        t.integer  "Round6_Game5_UnitId",                            null: false
+        t.integer  "Round7_Game1_UnitId",                            null: false
+        t.integer  "Round7_Game2_UnitId",                            null: false
+        t.integer  "Round7_Game3_UnitId",                            null: false
+        t.integer  "Round7_Game4_UnitId",                            null: false
+        t.integer  "Round7_Game5_UnitId",                            null: false
+        t.integer  "Round8_Game1_UnitId",                            null: false
+        t.integer  "Round8_Game2_UnitId",                            null: false
+        t.integer  "Round8_Game3_UnitId",                            null: false
+        t.integer  "Round8_Game4_UnitId",                            null: false
+        t.integer  "Round8_Game5_UnitId",                            null: false
+        t.integer  "Round9_Game1_UnitId",                            null: false
+        t.integer  "Round9_Game2_UnitId",                            null: false
+        t.integer  "Round9_Game3_UnitId",                            null: false
+        t.integer  "Round9_Game4_UnitId",                            null: false
+        t.integer  "Round9_Game5_UnitId",                            null: false
+        t.integer  "Round10_Game1_UnitId",                           null: false
+        t.integer  "Round10_Game2_UnitId",                           null: false
+        t.integer  "Round10_Game3_UnitId",                           null: false
+        t.integer  "Playoff1_Game1_Id",                              null: false
+        t.integer  "Playoff1_Game2_Id",                              null: false
+        t.integer  "Playoff1_Game3_Id",                              null: false
+        t.integer  "Playoff1_Game4_Id",                              null: false
+        t.integer  "Playoff1_Game5_Id",                              null: false
+        t.integer  "Playoff1_Game6_Id",                              null: false
+        t.integer  "Playoff1_Game7_Id",                              null: false
+        t.integer  "Playoff1_Game8_Id",                              null: false
+        t.integer  "Playoff1_Game9_Id",                              null: false
+        t.integer  "Playoff1_Game10_Id",                             null: false
+        t.integer  "Playoff1_Game11_Id",                             null: false
+        t.integer  "Playoff1_Game12_Id",                             null: false
+        t.integer  "Playoff1_Game13_Id",                             null: false
+        t.integer  "Playoff1_Game14_Id",                             null: false
+        t.integer  "Playoff1_Game15_Id",                             null: false
+        t.integer  "Playoff1_Game16_Id",                             null: false
+        t.integer  "Playoff1_Game17_Id",                             null: false
+        t.integer  "Playoff1_Game18_Id",                             null: false
+        t.integer  "Playoff1_Game19_Id",                             null: false
+        t.integer  "Playoff1_Game20_Id",                             null: false
+        t.integer  "Playoff1_Game21_Id",                             null: false
+        t.integer  "Playoff1_Game22_Id",                             null: false
+        t.integer  "Playoff1_Game23_Id",                             null: false
+        t.integer  "Playoff1_Game24_Id",                             null: false
+        t.integer  "Playoff1_Game25_Id",                             null: false
+        t.integer  "Playoff1_Game26_Id",                             null: false
+        t.integer  "Playoff1_Game27_Id",                             null: false
+        t.integer  "Playoff1_Game28_Id",                             null: false
+        t.integer  "Playoff1_Game29_Id",                             null: false
+        t.integer  "Playoff1_Game30_Id",                             null: false
+        t.integer  "Playoff2_Game1_Id",                              null: false
+        t.integer  "Playoff2_Game2_Id",                              null: false
+        t.integer  "Playoff3_Game1_Id",                              null: false
+        t.integer  "Playoff1_Game1_UnitId",                          null: false
+        t.integer  "Playoff1_Game2_UnitId",                          null: false
+        t.integer  "Playoff1_Game3_UnitId",                          null: false
+        t.integer  "Playoff1_Game4_UnitId",                          null: false
+        t.integer  "Playoff1_Game5_UnitId",                          null: false
+        t.integer  "Playoff1_Game6_UnitId",                          null: false
+        t.integer  "Playoff1_Game7_UnitId",                          null: false
+        t.integer  "Playoff1_Game8_UnitId",                          null: false
+        t.integer  "Playoff1_Game9_UnitId",                          null: false
+        t.integer  "Playoff1_Game10_UnitId",                         null: false
+        t.integer  "Playoff1_Game11_UnitId",                         null: false
+        t.integer  "Playoff1_Game12_UnitId",                         null: false
+        t.integer  "Playoff1_Game13_UnitId",                         null: false
+        t.integer  "Playoff1_Game14_UnitId",                         null: false
+        t.integer  "Playoff1_Game15_UnitId",                         null: false
+        t.integer  "Playoff1_Game16_UnitId",                         null: false
+        t.integer  "Playoff1_Game17_UnitId",                         null: false
+        t.integer  "Playoff1_Game18_UnitId",                         null: false
+        t.integer  "Playoff1_Game19_UnitId",                         null: false
+        t.integer  "Playoff1_Game20_UnitId",                         null: false
+        t.integer  "Playoff1_Game21_UnitId",                         null: false
+        t.integer  "Playoff1_Game22_UnitId",                         null: false
+        t.integer  "Playoff1_Game23_UnitId",                         null: false
+        t.integer  "Playoff1_Game25_UnitId",                         null: false
+        t.integer  "Playoff1_Game24_UnitId",                         null: false
+        t.integer  "Playoff1_Game26_UnitId",                         null: false
+        t.integer  "Playoff1_Game27_UnitId",                         null: false
+        t.integer  "Playoff1_Game28_UnitId",                         null: false
+        t.integer  "Playoff1_Game29_UnitId",                         null: false
+        t.integer  "Playoff1_Game30_UnitId",                         null: false
+        t.integer  "Playoff2_Game1_UnitId",                          null: false
+        t.integer  "Playoff2_Game2_UnitId",                          null: false
+        t.integer  "Playoff3_Game1_UnitId",                          null: false
+        t.integer  "Tiebreaker_Game1_Id",                            null: false
+        t.integer  "Tiebreaker_Game1_UnitId",                        null: false
+        t.integer  "Tiebreaker_Game2_Id",                            null: false
+        t.integer  "Tiebreaker_Game2_UnitId",                        null: false
+        t.integer  "Tiebreaker_Game3_Id",                            null: false
+        t.integer  "Tiebreaker_Game3_UnitId",                        null: false
+        t.integer  "Tiebreaker_Game4_Id",                            null: false
+        t.integer  "Tiebreaker_Game4_UnitId",                        null: false
+        t.integer  "Tiebreaker_Game5_Id",                            null: false
+        t.integer  "Tiebreaker_Game5_UnitId",                        null: false
+        t.integer  "RoundM_Game1_Id",                                null: false
+        t.integer  "RoundM_Game2_Id",                                null: false
+        t.integer  "RoundM_Game3_Id",                                null: false
+        t.integer  "RoundM_Game4_Id",                                null: false
+        t.integer  "RoundM_Game5_Id",                                null: false
+        t.integer  "RoundM_Game6_Id",                                null: false
+        t.integer  "RoundM_Game7_Id",                                null: false
+        t.integer  "RoundM_Game8_Id",                                null: false
+        t.integer  "RoundM_Game9_Id",                                null: false
+        t.integer  "RoundM_Game10_Id",                               null: false
+        t.integer  "RoundM_Game11_Id",                               null: false
+        t.integer  "RoundM_Game12_Id",                               null: false
+        t.integer  "RoundM_Game13_Id",                               null: false
+        t.integer  "RoundM_Game14_Id",                               null: false
+        t.integer  "RoundM_Game15_Id",                               null: false
+        t.integer  "RoundM_Game16_Id",                               null: false
+        t.integer  "RoundM_Game17_Id",                               null: false
+        t.integer  "RoundM_Game18_Id",                               null: false
+        t.integer  "RoundM_Game19_Id",                               null: false
+        t.integer  "RoundM_Game20_Id",                               null: false
+        t.integer  "RoundM_Game21_Id",                               null: false
+        t.integer  "RoundM_Game22_Id",                               null: false
+        t.integer  "RoundM_Game23_Id",                               null: false
+        t.integer  "RoundM_Game24_Id",                               null: false
+        t.integer  "RoundM_Game25_Id",                               null: false
+        t.integer  "RoundM_Game26_Id",                               null: false
+        t.integer  "RoundM_Game27_Id",                               null: false
+        t.integer  "RoundM_Game28_Id",                               null: false
+        t.integer  "RoundM_Game29_Id",                               null: false
+        t.integer  "RoundM_Game30_Id",                               null: false
+        t.integer  "RoundM_Game31_Id",                               null: false
+        t.integer  "RoundM_Game32_Id",                               null: false
+        t.integer  "RoundM_Game33_Id",                               null: false
+        t.integer  "RoundM_Game34_Id",                               null: false
+        t.integer  "RoundM_Game35_Id",                               null: false
+        t.integer  "RoundM_Game36_Id",                               null: false
+        t.integer  "RoundM_Game37_Id",                               null: false
+        t.integer  "RoundM_Game38_Id",                               null: false
+        t.integer  "RoundM_Game39_Id",                               null: false
+        t.integer  "RoundM_Game40_Id",                               null: false
+        t.integer  "RoundM_Game41_Id",                               null: false
+        t.integer  "RoundM_Game42_Id",                               null: false
+        t.integer  "RoundM_Game43_Id",                               null: false
+        t.integer  "RoundM_Game44_Id",                               null: false
+        t.integer  "RoundM_Game45_Id",                               null: false
+        t.integer  "RoundM_Game46_Id",                               null: false
+        t.integer  "RoundM_Game47_Id",                               null: false
+        t.integer  "RoundM_Game48_Id",                               null: false
+        t.integer  "RoundM_Game49_Id",                               null: false
+        t.integer  "RoundM_Game50_Id",                               null: false
+        t.integer  "RoundM_Game51_Id",                               null: false
+        t.integer  "RoundM_Game52_Id",                               null: false
+        t.integer  "RoundM_Game53_Id",                               null: false
+        t.integer  "RoundM_Game54_Id",                               null: false
+        t.integer  "RoundM_Game55_Id",                               null: false
+        t.integer  "RoundM_Game56_Id",                               null: false
+        t.integer  "RoundM_Game57_Id",                               null: false
+        t.integer  "RoundM_Game58_Id",                               null: false
+        t.integer  "RoundM_Game59_Id",                               null: false
+        t.integer  "RoundM_Game60_Id",                               null: false
+        t.integer  "RoundM_Game61_Id",                               null: false
+        t.integer  "RoundM_Game62_Id",                               null: false
+        t.integer  "RoundM_Game63_Id",                               null: false
+        t.integer  "RoundM_Game64_Id",                               null: false
+        t.integer  "RoundM_Game65_Id",                               null: false
+        t.integer  "RoundM_Game66_Id",                               null: false
+        t.integer  "RoundM_Game67_Id",                               null: false
+        t.integer  "RoundM_Game68_Id",                               null: false
+        t.integer  "RoundM_Game69_Id",                               null: false
+        t.integer  "RoundM_Game70_Id",                               null: false
+        t.integer  "RoundM_Game71_Id",                               null: false
+        t.integer  "RoundM_Game72_Id",                               null: false
+        t.integer  "RoundM_Game73_Id",                               null: false
+        t.integer  "RoundM_Game74_Id",                               null: false
+        t.integer  "RoundM_Game75_Id",                               null: false
+        t.integer  "RoundM_Game76_Id",                               null: false
+        t.integer  "RoundM_Game77_Id",                               null: false
+        t.integer  "RoundM_Game78_Id",                               null: false
+        t.integer  "RoundM_Game79_Id",                               null: false
+        t.integer  "RoundM_Game80_Id",                               null: false
+        t.integer  "RoundM_Game81_Id",                               null: false
+        t.integer  "RoundM_Game82_Id",                               null: false
+        t.integer  "RoundM_Game83_Id",                               null: false
+        t.integer  "RoundM_Game84_Id",                               null: false
+        t.integer  "RoundM_Game85_Id",                               null: false
+        t.integer  "RoundM_Game86_Id",                               null: false
+        t.integer  "RoundM_Game87_Id",                               null: false
+        t.integer  "RoundM_Game88_Id",                               null: false
+        t.integer  "RoundM_Game89_Id",                               null: false
+        t.integer  "RoundM_Game90_Id",                               null: false
+        t.integer  "RoundM_Game91_Id",                               null: false
+        t.integer  "RoundM_Game92_Id",                               null: false
+        t.integer  "RoundM_Game93_Id",                               null: false
+        t.integer  "RoundM_Game94_Id",                               null: false
+        t.integer  "RoundM_Game95_Id",                               null: false
+        t.integer  "RoundM_Game96_Id",                               null: false
+        t.integer  "RoundM_Game97_Id",                               null: false
+        t.integer  "RoundM_Game98_Id",                               null: false
+        t.integer  "RoundM_Game99_Id",                               null: false
+        t.integer  "RoundM_Game100_Id",                              null: false
+        t.integer  "RoundM_Game1_UnitId",                            null: false
+        t.integer  "RoundM_Game2_UnitId",                            null: false
+        t.integer  "RoundM_Game3_UnitId",                            null: false
+        t.integer  "RoundM_Game4_UnitId",                            null: false
+        t.integer  "RoundM_Game5_UnitId",                            null: false
+        t.integer  "RoundM_Game6_UnitId",                            null: false
+        t.integer  "RoundM_Game7_UnitId",                            null: false
+        t.integer  "RoundM_Game8_UnitId",                            null: false
+        t.integer  "RoundM_Game9_UnitId",                            null: false
+        t.integer  "RoundM_Game10_UnitId",                           null: false
+        t.integer  "RoundM_Game11_UnitId",                           null: false
+        t.integer  "RoundM_Game12_UnitId",                           null: false
+        t.integer  "RoundM_Game13_UnitId",                           null: false
+        t.integer  "RoundM_Game14_UnitId",                           null: false
+        t.integer  "RoundM_Game15_UnitId",                           null: false
+        t.integer  "RoundM_Game16_UnitId",                           null: false
+        t.integer  "RoundM_Game17_UnitId",                           null: false
+        t.integer  "RoundM_Game18_UnitId",                           null: false
+        t.integer  "RoundM_Game19_UnitId",                           null: false
+        t.integer  "RoundM_Game20_UnitId",                           null: false
+        t.integer  "RoundM_Game21_UnitId",                           null: false
+        t.integer  "RoundM_Game22_UnitId",                           null: false
+        t.integer  "RoundM_Game23_UnitId",                           null: false
+        t.integer  "RoundM_Game24_UnitId",                           null: false
+        t.integer  "RoundM_Game25_UnitId",                           null: false
+        t.integer  "RoundM_Game26_UnitId",                           null: false
+        t.integer  "RoundM_Game27_UnitId",                           null: false
+        t.integer  "RoundM_Game28_UnitId",                           null: false
+        t.integer  "RoundM_Game29_UnitId",                           null: false
+        t.integer  "RoundM_Game30_UnitId",                           null: false
+        t.integer  "RoundM_Game31_UnitId",                           null: false
+        t.integer  "RoundM_Game32_UnitId",                           null: false
+        t.integer  "RoundM_Game33_UnitId",                           null: false
+        t.integer  "RoundM_Game34_UnitId",                           null: false
+        t.integer  "RoundM_Game35_UnitId",                           null: false
+        t.integer  "RoundM_Game40_UnitId",                           null: false
+        t.integer  "RoundM_Game36_UnitId",                           null: false
+        t.integer  "RoundM_Game37_UnitId",                           null: false
+        t.integer  "RoundM_Game38_UnitId",                           null: false
+        t.integer  "RoundM_Game39_UnitId",                           null: false
+        t.integer  "RoundM_Game42_UnitId",                           null: false
+        t.integer  "RoundM_Game41_UnitId",                           null: false
+        t.integer  "RoundM_Game43_UnitId",                           null: false
+        t.integer  "RoundM_Game44_UnitId",                           null: false
+        t.integer  "RoundM_Game45_UnitId",                           null: false
+        t.integer  "RoundM_Game46_UnitId",                           null: false
+        t.integer  "RoundM_Game47_UnitId",                           null: false
+        t.integer  "RoundM_Game48_UnitId",                           null: false
+        t.integer  "RoundM_Game49_UnitId",                           null: false
+        t.integer  "RoundM_Game50_UnitId",                           null: false
+        t.integer  "RoundM_Game51_UnitId",                           null: false
+        t.integer  "RoundM_Game52_UnitId",                           null: false
+        t.integer  "RoundM_Game53_UnitId",                           null: false
+        t.integer  "RoundM_Game54_UnitId",                           null: false
+        t.integer  "RoundM_Game55_UnitId",                           null: false
+        t.integer  "RoundM_Game56_UnitId",                           null: false
+        t.integer  "RoundM_Game57_UnitId",                           null: false
+        t.integer  "RoundM_Game58_UnitId",                           null: false
+        t.integer  "RoundM_Game59_UnitId",                           null: false
+        t.integer  "RoundM_Game60_UnitId",                           null: false
+        t.integer  "RoundM_Game61_UnitId",                           null: false
+        t.integer  "RoundM_Game62_UnitId",                           null: false
+        t.integer  "RoundM_Game63_UnitId",                           null: false
+        t.integer  "RoundM_Game64_UnitId",                           null: false
+        t.integer  "RoundM_Game65_UnitId",                           null: false
+        t.integer  "RoundM_Game66_UnitId",                           null: false
+        t.integer  "RoundM_Game67_UnitId",                           null: false
+        t.integer  "RoundM_Game68_UnitId",                           null: false
+        t.integer  "RoundM_Game69_UnitId",                           null: false
+        t.integer  "RoundM_Game70_UnitId",                           null: false
+        t.integer  "RoundM_Game71_UnitId",                           null: false
+        t.integer  "RoundM_Game72_UnitId",                           null: false
+        t.integer  "RoundM_Game73_UnitId",                           null: false
+        t.integer  "RoundM_Game74_UnitId",                           null: false
+        t.integer  "RoundM_Game75_UnitId",                           null: false
+        t.integer  "RoundM_Game76_UnitId",                           null: false
+        t.integer  "RoundM_Game77_UnitId",                           null: false
+        t.integer  "RoundM_Game78_UnitId",                           null: false
+        t.integer  "RoundM_Game79_UnitId",                           null: false
+        t.integer  "RoundM_Game80_UnitId",                           null: false
+        t.integer  "RoundM_Game81_UnitId",                           null: false
+        t.integer  "RoundM_Game82_UnitId",                           null: false
+        t.integer  "RoundM_Game83_UnitId",                           null: false
+        t.integer  "RoundM_Game84_UnitId",                           null: false
+        t.integer  "RoundM_Game85_UnitId",                           null: false
+        t.integer  "RoundM_Game86_UnitId",                           null: false
+        t.integer  "RoundM_Game87_UnitId",                           null: false
+        t.integer  "RoundM_Game88_UnitId",                           null: false
+        t.integer  "RoundM_Game89_UnitId",                           null: false
+        t.integer  "RoundM_Game90_UnitId",                           null: false
+        t.integer  "RoundM_Game91_UnitId",                           null: false
+        t.integer  "RoundM_Game92_UnitId",                           null: false
+        t.integer  "RoundM_Game93_UnitId",                           null: false
+        t.integer  "RoundM_Game94_UnitId",                           null: false
+        t.integer  "RoundM_Game95_UnitId",                           null: false
+        t.integer  "RoundM_Game96_UnitId",                           null: false
+        t.integer  "RoundM_Game97_UnitId",                           null: false
+        t.integer  "RoundM_Game98_UnitId",                           null: false
+        t.integer  "RoundM_Game99_UnitId",                           null: false
+        t.integer  "RoundM_Game100_UnitId",                          null: false
+      end
+
+      create_table "UserMembershipAudit", primary_key: "ID", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.string   "MasterID",       limit: 20, default: ""
+        t.string   "CompanyID",      limit: 20, default: ""
+        t.string   "OptionSelected", limit: 50
+        t.string   "Price",          limit: 10
+        t.datetime "CreatedOn"
+      end
+
+      create_table "Users", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+        t.integer  "Id",                                                                      null: false
+        t.integer  "UId",                                                                     null: false
+        t.integer  "SId",                                                                     null: false
+        t.integer  "CompanyId",                                                               null: false
+        t.integer  "Local",                                                                   null: false
+        t.integer  "Role",                                    default: 0,                     null: false
+        t.string   "Consent",                      limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.integer  "Active",                                  default: 1,                     null: false
+        t.string   "Uuid",                         limit: 50,                                 null: false
+        t.integer  "Disable",                                 default: 0,                     null: false
+        t.string   "FirstName",                    limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.string   "LastName",                     limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.string   "UserName",                     limit: 50,                                              collation: "utf8_unicode_ci"
+        t.string   "Hash",                         limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.datetime "TS"
+        t.datetime "Updated",                                 default: '1900-01-01 00:00:00', null: false
+        t.string   "Email",                        limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.string   "Email2",                       limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.string   "DKEmail",                      limit: 50,                                 null: false, collation: "utf8_unicode_ci"
+        t.string   "ScreenName",                   limit: 50,                                              collation: "utf8_unicode_ci"
+        t.string   "resetToken",                   limit: 50
+        t.integer  "Stadium",                                                                 null: false
+        t.integer  "SkillLevel",                                                              null: false
+        t.integer  "GameType",                                                                null: false
+        t.integer  "Gender",                                  default: 0,                     null: false
+        t.integer  "Bats",                                    default: 0,                     null: false
+        t.integer  "Throws",                                  default: 0,                     null: false
+        t.integer  "Position",                                default: 0,                     null: false
+        t.integer  "GraduationYear",                          default: 0,                     null: false
+        t.float    "Height",                       limit: 24
+        t.float    "HHVel",                        limit: 24
+        t.string   "School",                       limit: 50,                                              collation: "utf8_unicode_ci"
+        t.string   "HomeTown",                     limit: 50,                                              collation: "utf8_unicode_ci"
+        t.integer  "Certified",                               default: 0,                     null: false
+        t.datetime "BirthDate",                               default: '1900-01-01 00:00:00', null: false
+        t.datetime "SubscriptionStart"
+        t.integer  "SubscriptionType",                        default: 0
+        t.integer  "SubscriptionLevel",            limit: 2,  default: 0,                     null: false
+        t.datetime "Subscription"
+        t.integer  "AuthorizeNetProfileID"
+        t.integer  "AuthorizeNetPaymentProfileID"
+        t.string   "EmailSent",                    limit: 1,  default: "N"
+        t.string   "SubscriptionLevelPurchased",   limit: 50
+        t.string   "Subscribe",                    limit: 1,  default: "Y"
+        t.string   "MembershipThruFacility",       limit: 1,  default: "N"
+        t.datetime "Last MailChimp Update"
+        t.string   "InvalidEmail",                 limit: 1
+        t.index ["CompanyId"], name: "IndexCId", using: :btree
+        t.index ["SId"], name: "IndexSId", using: :btree
+      end
+
+      create_table "Zip_Code", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
+        t.integer "zip"
+        t.string  "latitude",  limit: 20
+        t.string  "longitude", limit: 20
+      end
+
+      create_table "tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.string   "name",       null: false
+        t.datetime "date",       null: false
+        t.datetime "created_at", null: false
+        t.datetime "updated_at", null: false
+      end
+
+      create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+        t.string   "uid",                                null: false
+        t.string   "name",                               null: false
+        t.string   "email",                              null: false
+        t.string   "invitation_token"
+        t.datetime "invitation_created_at"
+        t.datetime "invitation_sent_at"
+        t.datetime "invitation_accepted_at"
+        t.integer  "invitation_limit"
+        t.string   "invited_by_type"
+        t.integer  "invited_by_id"
+        t.integer  "invitations_count",      default: 0
+        t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+        t.index ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+        t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
       end
 
     end

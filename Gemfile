@@ -14,6 +14,7 @@ gem 'json', '2.0.2'
 gem 'sdoc', group: :doc
 gem 'devise'
 gem 'devise_invitable'
+gem 'yaml_db'
 
 group :development, :test do
   gem 'capybara'
