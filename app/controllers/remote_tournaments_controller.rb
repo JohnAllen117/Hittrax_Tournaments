@@ -5,9 +5,10 @@ class RemoteTournamentsController < ApplicationController
 
   def create
     @remote_tournament = RemoteTournament.new(remote_tournament_params)
+    binding.pry
     if @remote_tournament.save
       flash[:notice] = "Tournament Created"
-      redirect_to root_path
+      redirect_to remote_tournament_path(@remote_tournament)
     else
       flash[:notice] = "Invalid Entry"
       render :new
