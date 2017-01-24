@@ -9,26 +9,20 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: hittrax_centralDB
+  username: <%= Rails.application.secrets.hittrax_username %>
+  password: <%= Rails.application.secrets.hittrax_password %>
+  socket: /tmp/mysql.sock
+  host: hittraxstatscenter.com
+
 development:
-  adapter: mysql2
+  <<: *default
   database: hittrax_centralDB
-  username: <%= Rails.application.secrets[:username] %>
-  password: <%= Rails.application.secrets[:password] %>
-  host: hittraxstatscenter.com
-
-test:
-  adapter: mysql2
-  database: hittrax_centralDB
-  username: <%= Rails.application.secrets[:username] %>
-  password: <%= Rails.application.secrets[:password] %>
-  host: hittraxstatscenter.com
-
-production:
-  adapter: mysql2
-  database: hittrax_centralDB
-  username: <%= Rails.application.secrets[:username] %>
-  password: <%= Rails.application.secrets[:password] %>
-  host: hittraxstatscenter.com
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
