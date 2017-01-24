@@ -14,15 +14,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: hittrax_centralDB
-  username: <%= Rails.application.secrets.hittrax_username %>
-  password: <%= Rails.application.secrets.hittrax_password %>
   socket: /tmp/mysql.sock
-  host: hittraxstatscenter.com
 
 development:
   <<: *default
-  database: hittrax_centralDB
+  database: hittrax_tournaments_development
+  username: root
+  password: <%= Rails.application.secrets[:database][:password] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,3 +28,11 @@ development:
 test:
   <<: *default
   database: hittrax_tournaments_test
+  username: root
+  password: <%= Rails.application.secrets[:database][:password] %>
+
+production:
+  database: hittrax_centralDB
+  username: <%= Rails.application.secrets.hittrax_username %>
+  password: <%= Rails.application.secrets.hittrax_password %>
+  host: hittraxstatscenter.com
