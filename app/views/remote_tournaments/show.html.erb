@@ -1,1 +1,8 @@
 <h1> <%= @remote_tournament.name %> - <%= @remote_tournament.start_date.strftime('%B %e %Y at %l:%M %p') %> </h1>
+<br/>
+<h1>Schedule a game!</h1>
+<%= simple_form_for Schedule.new do |f| %>
+  <%= f.input :game_time, as: :datetime %>
+  <%= f.input :away_team_id, as: :integer %>
+  <%= f.input :home_team_id, as: :integer %>
+<% end %>
