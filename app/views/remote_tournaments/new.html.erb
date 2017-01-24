@@ -1,0 +1,11 @@
+<% provide(:title, "Create New List") %>
+<%= simple_form_for(@remote_tournament) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :start_date, as: :date, required: true %>
+  <%= f.input :company_id, required: true %>
+  <%= f.input :sid, required: true %>
+  <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]} ,required: true %>
+  <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, required: true %>
+  <%= f.button :submit, class: "button expand" %>
+<% end %>
