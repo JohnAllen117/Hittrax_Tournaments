@@ -15,6 +15,7 @@ default: &default
   encoding: utf8
   pool: 5
   socket: /tmp/mysql.sock
+  reconnect: true
 
 development:
   <<: *default

@@ -1,0 +1,3 @@
+class Facility < ApplicationRecord
+
+end

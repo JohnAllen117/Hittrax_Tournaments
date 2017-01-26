@@ -14,3 +14,6 @@
 
 # Ignore the secrets.yml file for storing keys
 /config/secrets.yml
+
+# Ignore DB Seeding
+/app/assets/csv
