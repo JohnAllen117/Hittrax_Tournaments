@@ -3,9 +3,10 @@
   <%= f.error_notification %>
   <%= f.input :name, required: true, autofocus: true %>
   <%= f.input :start_date, as: :datetime, required: true %>
-  <%= f.input :company_id, required: true %>
-  <%= f.input :sid, required: true %>
-  <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]} ,required: true %>
-  <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, required: true %>
+  <%= f.input :company_id, value: current_user.CompanyId, as: :hidden %>
+  <%= f.input :sid, label: "Facility 1", collection: Facility.all.pluck("CompanyName") %>
+  <%= f.input :sid2, label: "Facility 2", collection: Facility.all.pluck("CompanyName")  %>
+  <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]}, include_blank: false %>
+  <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, include_blank: false %>
   <%= f.button :submit, class: "button expand" %>
 <% end %>

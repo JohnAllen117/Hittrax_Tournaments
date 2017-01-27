@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
       User.find_by(auth_token: session[:auth_token])
     end
   end
+
+  def authenticate
+    if current_user.present?
+      true
+    else
+      flash[:notice] = "You must be signed in to do that"
+      redirect_to new_user_path
+    end
+  end
 end

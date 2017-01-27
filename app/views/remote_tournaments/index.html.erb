@@ -1,0 +1,10 @@
+<div>
+  <%= link_to "Create a new tournament!", new_remote_tournament_path %>
+  <% if @remote_tournaments.present? %>
+    <ul>
+      <% @remote_tournaments.each do |tournament| %>
+        <li><%= link_to tournament.name, tournament %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
