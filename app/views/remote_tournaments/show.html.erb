@@ -1,0 +1,26 @@
+<h1> <%= @remote_tournament.name %> - <%= @remote_tournament.start_date.strftime('%B %e %Y at %l:%M %p') %> </h1>
+<%= link_to "Edit Tournament", edit_remote_tournament_path(@remote_tournament) %>
+<br/>
+
+
+<% if @schedules.present? %>
+<ul>
+  <% @schedules.each do |schedule| %>
+    <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
+      <li><%= "#{Team.find(schedule.away_team_id).Name} at #{Team.find_by(schedule.home_team_id).Name}: #{schedule.game_time}" %>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
+<h1>Schedule a game!</h1>
+<% if @teams.present? %>
+  <%= simple_form_for Schedule.new do |f| %>
+    <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
+    <%= f.input :game_time, as: :datetime, order: [:month, :day, :year] %>
+    <%= f.input :home_team_id, collection: @teams %>
+    <%= f.input :away_team_id, collection: @teams %>
+    <%= f.button :submit, "Schedule Game", class: "button expand" %>
+  <% end %>
+<% else %>
+  <h1>Sorry, no one's accepted your tournament requests yet! Try again later.</h1>
+<% end %>

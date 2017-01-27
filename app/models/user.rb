@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  validates :uid, presence: true
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  require 'digest/md5'
+  validates :UId, presence: true
+
+  def get_facility
+    Facility.find_by(SId: self.SId)
+  end
 end

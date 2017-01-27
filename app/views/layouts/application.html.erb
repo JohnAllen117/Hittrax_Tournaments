@@ -21,13 +21,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="navbar-nav">
         <ul>
-          <%= link_to "Tournaments", new_tournament_path %>
+          <li><%= link_to "Tournaments", remote_tournaments_path %></li>
         </ul>
       </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Pending Tournaments", tournament_invites_path %></li>
+        <% if current_user.present? %>
+          <li><%= link_to "Log out", edit_user_path(current_user) %></li>
+        <% else %>
+          <li><%= link_to "Login", new_user_path %></li>
+        <% end %>
+      </ul>
     </div>
   </div><!-- /.container-fluid -->
 </nav>
 <body>
+
+<%= render partial: "shared/flash_messages", flash: flash %>
 
 <%= yield %>
 
