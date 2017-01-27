@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127193940) do
+ActiveRecord::Schema.define(version: 20170127201847) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6317,7 +6317,6 @@ ActiveRecord::Schema.define(version: 20170127193940) do
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "sid",                                                          null: false
     t.integer  "company_id",                                                   null: false
     t.integer  "playoff_type",                                                 null: false
     t.string   "name",         limit: 50, default: "",                         null: false
@@ -6327,7 +6326,6 @@ ActiveRecord::Schema.define(version: 20170127193940) do
     t.integer  "format",                                                       null: false
     t.integer  "winner_id"
     t.integer  "winner_uid"
-    t.integer  "sid2"
   end
 
   create_table "remote_tournaments_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6342,6 +6340,14 @@ ActiveRecord::Schema.define(version: 20170127193940) do
     t.string   "away_team_id"
     t.string   "home_team_id"
     t.integer  "remote_tournament_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "tournament_invites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "remote_tournament_id"
+    t.integer  "site_id"
+    t.boolean  "accepted"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

@@ -1,0 +1,9 @@
+<ul>
+  <% @tournament_invites.each do |invite| %>
+    <% if invite.accepted? %>
+      <li><%= link_to "#{invite.remote_tournament.name}", remote_tournament_path(invite.remote_tournament.id) %>
+    <% else %>
+      <li><%= link_to "Accept tournament request?", edit_tournament_invite_path(invite) %> <%= "#{invite.remote_tournament.name}" %></li>
+    <% end %>
+  <% end %>
+</ul>

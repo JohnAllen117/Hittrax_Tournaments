@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :remote_tournaments, only: [:new, :create, :edit, :update, :destroy, :index, :show]
   resources :schedules, only: [:create, :edit, :update, :destroy]
   resources :users, only: [:new, :create, :edit]
+  resources :tournament_invites, only: [:index, :edit]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
