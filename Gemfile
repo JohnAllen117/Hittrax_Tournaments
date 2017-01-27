@@ -15,6 +15,7 @@ gem 'sdoc', group: :doc
 gem 'devise'
 gem 'devise_invitable'
 gem 'yaml_db'
+gem 'pry-byebug'
 
 group :development, :test do
   gem 'capybara'
