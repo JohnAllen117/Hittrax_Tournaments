@@ -16,4 +16,13 @@ class RemoteTournament < ApplicationRecord
       teams += Team.where(SId: self.sid2)
     end
   end
+
+  def get_team_values
+    team_array = []
+    self.teams.each do |team|
+      team_array << {master_id: team[:MasterID], name: team[:Name]}
+    end
+    
+    team_array
+  end
 end
