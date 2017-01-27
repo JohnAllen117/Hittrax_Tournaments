@@ -1,0 +1,6 @@
+<% provide(:title, "Login") %>
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :Email, required: true, autofocus: true %>
+  <%= f.input :Hash, label: "Password", required: true %>
+  <%= f.button :submit, class: "button expand" %>
+<% end %>

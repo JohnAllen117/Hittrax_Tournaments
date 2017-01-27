@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124200759) do
+ActiveRecord::Schema.define(version: 20170127164909) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6305,6 +6305,7 @@ ActiveRecord::Schema.define(version: 20170124200759) do
     t.string   "MembershipThruFacility",       limit: 1,  default: "N"
     t.datetime "Last MailChimp Update"
     t.string   "InvalidEmail",                 limit: 1
+    t.string   "auth_token"
     t.index ["CompanyId"], name: "IndexCId", using: :btree
     t.index ["SId"], name: "IndexSId", using: :btree
   end
