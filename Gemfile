@@ -16,6 +16,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'yaml_db'
 gem 'pry-byebug'
+gem 'rack-wwwhisper', '~> 1.0'
 
 group :development, :test do
   gem 'capybara'
@@ -37,4 +38,8 @@ end
 
 group :development do
   gem 'spring'
+end
+
+group :production do
+  gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 end
