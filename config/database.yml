@@ -33,7 +33,6 @@ test:
   password: <%= Rails.application.secrets[:database][:password] %>
 
 production:
-  production:
   adapter: mysql2
   database: hittrax_centralDB
   username: <%= ENV['USERNAME'] %>
