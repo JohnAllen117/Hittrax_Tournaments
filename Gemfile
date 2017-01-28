@@ -39,7 +39,3 @@ end
 group :development do
   gem 'spring'
 end
-
-group :production do
-  gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
-end
