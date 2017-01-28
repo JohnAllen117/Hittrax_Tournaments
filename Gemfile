@@ -18,7 +18,6 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'yaml_db'
 gem 'pry-byebug'
-gem 'rails_12factor', group: 'production'
 gem 'rack-wwwhisper', '~> 1.0'
 gem 'unicorn', group: 'production'
 
