@@ -139,7 +139,6 @@ GEM
     multi_json (1.12.1)
     mysql2 (0.4.5)
     nenv (0.3.0)
-    net-http-persistent (2.9.4)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -159,10 +158,6 @@ GEM
     public_suffix (2.0.5)
     rack (2.0.1)
     rack-test (0.6.3)
-      rack (>= 1.0)
-    rack-wwwhisper (1.1.12)
-      addressable (~> 2.0)
-      net-http-persistent (< 3.0)
       rack (>= 1.0)
     rails (5.0.1)
       actioncable (= 5.0.1)
@@ -302,7 +297,6 @@ DEPENDENCIES
   mysql2 (>= 0.2.12)
   pry-byebug
   pry-rails
-  rack-wwwhisper (~> 1.0)
   rails (= 5.0.1)
   rspec-its
   rspec-rails
