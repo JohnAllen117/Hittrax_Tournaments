@@ -20,7 +20,8 @@ test:
 production:
   adapter: mysql2
   database: hittrax_centralDB
-  username: <%= ENV['hittrax_username'] %>
-  password: <%= ENV['hittrax_password'] %>
-  host: <%= ENV['host'] %>
+  username: <%= ENV['HITTRAX_USERNAME'] %>
+  password: <%= ENV['HITTRAX_PASSWORD'] %>
+  host: <%= ENV['HOST'] %>
+  secret_key_base: <%= ENV['SECRET_KEY_BASE'] %>
   port: 3306
