@@ -9,13 +9,13 @@ development:
   <<: *default
   database: hittrax_tournaments_development
   username: root
-  password: <%= Rails.application.secrets[:database][:password] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 test:
   <<: *default
   database: hittrax_tournaments_test
   username: root
-  password: <%= Rails.application.secrets[:database][:password] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 production:
   adapter: mysql2
