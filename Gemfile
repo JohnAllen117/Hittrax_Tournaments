@@ -19,6 +19,7 @@ gem 'devise_invitable'
 gem 'yaml_db'
 gem 'pry-byebug'
 gem 'rack-wwwhisper', '~> 1.0'
+gem 'figaro'
 gem 'unicorn', group: 'production'
 
 group :development, :test do

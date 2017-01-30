@@ -17,3 +17,6 @@
 
 # Ignore DB Seeding
 /app/assets/csv
+
+# Ignore application configuration
+/config/application.yml
