@@ -1,7 +1,6 @@
 class CreateRemoteTournaments < ActiveRecord::Migration[5.0]
   def change
     create_table :remote_tournaments do |t|
-      t.integer  :sid, null: false
       t.integer  :company_id, null: false
       t.integer  :playoff_type,                                                 null: false
       t.string   :name, limit: 50, default: "", null: false
