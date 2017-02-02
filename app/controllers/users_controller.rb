@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     user_email = params[:user][:Email]
     password = params[:user][:Hash]
-    u = User.find_by(email: user_email)
+    u = User.find_by(email: user_email, role: 1)
     if u.present?
       if Digest::MD5.hexdigest(password) == u.Hash
         set_auth_token(u)
