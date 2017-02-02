@@ -19,13 +19,17 @@
       <%= link_to image_tag("logo.png"), root_path, class: "navbar-brand" %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <div class="navbar-nav">
-        <ul>
-          <li><%= link_to "Tournaments", remote_tournaments_path %></li>
-        </ul>
-      </div>
+      <% if current_user.present? %>
+        <div class="navbar-nav">
+          <ul>
+            <li><%= link_to "Tournaments", remote_tournaments_path %></li>
+          </ul>
+        </div>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Pending Tournaments", tournament_invites_path %></li>
+        <% if current_user.present? %>
+          <li><%= link_to "Pending Tournaments", tournament_invites_path %></li>
+        <% end %>
         <% if current_user.present? %>
           <li><%= link_to "Log out", edit_user_path(current_user) %></li>
         <% else %>
