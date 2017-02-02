@@ -4370,7 +4370,7 @@ ActiveRecord::Schema.define(version: 20170127201847) do
     t.integer  "TournamentId",                                 null: false
     t.integer  "GameId",                                       null: false
     t.integer  "GameUId",                                      null: false
-    t.datetime "TS",           default: '2017-02-02 19:28:21', null: false
+    t.datetime "TS",           default: '2017-02-02 20:10:54', null: false
   end
 
   create_table "RemoteTournamentsOld", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT" do |t|
