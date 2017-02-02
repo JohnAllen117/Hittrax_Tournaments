@@ -1,0 +1,3 @@
+# Remove db setup migration from production server
+
+/db/migrate/20170124161400_create_database_structure.rb
