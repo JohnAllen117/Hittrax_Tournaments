@@ -9,13 +9,13 @@ development:
   <<: *default
   database: hittrax_tournaments_development
   username: root
-  password: <%= ENV['local_database_password'] %>
+  password: <%= ENV['LOCAL_DATABASE_PASSWORD'] %>
 
 test:
   <<: *default
   database: hittrax_tournaments_test
   username: root
-  password: <%= ENV['local_database_password'] %>
+  password: <%= ENV['LOCAL_DATABASE_PASSWORD'] %>
 
 production:
   adapter: mysql2
