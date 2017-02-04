@@ -3,6 +3,7 @@ class RemoteTournamentsController < ApplicationController
   def new
     @remote_tournament = RemoteTournament.new
     @tournament_invites = TournamentInvite.new
+    @facilities = Facility.all.uniq.order(:CompanyName).map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
   end
 
   def create
