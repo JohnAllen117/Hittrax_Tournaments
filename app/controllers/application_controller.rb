@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: "hittrax", password: "vKSa4k!B"
+  http_basic_authenticate_with name: "hittrax", password: "vKSa4k!B" if Rails.env.production?
   protect_from_forgery with: :exception
   helper_method :current_user
 
