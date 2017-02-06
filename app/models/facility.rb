@@ -2,6 +2,9 @@ class Facility < ApplicationRecord
   require 'csv'
   self.table_name = "Facilities"
 
+  has_many :tournament_invites
+  belongs_to :remote_tournament
+
   def teams
     Team.where(SId: self.sid)
   end

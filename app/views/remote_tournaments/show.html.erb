@@ -2,15 +2,27 @@
 <%= link_to "Edit Tournament", edit_remote_tournament_path(@remote_tournament) %>
 <br/>
 
-
-<% if @schedules.present? %>
-<ul>
-  <% @schedules.each do |schedule| %>
-    <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
-      <li><%= "#{Team.find_by(schedule.away_team_id).Name} at #{Team.find_by(schedule.home_team_id).Name}: #{schedule.game_time}" %>
+<% if @facilities.present? %>
+  <h1>Invited Facilities</h1>
+  <ul>
+    <% @facilities.each do |facility| %>
+      <%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
+      <% if facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament).accepted? %>
+        (Accepted)
+      <% else %>
+        (Not Accepted)
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
+<% if @schedules.present? %>
+  <ul>
+    <% @schedules.each do |schedule| %>
+      <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
+        <li><%= "#{Team.find_by(schedule.away_team_id).Name} at #{Team.find_by(schedule.home_team_id).Name}: #{schedule.game_time}" %>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>
 <% if @teams.present? %>
   <h1>Schedule a game!</h1>

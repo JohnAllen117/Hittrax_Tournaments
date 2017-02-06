@@ -3,4 +3,5 @@ class TournamentInvite < ApplicationRecord
   validates :site_id, presence: true
 
   belongs_to :remote_tournament
+  belongs_to :facility
 end

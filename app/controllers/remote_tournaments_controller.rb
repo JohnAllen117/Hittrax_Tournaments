@@ -34,6 +34,7 @@ class RemoteTournamentsController < ApplicationController
   def show
     @remote_tournament = RemoteTournament.find_by(params[:id])
     @teams = []
+    @facilities = @remote_tournament.facilities
     @remote_tournament.tournament_invites.where(accepted: 1).each do |invite|
       @teams << Team.where(SId: invite.site_id)
     end

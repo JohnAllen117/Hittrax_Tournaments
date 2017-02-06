@@ -8,6 +8,7 @@ class RemoteTournament < ApplicationRecord
   validates :playoff_type, presence: true
 
   has_many :schedules
+  has_many :facilities, through: :tournament_invites
   has_many :tournament_invites
 
   accepts_nested_attributes_for :tournament_invites
