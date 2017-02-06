@@ -20,6 +20,7 @@ gem 'yaml_db'
 gem 'pry-byebug'
 gem 'figaro'
 gem 'unicorn', group: 'production'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'capybara'

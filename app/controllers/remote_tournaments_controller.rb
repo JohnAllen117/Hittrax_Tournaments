@@ -46,12 +46,12 @@ class RemoteTournamentsController < ApplicationController
   end
 
   def edit
-    @remote_tournament = RemoteTournament.find(params[:id])
+    @remote_tournament = RemoteTournament.find_by(params[:id])
     @tournament_invites = TournamentInvite.new
   end
 
   def update
-    @remote_tournament = RemoteTournament.find(params[:id])
+    @remote_tournament = RemoteTournament.find_by(params[:id])
     if @remote_tournament.update(remote_tournament_params)
       flash[:notice] = "Tournament updated"
       redirect_to remote_tournament_path(@remote_tournament)
