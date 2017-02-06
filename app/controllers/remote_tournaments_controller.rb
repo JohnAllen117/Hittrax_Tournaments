@@ -36,7 +36,7 @@ class RemoteTournamentsController < ApplicationController
     @teams = []
     @facilities = @remote_tournament.facilities
     @remote_tournament.tournament_invites.where(accepted: 1).each do |invite|
-      @teams << Team.where(SId: invite.site_id)
+      @teams << Team.where(SId: invite.facility_id)
     end
     if @teams.present?
       @teams = @teams.first.map { |obj| [obj[:Name].gsub!('"', ''), obj[:MasterID]] }
