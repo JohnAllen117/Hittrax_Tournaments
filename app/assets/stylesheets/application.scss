@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-overrides";
 
 .navbar-default {
   background-color: #222;
@@ -10,10 +11,17 @@
   padding: 10px;
 }
 
-.landing-page-banner{
+.landing-page-banner {
   width: 1440px;
   height: auto;
   right: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.background-image{
+  position: relative;
 }
 
 .facility-form{
