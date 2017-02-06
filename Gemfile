@@ -21,6 +21,7 @@ gem 'pry-byebug'
 gem 'figaro'
 gem 'unicorn', group: 'production'
 gem 'rails_12factor'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'capybara'

@@ -1,16 +1,18 @@
 <h1> <%= @remote_tournament.name %> - <%= @remote_tournament.start_date.strftime('%B %e %Y at %l:%M %p') %> </h1>
 <%= link_to "Edit Tournament", edit_remote_tournament_path(@remote_tournament) %>
 <br/>
-
 <% if @facilities.present? %>
   <h1>Invited Facilities</h1>
   <ul>
     <% @facilities.each do |facility| %>
+      <% @tournament_invite = facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament) %>
       <li><%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
-        <% if facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament).accepted? %>
+        <% if @tournament_invite.accepted? %>
           (Accepted)
-        <% else %>
+        <% elsif  @tournament_invite.rejected? %>
           (Not Accepted)
+        <% else %>
+          (Pending)
         <% end %>
       </li>
     <% end %>
