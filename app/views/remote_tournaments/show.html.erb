@@ -12,8 +12,8 @@
   <% end %>
 </ul>
 <% end %>
-<h1>Schedule a game!</h1>
 <% if @teams.present? %>
+  <h1>Schedule a game!</h1>
   <%= simple_form_for Schedule.new do |f| %>
     <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
     <%= f.input :game_time, as: :datetime, order: [:month, :day, :year] %>
@@ -22,5 +22,5 @@
     <%= f.button :submit, "Schedule Game", class: "button expand" %>
   <% end %>
 <% else %>
-  <h1>Sorry, no one's accepted your tournament requests yet! Try again later.</h1>
+  <h1>Sorry, no one's accepted your tournament requests yet! Check again later.</h1>
 <% end %>
