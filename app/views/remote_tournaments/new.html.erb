@@ -7,7 +7,7 @@
   <div class="facility-form">
     <%= f.fields_for @tournament_invites do |g| %>
       <%= label_tag "Select Facilities" %>
-      <%= g.input :site_id, collection: @facilities, label: false, as: :check_boxes %>
+      <%= g.input :facility_id, collection: @facilities, label: false, as: :check_boxes %>
     <% end %>
   </div>
   <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]}, include_blank: false %>

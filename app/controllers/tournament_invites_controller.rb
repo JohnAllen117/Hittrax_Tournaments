@@ -1,6 +1,6 @@
 class TournamentInvitesController < ApplicationController
   def index
-    @tournament_invites = TournamentInvite.where(site_id: current_user.SId)
+    @tournament_invites = TournamentInvite.where(facility_id: current_user.SId)
   end
 
   def edit

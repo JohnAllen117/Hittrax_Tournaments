@@ -18,9 +18,9 @@ class RemoteTournamentsController < ApplicationController
       render :new
     end
 
-    tournament_invites = params[:remote_tournament][:tournament_invite][:site_id].reject { |x| x.empty? }
+    tournament_invites = params[:remote_tournament][:tournament_invite][:facility_id].reject { |x| x.empty? }
     tournament_invites.each do |invite|
-      t = TournamentInvite.new(site_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0)
+      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0)
       if t.valid?
         t.save!
       else
@@ -62,9 +62,9 @@ class RemoteTournamentsController < ApplicationController
       flash[:notice] = "Invalid Entry"
       render :edit
     end
-    tournament_invites = params[:remote_tournament][:tournament_invite][:site_id].reject { |x| x.empty? }
+    tournament_invites = params[:remote_tournament][:tournament_invite][:facility_id].reject { |x| x.empty? }
     tournament_invites.each do |invite|
-      t = TournamentInvite.new(site_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0)
+      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0)
       if t.valid?
         t.save!
       else
