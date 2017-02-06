@@ -3,7 +3,14 @@ class RemoteTournamentsController < ApplicationController
   def new
     @remote_tournament = RemoteTournament.new
     @tournament_invites = TournamentInvite.new
-    @facilities = Facility.all.uniq.order(:CompanyName).map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
+    @admin_sids = User.all.where(role: 1).pluck(:SId)
+    @facilities = []
+    @admin_sids.each do |sid|
+      if Facility.find_by(SId: sid)
+        @facilities << Facility.find_by(SId: sid)
+      end
+    end
+    @facilities = @facilities.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
   end
 
   def create
