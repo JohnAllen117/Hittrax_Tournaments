@@ -3,14 +3,7 @@ class RemoteTournamentsController < ApplicationController
   def new
     @remote_tournament = RemoteTournament.new
     @tournament_invites = TournamentInvite.new
-    @admin_sids = User.all.where(role: 1).pluck(:SId)
-    @facilities = []
-    @admin_sids.each do |sid|
-      if Facility.find_by(SId: sid)
-        @facilities << Facility.find_by(SId: sid)
-      end
-    end
-    @facilities = @facilities.sort_by{|x| x[:CompanyName]}.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
+    @facilities = RemoteTournament.facilities
   end
 
   def create
@@ -58,6 +51,7 @@ class RemoteTournamentsController < ApplicationController
   def edit
     @remote_tournament = RemoteTournament.find_by(params[:id])
     @tournament_invites = TournamentInvite.new
+    @facilities = RemoteTournament.facilities
   end
 
   def update
