@@ -6,12 +6,13 @@
   <h1>Invited Facilities</h1>
   <ul>
     <% @facilities.each do |facility| %>
-      <%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
-      <% if facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament).accepted? %>
-        (Accepted)
-      <% else %>
-        (Not Accepted)
-      <% end %>
+      <li><%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
+        <% if facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament).accepted? %>
+          (Accepted)
+        <% else %>
+          (Not Accepted)
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
