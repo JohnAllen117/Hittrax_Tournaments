@@ -10,7 +10,7 @@ class RemoteTournamentsController < ApplicationController
         @facilities << Facility.find_by(SId: sid)
       end
     end
-    @facilities = @facilities.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
+    @facilities = @facilities.sort_by{|x| x[:CompanyName]}.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
   end
 
   def create
