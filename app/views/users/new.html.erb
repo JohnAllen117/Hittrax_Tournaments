@@ -1,6 +1,18 @@
 <% provide(:title, "Login") %>
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :Email, required: true, autofocus: true %>
-  <%= f.input :Hash, label: "Password", required: true %>
-  <%= f.button :submit, class: "button expand" %>
-<% end %>
+<form>
+  <div class="login-form well">
+    <h3>Please enter your login information</h1>
+    </br>
+    <%= simple_form_for(@user) do |f| %>
+      <div class="form-group">
+        <%= f.input :Email, required: true, autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.input :Hash, label: "Password", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.button :submit, class: "button expand" %>
+      </div>
+    <% end %>
+  </div>
+<form>
