@@ -1,0 +1,9 @@
+<% provide(:title, "Select The Teams") %>
+<h2>Please select the team(s) that will participate in the tournament.<h2>
+<%= simple_form_for(@tournament_team) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :team_id, collection: @teams, label: "Select Teams", as: :check_boxes %>
+  <%= f.hidden_field :facility_id, value: @facility.Id %>
+  <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
+  <%= f.button :submit, class: "button expand" %>
+<% end %>
