@@ -5,4 +5,8 @@ class TournamentTeam < ApplicationRecord
 
   belongs_to :remote_tournament
   belongs_to :facility
+
+  def team
+    Team.find_by(Id: self.team_id)
+  end
 end
