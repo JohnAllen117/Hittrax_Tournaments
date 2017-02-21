@@ -33,13 +33,18 @@ class RemoteTournamentsController < ApplicationController
 
   def show
     @remote_tournament = RemoteTournament.find_by(params[:id])
+    team_ids = @remote_tournament.tournament_teams.pluck(:team_id)
+
     @teams = []
-    @facilities = @remote_tournament.facilities
-    @remote_tournament.tournament_invites.where(accepted: 1).each do |invite|
-      @teams << Team.where(SId: invite.facility_id)
+    team_ids.each do |team|
+      t = Team.find_by(id: team)
+      @teams << t
     end
+
+    @facilities = @remote_tournament.facilities
+
     if @teams.present?
-      @teams = @teams.first.map { |obj| [obj[:Name].gsub!('"', ''), obj[:MasterID]] }
+      @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
     end
     @schedules = @remote_tournament.schedules
   end

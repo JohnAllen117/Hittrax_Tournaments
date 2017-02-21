@@ -10,6 +10,8 @@ class RemoteTournament < ApplicationRecord
   has_many :schedules
   has_many :facilities, through: :tournament_invites
   has_many :tournament_invites
+  has_many :teams, through: :tournament_teams
+  has_many :tournament_teams
 
   accepts_nested_attributes_for :tournament_invites
 

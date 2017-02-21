@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :schedules, only: [:create, :edit, :update, :destroy]
   resources :users, only: [:new, :create, :edit]
   resources :tournament_invites, only: [:index, :edit]
+  resources :tournament_teams, only: [:new, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

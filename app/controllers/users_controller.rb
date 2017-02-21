@@ -27,9 +27,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    u = User.find_by(MasterId: params["id"])
     session[:auth_token] = nil
     reset_session
     current_user = nil
+    u.auth_token = nil
+    u.save
     flash[:notice] = "You have been successfully logged out."
     redirect_to root_url
   end
@@ -43,5 +46,8 @@ class UsersController < ApplicationController
 
   def generate_auth_token
     SecureRandom.uuid.gsub(/\-/,'')
+  end
+
+  def remove_auth_token(u)
   end
 end

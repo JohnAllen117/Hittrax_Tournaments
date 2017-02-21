@@ -6,7 +6,7 @@ class Facility < ApplicationRecord
   belongs_to :remote_tournament
 
   def teams
-    Team.where(SId: self.sid)
+    Team.where(SId: self.SId)
   end
 
   def self.generate_csv
