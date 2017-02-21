@@ -22,7 +22,7 @@
   <ul>
     <% @schedules.each do |schedule| %>
       <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
-        <li><%= "#{Team.find_by(schedule.away_team_id).Name} at #{Team.find_by(schedule.home_team_id).Name}: #{schedule.game_time}" %>
+        <li><%= "#{Team.find_by(MasterID: schedule.away_team_id).Name} at #{Team.find_by(MasterID: schedule.home_team_id).Name}: #{schedule.game_time.strftime("%A, %B %d, %Y %l:%M %p UTC")}" %>
       <% end %>
     <% end %>
   </ul>
