@@ -19,6 +19,7 @@
   </ul>
 <% end %>
 <% if @schedules.present? %>
+  <h2>Scheduled Games</h2>
   <ul>
     <% @schedules.each do |schedule| %>
       <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
