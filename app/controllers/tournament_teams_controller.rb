@@ -1,7 +1,7 @@
 class TournamentTeamsController < ApplicationController
   def new
     @tournament_team = TournamentTeam.new
-    @remote_tournament = RemoteTournament.find_by(params[:remote_tournament_id])
+    @remote_tournament = RemoteTournament.find_by(id: params[:remote_tournament_id])
     @facility = Facility.find_by(SId: params[:facility_id])
     @teams = @facility.teams.map {|x| [x[:Name], x[:MasterID]]}
   end
@@ -15,7 +15,6 @@ class TournamentTeamsController < ApplicationController
       if t.valid?
         t.save!
       else
-        binding.pry
         flash[:notice] = "Failed to invite some teams"
         redirect_to new_remote_tournament_path
       end

@@ -1,0 +1,15 @@
+<% provide(:title, "Edit Facility Details") %>
+<h1>Edit Facility Details</h1>
+<br/>
+<div class="well">
+  <%= simple_form_for(@facility) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :Email, required: true, autofocus: true %>
+    <%= f.input :AddressLine1, required: true %>
+    <%= f.input :AddressLine2 %>
+    <%= f.input :Country, required: true %>
+    <%= f.input :Phone %>
+    <%= f.input :Website %>
+    <%= f.button :submit, class: "button expand" %>
+  <% end %>
+</div>
