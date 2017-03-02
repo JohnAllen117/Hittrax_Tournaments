@@ -30,28 +30,6 @@ class RemoteTournamentsController < ApplicationController
     end
   end
 
-  def show
-    @remote_tournament = RemoteTournament.find_by(id: params[:id])
-    team_ids = @remote_tournament.tournament_teams.pluck(:team_id)
-
-    @teams = []
-    team_ids.each do |team|
-      t = Team.find_by(id: team)
-      @teams << t
-    end
-
-    @facilities = @remote_tournament.facilities
-
-    if @teams.present?
-      @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
-    end
-    @schedules = @remote_tournament.schedules
-  end
-
-  def index
-    @remote_tournaments = RemoteTournament.where(company_id: current_user.CompanyId)
-  end
-
   def edit
     @remote_tournament = RemoteTournament.find_by(id: params[:id])
     @tournament_invites = TournamentInvite.new
@@ -78,6 +56,29 @@ class RemoteTournamentsController < ApplicationController
       end
     end
   end
+  
+  def show
+    @remote_tournament = RemoteTournament.find_by(id: params[:id])
+    team_ids = @remote_tournament.tournament_teams.pluck(:team_id)
+
+    @teams = []
+    team_ids.each do |team|
+      t = Team.find_by(id: team)
+      @teams << t
+    end
+
+    @facilities = @remote_tournament.facilities
+
+    if @teams.present?
+      @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
+    end
+    @schedules = @remote_tournament.schedules
+  end
+
+  def index
+    @remote_tournaments = RemoteTournament.where(company_id: current_user.CompanyId)
+  end
+
 
   private
 
