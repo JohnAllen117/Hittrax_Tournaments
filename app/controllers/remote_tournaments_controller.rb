@@ -24,7 +24,6 @@ class RemoteTournamentsController < ApplicationController
       if t.valid?
         t.save!
       else
-        binding.pry
         flash[:notice] = "Failed to invite some facilities"
         redirect_to new_remote_tournament_path
       end
@@ -32,13 +31,13 @@ class RemoteTournamentsController < ApplicationController
   end
 
   def edit
-    @remote_tournament = RemoteTournament.find_by(params[:id])
+    @remote_tournament = RemoteTournament.find_by(id: params[:id])
     @tournament_invites = TournamentInvite.new
     @facilities = RemoteTournament.facilities
   end
 
   def update
-    @remote_tournament = RemoteTournament.find_by(params[:id])
+    @remote_tournament = RemoteTournament.find_by(id: params[:id])
     if @remote_tournament.update(remote_tournament_params)
       flash[:notice] = "Tournament updated"
       redirect_to remote_tournament_path(@remote_tournament)
@@ -52,15 +51,14 @@ class RemoteTournamentsController < ApplicationController
       if t.valid?
         t.save!
       else
-        binding.pry
         flash[:notice] = "Failed to invite some facilities"
         redirect_to new_remote_tournament_path
       end
     end
   end
-
+  
   def show
-    @remote_tournament = RemoteTournament.find_by(params[:id])
+    @remote_tournament = RemoteTournament.find_by(id: params[:id])
     team_ids = @remote_tournament.tournament_teams.pluck(:team_id)
 
     @teams = []
@@ -80,6 +78,7 @@ class RemoteTournamentsController < ApplicationController
   def index
     @remote_tournaments = RemoteTournament.where(company_id: current_user.CompanyId)
   end
+
 
   private
 

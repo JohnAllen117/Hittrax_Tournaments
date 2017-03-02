@@ -10,7 +10,6 @@ class Facility < ApplicationRecord
   end
 
   def self.generate_csv
-    binding.pry
     File.open("teams.csv", "w") do |csv|
       csv << Team.column_names
       Team.all.each do |u|
