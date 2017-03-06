@@ -1,7 +1,6 @@
 class TournamentTeam < ApplicationRecord
   validates :remote_tournament_id, presence: true
-  validates :facility_id, presence: true
-  validates :team_id, presence: true
+  validates :team_master_id, presence: true
 
   belongs_to :remote_tournament
   belongs_to :facility
