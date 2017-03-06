@@ -9,6 +9,7 @@ class RemoteTournamentsController < ApplicationController
   def create
     @remote_tournament = RemoteTournament.new(remote_tournament_params)
     @remote_tournament.company_id = current_user.CompanyId
+    @remote_tournament.TS = DateTime.now
 
     if @remote_tournament.save
       flash[:notice] = "Tournament Created"
@@ -56,10 +57,10 @@ class RemoteTournamentsController < ApplicationController
       end
     end
   end
-  
+
   def show
     @remote_tournament = RemoteTournament.find_by(id: params[:id])
-    team_ids = @remote_tournament.tournament_teams.pluck(:team_id)
+    team_ids = @remote_tournament.tournament_teams.pluck(:team_master_id)
 
     @teams = []
     team_ids.each do |team|
