@@ -2,7 +2,7 @@
 <%= simple_form_for(@remote_tournament) do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :start_date, as: :datetime, required: true %>
+  <%= f.input :start_date,  input_html: {value: @default_time }, as: :datetime, required: true %>
   <%= f.input :company_id, value: current_user.CompanyId, as: :hidden %>
   <div class="facility-form">
     <%= f.fields_for @tournament_invites do |g| %>

@@ -4,6 +4,7 @@ class RemoteTournamentsController < ApplicationController
     @remote_tournament = RemoteTournament.new
     @tournament_invites = TournamentInvite.new
     @facilities = RemoteTournament.facilities
+    @remote_tournament.start_date = DateTime.now
   end
 
   def create
