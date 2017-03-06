@@ -64,7 +64,7 @@ class RemoteTournamentsController < ApplicationController
 
     @teams = []
     team_ids.each do |team|
-      t = Team.find_by(id: team)
+      t = Team.find_by(MasterId: team)
       @teams << t
     end
 
