@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216203658) do
+ActiveRecord::Schema.define(version: 20170306181001) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6317,16 +6317,15 @@ ActiveRecord::Schema.define(version: 20170216203658) do
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id",                                              null: false
-    t.integer  "playoff_type",                                            null: false
-    t.string   "name",         limit: 50, default: "",                    null: false
-    t.datetime "start_date",              default: '2017-02-06 19:11:47', null: false
-    t.integer  "finished",                default: 0,                     null: false
-    t.integer  "format",                                                  null: false
-    t.integer  "winner_id"
-    t.integer  "winner_uid"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.integer  "company_id",                                                  null: false
+    t.integer  "playoff_type",                                                null: false
+    t.string   "name",             limit: 50, default: "",                    null: false
+    t.datetime "start_date",                  default: '2017-02-06 19:11:47', null: false
+    t.integer  "finished",                    default: 0,                     null: false
+    t.integer  "format",                                                      null: false
+    t.datetime "TS",                                                          null: false
+    t.datetime "updated_at",                                                  null: false
+    t.string   "winner_master_id"
   end
 
   create_table "remote_tournaments_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6353,10 +6352,10 @@ ActiveRecord::Schema.define(version: 20170216203658) do
 
   create_table "tournament_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "remote_tournament_id", null: false
-    t.integer  "team_id",              null: false
-    t.integer  "facility_id",          null: false
-    t.datetime "created_at",           null: false
+    t.datetime "TS",                   null: false
     t.datetime "updated_at",           null: false
+    t.string   "team_master_id"
+    t.string   "team_name"
   end
 
 end
