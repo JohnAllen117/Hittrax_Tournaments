@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
+    @schedule.TS = DateTime.now
     if @schedule.save
       flash[:notice] = "Game Created"
       redirect_to remote_tournament_path(@schedule.remote_tournament)

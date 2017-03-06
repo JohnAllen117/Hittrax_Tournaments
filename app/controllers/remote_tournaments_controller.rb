@@ -21,7 +21,7 @@ class RemoteTournamentsController < ApplicationController
 
     tournament_invites = params[:remote_tournament][:tournament_invite][:facility_id].reject { |x| x.empty? }
     tournament_invites.each do |invite|
-      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0)
+      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0, TS: DateTime.now)
       if t.valid?
         t.save!
       else
