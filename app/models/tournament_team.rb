@@ -6,6 +6,6 @@ class TournamentTeam < ApplicationRecord
   belongs_to :facility
 
   def team
-    Team.find_by(Id: self.team_id)
+    Team.find_by(MasterId: self.team_master_id)
   end
 end
