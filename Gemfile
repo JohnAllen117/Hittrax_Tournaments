@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'unicorn', group: 'production'
 gem 'rails_12factor'
 gem 'font-awesome-rails'
+gem 'tod'
 
 group :development, :test do
   gem 'capybara'

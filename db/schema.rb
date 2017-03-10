@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306202629) do
+ActiveRecord::Schema.define(version: 20170308044644) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -2437,6 +2437,7 @@ ActiveRecord::Schema.define(version: 20170306202629) do
     t.string   "EnableFacilityMemberships", limit: 1,   default: "N"
     t.string   "EnableGames",               limit: 1,   default: "N"
     t.string   "EnableRecruitingEngine",    limit: 1,   default: "N"
+    t.boolean  "OptedIn",                               default: false
   end
 
   create_table "FacilityMembershipCart", unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6314,6 +6315,20 @@ ActiveRecord::Schema.define(version: 20170306202629) do
     t.integer "zip"
     t.string  "latitude",  limit: 20
     t.string  "longitude", limit: 20
+  end
+
+  create_table "facility_availabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  end
+
+  create_table "facility_availability", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "facility_master_id"
+    t.string   "hours_start_time"
+    t.string   "hours_end_time"
+    t.string   "availability_start_time"
+    t.string   "availability_end_time"
+    t.integer  "day"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
