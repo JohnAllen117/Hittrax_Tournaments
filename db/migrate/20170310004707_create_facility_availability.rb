@@ -11,6 +11,7 @@ class CreateFacilityAvailability < ActiveRecord::Migration[5.0]
       t.string :availability_end_time
       t.string :preferred_start_time
       t.string :preferred_end_time
+      t.boolean :open?
 
       t.timestamps
     end

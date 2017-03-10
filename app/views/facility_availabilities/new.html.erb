@@ -1,25 +1,56 @@
 <% provide(:title, "Opt into remote gaming") %>
-<h2>Please fill out some items that will help others find you for Remote Gaming<h2>
-<% @facility_availabilities.each_with_index do |day, index| %>
-  <%= form_for(day, html: {style: "form-horizontal"}) do |f| %>
-      <% if index == 0 %>
-        <!-- <span><%= f.label "Hours of Operation" %></span> -->
-      <% end %>
-      <%= f.time_select :hours_start_time, default: Time.parse('9:00') %>
-      <%= f.time_select :hours_end_time, default: Time.parse('21:00') %>
-      <% if index == 0 %>
-        <!-- <span><%= f.label "Best Online Game Availability" %></span> -->
-      <% end %>
-      <%= f.time_select :availability_start_time, default: Time.parse('9:00') %>
-      <%= f.time_select :availability_end_time, default: Time.parse('21:00') %>
-      <% if index == 0 %>
-        <!-- <span><%= f.label "Preferred Online Availability timespan" %></span> -->
-      <% end %>
-      <%= f.time_select :preferred_start_time, default: Time.parse('9:00') %>
-      <%= f.time_select :preferred_end_time, default: Time.parse('21:00') %>
-      <%= f.hidden_field :day, value: index + 1 %>
+<h2>Please fill out some items that will help others find you for Remote Gaming</h2>
+</br>
+<div class='availability-form container'>
+  <form>
+  <div class='row'>
+    <div class='col-md-3'><h3>Weekday</h3></div>
+    <div class='col-md-6'><h3>Hours</h3></div>
+  </div>
+  <div class='row'>
+    <div class='col'><h2>Hours of Operation</h2></div>
+  </div>
+  <% @facility_availabilities.each_with_index do |day, index| %>
+    <%= form_for(day, html: {style: "form-horizontal"}) do |f| %>
+      <div class='row'>
+        <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
+        <div class='col col-md-6'>
+          <%= f.check_box :open?, class: "availability-checkbox" %>
+          <%= f.time_select :hours_start_time, default: Time.parse('9:00') %>-
+          <%= f.time_select :hours_end_time, default: Time.parse('21:00') %>
+        </div>
       </div>
-    </div>
-    </br>
+    <% end %>
   <% end %>
-<% end %>
+  <div class='row'>
+    <div class='col'><h2>Remote Gaming Hours</h2></div>
+  </div>
+  <% @facility_availabilities.each_with_index do |day, index| %>
+    <%= form_for(day, html: {style: "form-horizontal"}) do |f| %>
+      <div class='row'>
+        <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
+        <div class='col col-md-6'>
+          <%= f.check_box :open?, class: "availability-checkbox" %>
+          <%= f.time_select :availability_start_time, default: Time.parse('9:00') %>-
+          <%= f.time_select :availability_end_time, default: Time.parse('21:00') %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class='row'>
+    <div class='col'><h2>Preferred Remote Gaming Timespan</h2></div>
+  </div>
+  <% @facility_availabilities.each_with_index do |day, index| %>
+    <%= form_for(day, html: {style: "form-horizontal"}) do |f| %>
+      <div class='row'>
+        <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
+        <div class='col col-md-6'>
+          <%= f.check_box :open?, class: "availability-checkbox" %>
+          <%= f.time_select :preferred_start_time, default: Time.parse('9:00') %>-
+          <%= f.time_select :preferred_end_time, default: Time.parse('21:00') %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </form>
+</div>
