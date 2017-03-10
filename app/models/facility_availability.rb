@@ -1,6 +1,10 @@
 class FacilityAvailability < ApplicationRecord
-  belongs_to :facility
+  self.primary_key = "facility_master_id"
   include TimezoneConversion
+
+  def facility
+    Facility.where(MasterID: self.facility_master_id)
+  end
 
   def get_facility_hours(params)
     self.time_zone = params[:facility_availability][:time_zone]

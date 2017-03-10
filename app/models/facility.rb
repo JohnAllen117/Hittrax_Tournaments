@@ -3,11 +3,14 @@ class Facility < ApplicationRecord
   self.table_name = "Facilities"
 
   has_many :tournament_invites
-  has_one :facility_availability
   belongs_to :remote_tournament
 
   def teams
     Team.where(SId: self.SId)
+  end
+
+  def facility_availability
+    FacilityAvailability.where(facility_master_id: self.MasterID)
   end
 
   def self.generate_csv

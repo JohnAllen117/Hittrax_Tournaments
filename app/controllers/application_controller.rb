@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
-  def convert_from_utc(local_time_zone_offset, utc_time)
-
-  end
-
   protected
   def current_user
     if session[:auth_token].present?

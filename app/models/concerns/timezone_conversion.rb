@@ -12,4 +12,9 @@ module TimezoneConversion
     utc_time = local_time - local_time_zone_offset
     utc_time.strftime('%H:%M')
   end
+
+
+  def convert_from_utc(local_time_zone_offset, utc_time)
+
+  end
 end
