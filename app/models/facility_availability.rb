@@ -1,0 +1,3 @@
+class FacilityAvailability < ApplicationRecord
+
+end
