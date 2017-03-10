@@ -1,10 +1,11 @@
 class FacilityAvailabilitiesController < ApplicationController
   def new
-    @facility_availability = FacilityAvailability.new
+    @facility = current_user.facility
     @facility_availabilities = [FacilityAvailability.new]*7
   end
 
   def create
+    binding.pry
 
   end
 
