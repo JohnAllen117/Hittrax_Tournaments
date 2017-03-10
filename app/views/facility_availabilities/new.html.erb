@@ -2,7 +2,7 @@
 <h2>Please fill out some items that will help others find you for Remote Gaming</h2>
 </br>
 <div class='availability-form container'>
-  <%= form_tag("/facility_availabilities", method: "create") do %>
+  <%= form_for @facility_availability do |f| %>
     <div class='row'>
       <div class='col-md-3'><h3>Weekday</h3></div>
       <div class='col-md-6'><h3>Hours</h3></div>
@@ -10,46 +10,62 @@
     <div class='row'>
       <div class='col'><h2>Hours of Operation</h2></div>
     </div>
-    <% @facility_availabilities.each_with_index do |day, index| %>
-      <%= fields_for(day, html: {style: "form-horizontal"}) do |f| %>
-        <div class='row'>
-          <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
-          <div class='col col-md-6'>
-            <%= f.check_box :open?, class: "availability-checkbox", id: "[open[#{index}]]" %>
-            <%= f.time_select :hours_start_time, default: Time.parse('9:00') %>-
-            <%= f.time_select :hours_end_time, default: Time.parse('21:00') %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
     <div class='row'>
-      <div class='col'><h2>Remote Gaming Hours</h2></div>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[1]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :monday_open? %>
+        <%= f.time_select :monday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :monday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
     </div>
-    <% @facility_availabilities.each_with_index do |day, index| %>
-      <%= fields_for(day, html: {style: "form-horizontal"}) do |f| %>
-        <div class='row'>
-          <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
-          <div class='col col-md-6'>
-            <%= f.time_select :availability_start_time, default: Time.parse('9:00') %>-
-            <%= f.time_select :availability_end_time, default: Time.parse('21:00') %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
     <div class='row'>
-      <div class='col'><h2>Preferred Remote Gaming Timespan</h2></div>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[2]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :tuesday_open? %>
+        <%= f.time_select :tuesday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :tuesday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
     </div>
-    <% @facility_availabilities.each_with_index do |day, index| %>
-      <%= fields_for(day, html: {style: "form-horizontal"}) do |f| %>
-        <div class='row'>
-          <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[index]}" %></div>
-          <div class='col col-md-6'>
-            <%= f.time_select :preferred_start_time, default: Time.parse('9:00') %>-
-            <%= f.time_select :preferred_end_time, default: Time.parse('21:00') %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <%= submit_tag("Finish") %>
+    <div class='row'>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[3]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :wednesday_open? %>
+        <%= f.time_select :wednesday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :wednesday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[4]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :thursday_open? %>
+        <%= f.time_select :thursday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :thursday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[5]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :friday_open? %>
+        <%= f.time_select :friday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :friday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[6]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :saturday_open? %>
+        <%= f.time_select :saturday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :saturday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col col-md-3'><%= "#{Date::ABBR_DAYNAMES[0]}" %></div>
+      <div class='col col-md-6'>
+        <%= f.check_box :sunday_open? %>
+        <%= f.time_select :sunday_hours_start_time, default: Time.parse('9:00') %>-
+        <%= f.time_select :sunday_hours_end_time, default: Time.parse('21:00') %>
+      </div>
+    </div>
+    <%= f.button "Submit" %>
   <% end %>
 </div>

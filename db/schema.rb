@@ -6319,16 +6319,43 @@ ActiveRecord::Schema.define(version: 20170310004707) do
 
   create_table "facility_availabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "facility_master_id"
-    t.integer  "day"
-    t.string   "hours_start_time"
-    t.string   "hours_end_time"
-    t.string   "availability_start_time"
-    t.string   "availability_end_time"
-    t.string   "preferred_start_time"
-    t.string   "preferred_end_time"
-    t.boolean  "open?"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "monday_hours_start_time"
+    t.string   "monday_hours_end_time"
+    t.string   "tuesday_hours_start_time"
+    t.string   "tuesday_hours_end_time"
+    t.string   "wednesday_hours_start_time"
+    t.string   "wednesday_hours_end_time"
+    t.string   "thursday_hours_start_time"
+    t.string   "thursday_hours_end_time"
+    t.string   "friday_hours_start_time"
+    t.string   "friday_hours_end_time"
+    t.string   "saturday_hours_start_time"
+    t.string   "saturday_hours_end_time"
+    t.string   "sunday_hours_start_time"
+    t.string   "sunday_hours_end_time"
+    t.string   "monday_availability_start_time"
+    t.string   "monday_availability_end_time"
+    t.string   "tuesday_availability_start_time"
+    t.string   "tuesday_availability_end_time"
+    t.string   "wednesday_availability_start_time"
+    t.string   "wednesday_availability_end_time"
+    t.string   "thursday_availability_start_time"
+    t.string   "thursday_availability_end_time"
+    t.string   "friday_availability_start_time"
+    t.string   "friday_availability_end_time"
+    t.string   "saturday_availability_start_time"
+    t.string   "saturday_availability_end_time"
+    t.string   "sunday_availability_start_time"
+    t.string   "sunday_availability_end_time"
+    t.boolean  "monday_open?",                      default: false
+    t.boolean  "tuesday_open?",                     default: false
+    t.boolean  "wednesday_open?",                   default: false
+    t.boolean  "thursday_open?",                    default: false
+    t.boolean  "friday_open?",                      default: false
+    t.boolean  "saturday_open?",                    default: false
+    t.boolean  "sunday_open?",                      default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
