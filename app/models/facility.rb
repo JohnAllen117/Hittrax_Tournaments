@@ -3,6 +3,7 @@ class Facility < ApplicationRecord
   self.table_name = "Facilities"
 
   has_many :tournament_invites
+  has_one :facility_availability
   belongs_to :remote_tournament
 
   def teams

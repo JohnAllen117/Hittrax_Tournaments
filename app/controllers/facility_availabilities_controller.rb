@@ -18,7 +18,7 @@ class FacilityAvailabilitiesController < ApplicationController
 
     if @facility_availability.valid?
       @facility_availability.save
-      redirect_to facility_path(MasterID: @facility_availability.facility_master_id)
+      redirect_to facility_path(@facility)
     else
       flash[:notice] = "Failed to save some data"
       redirect_to new_facility_availability_path

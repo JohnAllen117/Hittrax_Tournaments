@@ -21,6 +21,9 @@ gem 'pry-byebug'
 gem 'figaro'
 gem 'unicorn', group: 'production'
 gem 'rails_12factor'
+gem 'tod'
+gem 'tzinfo'
+gem 'tzinfo-data'
 gem 'font-awesome-rails'
 
 group :development, :test do

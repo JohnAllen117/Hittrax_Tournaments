@@ -260,8 +260,11 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.6)
     tins (1.13.2)
+    tod (2.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2017.1)
+      tzinfo (>= 1.0.0)
     uglifier (3.1.1)
       execjs (>= 0.3.0, < 3)
     unicorn (5.2.0)
@@ -314,6 +317,9 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   spring
+  tod
+  tzinfo
+  tzinfo-data
   uglifier
   unicorn
   yaml_db
