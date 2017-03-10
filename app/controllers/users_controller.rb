@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     user_email = params[:user][:Email]
-    password = params[:user][:Hash]
+    password = params[:user][:password]
     u = User.find_by(email: user_email, role: 1)
     if u.present?
       if Digest::MD5.hexdigest(password) == u.Hash

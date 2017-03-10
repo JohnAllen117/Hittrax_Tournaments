@@ -4,7 +4,7 @@
   </br>
   <%= simple_form_for(@user) do |f| %>
     <%= f.input :Email, required: true, autofocus: true %>
-    <%= f.input :Hash, label: "Password", required: true %>
-    <%= f.button :submit, class: "button expand" %>
+    <%= f.input :password %>
+    <%= f.button :submit, "Sign In", class: "button expand" %>
   <% end %>
 </div>
