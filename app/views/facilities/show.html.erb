@@ -8,4 +8,4 @@
   <li>Contact Number: <%= @facility.Phone %></li>
   <li>Website: <%= @facility.Website %></li>
 </ul>
-<% binding.pry %>
+<%= @facility.get_local_time(@facility.facility_availability.time_zone, @facility.facility_availability.monday_hours_start_time) %>
