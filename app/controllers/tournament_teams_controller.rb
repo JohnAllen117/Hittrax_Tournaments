@@ -12,7 +12,6 @@ class TournamentTeamsController < ApplicationController
     facility = Facility.find_by(id: params[:tournament_team][:facility_id])
     tournament_invite = TournamentInvite.find_by(facility_id: facility.id, remote_tournament_id: remote_tournament.id)
     tournament_teams.each do |t|
-      binding.pry
       t = TournamentTeam.new(team_master_id: t, remote_tournament_id: remote_tournament.id, TS: DateTime.now, team_name: Team.find_by(MasterId: t).Name)
       if t.valid?
         t.save!

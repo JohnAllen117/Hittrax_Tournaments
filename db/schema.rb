@@ -6347,15 +6347,16 @@ ActiveRecord::Schema.define(version: 20170310004707) do
     t.string   "saturday_availability_end_time"
     t.string   "sunday_availability_start_time"
     t.string   "sunday_availability_end_time"
-    t.boolean  "monday_open?",                      default: false
-    t.boolean  "tuesday_open?",                     default: false
-    t.boolean  "wednesday_open?",                   default: false
-    t.boolean  "thursday_open?",                    default: false
-    t.boolean  "friday_open?",                      default: false
-    t.boolean  "saturday_open?",                    default: false
-    t.boolean  "sunday_open?",                      default: false
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.boolean  "monday_open",                                  default: false
+    t.boolean  "tuesday_open",                                 default: false
+    t.boolean  "wednesday_open",                               default: false
+    t.boolean  "thursday_open",                                default: false
+    t.boolean  "friday_open",                                  default: false
+    t.boolean  "saturday_open",                                default: false
+    t.boolean  "sunday_open",                                  default: false
+    t.string   "time_zone",                         limit: 30, default: "UTC"
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

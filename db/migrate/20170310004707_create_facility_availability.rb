@@ -32,13 +32,14 @@ class CreateFacilityAvailability < ActiveRecord::Migration[5.0]
       t.string :saturday_availability_end_time
       t.string :sunday_availability_start_time
       t.string :sunday_availability_end_time
-      t.boolean :monday_open?, default: 0
-      t.boolean :tuesday_open?, default: 0
-      t.boolean :wednesday_open?, default: 0
-      t.boolean :thursday_open?, default: 0
-      t.boolean :friday_open?, default: 0
-      t.boolean :saturday_open?, default: 0
-      t.boolean :sunday_open?, default: 0
+      t.boolean :monday_open, default: 0
+      t.boolean :tuesday_open, default: 0
+      t.boolean :wednesday_open, default: 0
+      t.boolean :thursday_open, default: 0
+      t.boolean :friday_open, default: 0
+      t.boolean :saturday_open, default: 0
+      t.boolean :sunday_open, default: 0
+      t.string :time_zone, limit: 30, default: 'UTC'
 
       t.timestamps
     end

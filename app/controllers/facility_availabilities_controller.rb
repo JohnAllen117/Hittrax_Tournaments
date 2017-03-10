@@ -5,8 +5,24 @@ class FacilityAvailabilitiesController < ApplicationController
   end
 
   def create
-    binding.pry
+    @facility = current_user.facility
+    @facility.CompanyName = params[:facility_availability][:facility][:CompanyName]
+    @facility.ContactName = params[:facility_availability][:facility][:ContactName]
+    @facility.Email = params[:facility_availability][:facility][:Email]
+    @facility.Phone = params[:facility_availability][:facility][:Phone]
+    @facility.save
 
+    @facility_availability = FacilityAvailability.new
+    @facility_availability.get_facility_hours(params)
+    @facility_availability.facility_master_id = @facility.MasterID
+
+    if @facility_availability.valid?
+      @facility_availability.save
+      redirect_to facility_path(MasterID: @facility_availability.facility_master_id)
+    else
+      flash[:notice] = "Failed to save some data"
+      redirect_to new_facility_availability_path
+    end
   end
 
   def edit
@@ -34,6 +50,6 @@ private
       :friday_availability_end_time, :saturday_availability_start_time,
       :saturday_availability_end_time, :sunday_availability_start_time,
       :sunday_availability_end_time, :monday_open, :tuesday_open, :wednesday_open,
-      :thursday_open, :friday_open, :saturday_open, :sunday_open)
+      :thursday_open, :friday_open, :saturday_open, :sunday_open, :time_zone)
   end
 end
