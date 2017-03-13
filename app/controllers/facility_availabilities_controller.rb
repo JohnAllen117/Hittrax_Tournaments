@@ -18,6 +18,8 @@ class FacilityAvailabilitiesController < ApplicationController
 
     if @facility_availability.valid?
       @facility_availability.save
+      @facility.OptedIn = true
+      @facility.save
       redirect_to facility_path(@facility)
     else
       flash[:notice] = "Failed to save some data"
@@ -26,7 +28,8 @@ class FacilityAvailabilitiesController < ApplicationController
   end
 
   def edit
-
+    @facility_availability = FacilityAvailability.find_by(id: params[:id])
+    @facility = @facility_availability.facility
   end
 
   def update

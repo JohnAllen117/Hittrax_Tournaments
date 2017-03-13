@@ -1,5 +1,4 @@
 class FacilityAvailability < ApplicationRecord
-  self.primary_key = "facility_master_id"
   include TimezoneConversion
 
   def facility

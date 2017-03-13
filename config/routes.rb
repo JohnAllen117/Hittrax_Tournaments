@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit]
   resources :tournament_invites, only: [:index, :edit]
   resources :tournament_teams, only: [:new, :create]
-  resources :facilities, only: [:show, :edit, :update]
+  resources :facilities, only: [:show, :edit, :update, :index]
   resources :facility_availabilities, only: [:new, :create, :edit, :update]
 
   # Example of regular route:

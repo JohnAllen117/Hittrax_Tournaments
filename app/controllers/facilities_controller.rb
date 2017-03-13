@@ -4,6 +4,10 @@ class FacilitiesController < ApplicationController
     @facility_availability = @facility.facility_availability
   end
 
+  def index
+    @facilities = Facility.where(OptedIn: true)
+  end
+
   def edit
     @facility = current_user.facility
   end
