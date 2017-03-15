@@ -10,7 +10,7 @@ class CreateMailboxer < ActiveRecord::Migration
     end
     #Receipts
     create_table :mailboxer_receipts do |t|
-      t.references :receiver, :polymorphic => true
+      t.string :receiver_master_id
       t.column :notification_id, :integer, :null => false
       t.column :is_read, :boolean, :default => false
       t.column :trashed, :boolean, :default => false
@@ -24,7 +24,7 @@ class CreateMailboxer < ActiveRecord::Migration
       t.column :type, :string
       t.column :body, :text
       t.column :subject, :string, :default => ""
-      t.references :sender, :polymorphic => true
+      t.string :sender_master_id
       t.column :conversation_id, :integer
       t.column :draft, :boolean, :default => false
       t.string :notification_code, :default => nil

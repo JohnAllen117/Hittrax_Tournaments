@@ -11,9 +11,9 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    recipients = User.where(MasterID: conversation_params[:recipients])
     binding.pry
-    recipients = Facility.where(MasterID: conversation_params[:recipients])
-    conversation = current_user.facility.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
+    conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
     flash[:success] = "Your message was successfully sent!"
     redirect_to conversation_path(conversation)
   end

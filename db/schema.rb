@@ -6377,8 +6377,7 @@ ActiveRecord::Schema.define(version: 20170315161156) do
     t.string   "type"
     t.text     "body",                 limit: 65535
     t.string   "subject",                            default: ""
-    t.string   "sender_type"
-    t.integer  "sender_id"
+    t.string   "sender_master_id"
     t.integer  "conversation_id"
     t.boolean  "draft",                              default: false
     t.string   "notification_code"
@@ -6391,25 +6390,22 @@ ActiveRecord::Schema.define(version: 20170315161156) do
     t.datetime "expires"
     t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
     t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-    t.index ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
     t.index ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
   end
 
   create_table "mailboxer_receipts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "receiver_type"
-    t.integer  "receiver_id"
-    t.integer  "notification_id",                            null: false
-    t.boolean  "is_read",                    default: false
-    t.boolean  "trashed",                    default: false
-    t.boolean  "deleted",                    default: false
-    t.string   "mailbox_type",    limit: 25
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.boolean  "is_delivered",               default: false
+    t.string   "receiver_master_id"
+    t.integer  "notification_id",                               null: false
+    t.boolean  "is_read",                       default: false
+    t.boolean  "trashed",                       default: false
+    t.boolean  "deleted",                       default: false
+    t.string   "mailbox_type",       limit: 25
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.boolean  "is_delivered",                  default: false
     t.string   "delivery_method"
     t.string   "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
-    t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
