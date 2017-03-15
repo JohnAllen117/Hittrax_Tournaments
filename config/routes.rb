@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   resources :tournament_teams, only: [:new, :create]
   resources :facilities, only: [:show, :edit, :update, :index]
   resources :facility_availabilities, only: [:new, :create, :edit, :update]
-  resources :conversations do
-    resources :messages
-  end
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
