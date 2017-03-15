@@ -6,6 +6,16 @@ class Facility < ApplicationRecord
   has_many :tournament_invites
   belongs_to :remote_tournament
 
+  acts_as_messageable
+
+  def mailboxer_email
+    self.Email
+  end
+
+  def mailboxer_name
+    self.CompanyName
+  end
+
   def teams
     Team.where(SId: self.SId)
   end
