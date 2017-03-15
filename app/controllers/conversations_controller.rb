@@ -2,9 +2,16 @@ class ConversationsController < ApplicationController
   before_action :authenticate
 
   def new
+    @recipients = []
+    Facility.where(OptedIn: 1).each do |facility|
+      if facility.admins.present?
+        @recipients << facility.admins
+      end
+    end
   end
 
   def create
+    binding.pry
     recipients = Facility.where(MasterID: conversation_params[:recipients])
     conversation = current_user.facility.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
     flash[:success] = "Your message was successfully sent!"
