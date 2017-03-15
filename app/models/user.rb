@@ -5,4 +5,14 @@ class User < ActiveRecord::Base
   def facility
     Facility.find_by(SId: self.SId)
   end
+
+  acts_as_messageable
+
+  def mailboxer_email
+    self.Facility.Email
+  end
+
+  def mailboxer_name
+    self.Facility.CompanyName
+  end
 end

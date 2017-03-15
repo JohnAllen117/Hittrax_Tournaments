@@ -26,6 +26,7 @@ gem 'tzinfo'
 gem 'tzinfo-data'
 gem 'font-awesome-rails'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'mailboxer'
 
 
 group :development, :test do
