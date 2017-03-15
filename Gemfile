@@ -25,6 +25,8 @@ gem 'tod'
 gem 'tzinfo'
 gem 'tzinfo-data'
 gem 'font-awesome-rails'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
 
 group :development, :test do
   gem 'capybara'

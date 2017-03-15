@@ -5,7 +5,8 @@ class FacilitiesController < ApplicationController
   end
 
   def index
-    @facilities = Facility.where(OptedIn: true)
+    @q = Facility.where(OptedIn: true).ransack(params[:q])
+    @facilities = @q.result(distinct: true).uniq
   end
 
   def edit
