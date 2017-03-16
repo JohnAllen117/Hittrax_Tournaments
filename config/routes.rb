@@ -7,14 +7,8 @@ Rails.application.routes.draw do
   resources :tournament_teams, only: [:new, :create]
   resources :facilities, only: [:show, :edit, :update, :index]
   resources :facility_availabilities, only: [:new, :create, :edit, :update]
-  resources :conversations do
-    member do
-      post :reply
-    end
-  end
-
-  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
-  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  resources :personal_messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

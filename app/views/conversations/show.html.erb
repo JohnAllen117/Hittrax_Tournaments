@@ -1,33 +1,14 @@
-<div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-12">
-    <%= link_to "Compose", new_conversation_path, class: "btn btn-success" %>
-    <div class="spacer"></div>
+<h1>Chatting with <%= @conversation.with(current_user).name %></h1>
+
+<div id="conversation-main">
+  <div id="conversation-body">
+    <%= render @conversation.personal_messages %>
   </div>
 
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render 'mailbox/folders' %>
-      </div>
-    </div>
-  </div>
+  <%= simple_form_for @personal_message do |f| %>
+    <%= f.hidden 'conversation_id', @conversation.id %>
+    <%= f.text :body %>
 
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render partial: 'messages' %>
-      </div>
-    </div>
-    <div class="panel-footer">
-      <!-- Reply Form -->
-      <%= form_for :message, url: reply_conversation_path(@conversation) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
-        </div>
-        <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
-      <% end %>
-      <div class="clearfix"></div>
-    </div>
-  </div>
+    <%= f.submit %>
+  <% end %>
 </div>

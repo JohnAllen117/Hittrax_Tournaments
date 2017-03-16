@@ -1,6 +1,7 @@
 class Facility < ApplicationRecord
   require 'csv'
   self.table_name = "Facilities"
+  has_many :Users, foreign_key: 'SId'
   include TimezoneConversion
 
   has_many :tournament_invites
@@ -11,7 +12,7 @@ class Facility < ApplicationRecord
   end
 
   def admins
-    User.find_by(SId: self.SId, role: 1)
+    self.Users.where(role: 1)
   end
 
   def facility_availability

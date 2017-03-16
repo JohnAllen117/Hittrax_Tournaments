@@ -1,37 +1,31 @@
 class ConversationsController < ApplicationController
   before_action :authenticate
+  before_action :set_conversation, except: [:index]
+  before_action :check_participating!, except: [:index]
 
-  def new
-    @recipients = []
-    Facility.where(OptedIn: 1).each do |facility|
-      if facility.admins.present?
-        @recipients << facility.admins
+  def index
+    @users = []
+    Facility.all.where(OptedIn: 1).each do |facility|
+      facility.admins.each do |admin|
+        @users << admin
       end
     end
   end
 
-  def create
-    recipients = User.where(MasterID: conversation_params[:recipients])
-    binding.pry
-    conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
-    flash[:success] = "Your message was successfully sent!"
-    redirect_to conversation_path(conversation)
+  def messages
+    @conversations = Conversation.participating(current_user).order('updated_at DESC')
   end
 
   def show
-    @receipts = conversation.receipts_for(current_user.facility)
-    # mark conversation as read
-    conversation.mark_as_read(current_user.facility)
-  end
-
-  def reply
-    current_user.facility.reply_to_conversation(conversation, message_params[:body])
-    flash[:notice] = "Your reply message was successfully sent!"
-    redirect_to conversation_path(conversation)
+    @personal_message = PersonalMessage.new
   end
 
   private
-  def conversation_params
-    params.require(:conversation).permit(:subject, :body,recipients:[])
+  def set_conversation
+    @conversation = Conversation.find_by(id: params[:id])
+  end
+
+  def check_participating!
+    redirect_to root_path unless @conversation && @conversation.participates?(current_user)
   end
 end

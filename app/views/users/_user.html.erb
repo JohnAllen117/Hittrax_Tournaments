@@ -1,0 +1,5 @@
+<li>
+  <%= "#{user.FirstName} - #{user.facility.CompanyName}," %>
+  <%= user.facility.State.present? ? "#{user.facility.State}" : "[No State]" %>
+   | <%= link_to 'send a message', new_personal_message_path(receiver_id: user) %>
+</li>

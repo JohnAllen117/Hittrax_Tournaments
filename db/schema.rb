@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315161156) do
+ActiveRecord::Schema.define(version: 20170315214835) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6317,6 +6317,16 @@ ActiveRecord::Schema.define(version: 20170315161156) do
     t.string  "longitude", limit: 20
   end
 
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "author_master_id"
+    t.string   "receiver_master_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["author_master_id", "receiver_master_id"], name: "index_conversations_on_author_master_id_and_receiver_master_id", unique: true, using: :btree
+    t.index ["author_master_id"], name: "index_conversations_on_author_master_id", using: :btree
+    t.index ["receiver_master_id"], name: "index_conversations_on_receiver_master_id", using: :btree
+  end
+
   create_table "facility_availabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "facility_master_id"
     t.string   "monday_hours_start_time"
@@ -6359,53 +6369,13 @@ ActiveRecord::Schema.define(version: 20170315161156) do
     t.datetime "updated_at",                                                   null: false
   end
 
-  create_table "mailboxer_conversation_opt_outs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "unsubscriber_type"
-    t.integer "unsubscriber_id"
-    t.integer "conversation_id"
-    t.index ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id", using: :btree
-    t.index ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
-  end
-
-  create_table "mailboxer_conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "mailboxer_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "type"
-    t.text     "body",                 limit: 65535
-    t.string   "subject",                            default: ""
-    t.string   "sender_master_id"
+  create_table "personal_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "body",            limit: 65535
     t.integer  "conversation_id"
-    t.boolean  "draft",                              default: false
-    t.string   "notification_code"
-    t.string   "notified_object_type"
-    t.integer  "notified_object_id"
-    t.string   "attachment"
-    t.datetime "updated_at",                                         null: false
-    t.datetime "created_at",                                         null: false
-    t.boolean  "global",                             default: false
-    t.datetime "expires"
-    t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
-    t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-    t.index ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
-  end
-
-  create_table "mailboxer_receipts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "receiver_master_id"
-    t.integer  "notification_id",                               null: false
-    t.boolean  "is_read",                       default: false
-    t.boolean  "trashed",                       default: false
-    t.boolean  "deleted",                       default: false
-    t.string   "mailbox_type",       limit: 25
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.boolean  "is_delivered",                  default: false
-    t.string   "delivery_method"
-    t.string   "message_id"
-    t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
+    t.string   "user_master_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6451,7 +6421,5 @@ ActiveRecord::Schema.define(version: 20170315161156) do
     t.string   "team_name"
   end
 
-  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
-  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
-  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "personal_messages", "conversations"
 end
