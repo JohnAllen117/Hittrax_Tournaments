@@ -9,7 +9,6 @@ class PersonalMessagesController < ApplicationController
 
   def create
     @reciever = User.find_by(MasterID: params[:receiver_id])
-    binding.pry
     @conversation ||= Conversation.create(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID)
     @personal_message = current_user.personal_messages.build(personal_message_params)
     @personal_message.conversation_id = @conversation.id
@@ -29,7 +28,7 @@ class PersonalMessagesController < ApplicationController
     if params[:receiver_id]
       @receiver = User.find_by(id: params[:receiver_id])
       redirect_to(root_path) and return unless @receiver
-      @conversation = Conversation.between(current_user.id, @receiver.id)[0]
+      @conversation = Conversation.find_by(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID) || Conversation.find_by(author_master_id: @receiver.MasterID, receiver_master_id: current_user.MasterID)
     else
       @conversation = Conversation.find_by(id: params[:conversation_id])
       flash[:notice] = "User not found."

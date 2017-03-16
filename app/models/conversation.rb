@@ -1,14 +1,11 @@
 class Conversation < ApplicationRecord
   has_many :personal_messages, -> { order(created_at: :asc) }, dependent: :destroy
-
+  before_create :is_unique
   validates :author, uniqueness: {scope: :receiver}
 
-  scope :participating, -> (user) do
-    where("(conversations.author_master_id = ? OR conversations.receiver_master_id = ?)", user.MasterID, user.MasterID)
-  end
-
-  scope :between, -> (sender_master_id, receiver_master_id) do
-    where(author_master_id: sender_master_id, receiver_master_id: receiver_master_id).or(where(author_master_id: receiver_master_id, receiver_master_id: sender_master_id)).limit(1)
+  def is_unique
+    conversation = where(author_master_id: sender_master_id, receiver_master_id: receiver_master_id) || (where(author_master_id: receiver_master_id, receiver_master_id: sender_master_id))
+    conversation.nil ? true : false
   end
 
   def author
