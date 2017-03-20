@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
     @users = []
     Facility.all.where(OptedIn: 1).each do |facility|
       facility.admins.each do |admin|
-        @users << admin
+        @users << admin unless current_user.MasterID == admin.MasterID
       end
     end
     @conversations = Conversation.where("author_master_id = ? OR receiver_master_id = ?",
