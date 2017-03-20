@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def facility
     Facility.find_by(SId: self.SId)
   end
+
+  def time_zone
+    self.facility.facility_availability.time_zone
+  end
 end
