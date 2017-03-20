@@ -9,8 +9,8 @@ class PersonalMessagesController < ApplicationController
 
   def create
     @reciever = User.find_by(MasterID: params[:receiver_id])
-    @conversation ||= Conversation.create(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID)
-    @personal_message = current_user.personal_messages.build(personal_message_params)
+    @conversation = Conversation.find_by(id: params[:personal_message][:conversation_id]) || Conversation.create(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID)
+    @personal_message = PersonalMessage.new(user_master_id: current_user.MasterID, body: params[:personal_message][:body])
     @personal_message.conversation_id = @conversation.id
     @personal_message.save!
 
@@ -30,7 +30,7 @@ class PersonalMessagesController < ApplicationController
       redirect_to(root_path) and return unless @receiver
       @conversation = Conversation.find_by(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID) || Conversation.find_by(author_master_id: @receiver.MasterID, receiver_master_id: current_user.MasterID)
     else
-      @conversation = Conversation.find_by(id: params[:conversation_id])
+      @conversation = Conversation.find_by(id: params[:personal_message][:conversation_id])
       flash[:notice] = "User not found."
       redirect_to(conversations_path) and return unless @conversation && @conversation.participates?(current_user)
     end

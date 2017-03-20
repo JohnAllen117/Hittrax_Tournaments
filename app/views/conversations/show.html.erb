@@ -1,4 +1,4 @@
-<h1>Chatting with <%= @conversation.with(current_user).name %></h1>
+<h1>Chatting with <%= "#{@conversation.with(current_user).FirstName} - #{@conversation.with(current_user).facility.CompanyName} " %></h1>
 
 <div id="conversation-main">
   <div id="conversation-body">
@@ -6,8 +6,8 @@
   </div>
 
   <%= simple_form_for @personal_message do |f| %>
-    <%= f.hidden 'conversation_id', @conversation.id %>
-    <%= f.text :body %>
+    <%= f.input :conversation_id, as: :hidden, input_html: { value: "#{@conversation.id}" } %>
+    <%= f.text_area :body %>
 
     <%= f.submit %>
   <% end %>
