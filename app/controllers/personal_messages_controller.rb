@@ -26,7 +26,7 @@ class PersonalMessagesController < ApplicationController
 
   def find_conversation!
     if params[:receiver_id]
-      @receiver = User.find_by(id: params[:receiver_id])
+      @receiver = User.find_by(MasterID: params[:receiver_id])
       redirect_to(root_path) and return unless @receiver
       @conversation = Conversation.find_by(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID) || Conversation.find_by(author_master_id: @receiver.MasterID, receiver_master_id: current_user.MasterID)
     elsif params[:personal_message][:conversation_id]
