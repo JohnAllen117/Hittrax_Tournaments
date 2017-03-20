@@ -6322,9 +6322,6 @@ ActiveRecord::Schema.define(version: 20170315214835) do
     t.string   "receiver_master_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["author_master_id", "receiver_master_id"], name: "index_conversations_on_author_master_id_and_receiver_master_id", unique: true, using: :btree
-    t.index ["author_master_id"], name: "index_conversations_on_author_master_id", using: :btree
-    t.index ["receiver_master_id"], name: "index_conversations_on_receiver_master_id", using: :btree
   end
 
   create_table "facility_availabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6421,5 +6418,4 @@ ActiveRecord::Schema.define(version: 20170315214835) do
     t.string   "team_name"
   end
 
-  add_foreign_key "personal_messages", "conversations"
 end

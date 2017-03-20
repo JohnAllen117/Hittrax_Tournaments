@@ -2,8 +2,8 @@ class CreatePersonalMessages < ActiveRecord::Migration[5.0]
   def change
     create_table :personal_messages do |t|
       t.text :body
-      t.belongs_to :conversation, foreign_key: true
-      t.string :user_master_id, foreign_key: true
+      t.belongs_to :conversation
+      t.string :user_master_id
 
       t.timestamps
     end
