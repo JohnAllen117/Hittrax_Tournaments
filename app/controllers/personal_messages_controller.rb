@@ -29,10 +29,12 @@ class PersonalMessagesController < ApplicationController
       @receiver = User.find_by(id: params[:receiver_id])
       redirect_to(root_path) and return unless @receiver
       @conversation = Conversation.find_by(author_master_id: current_user.MasterID, receiver_master_id: @receiver.MasterID) || Conversation.find_by(author_master_id: @receiver.MasterID, receiver_master_id: current_user.MasterID)
-    else
+    elsif params[:personal_message][:conversation_id]
       @conversation = Conversation.find_by(id: params[:personal_message][:conversation_id])
-      flash[:notice] = "User not found."
       redirect_to(conversations_path) and return unless @conversation && @conversation.participates?(current_user)
+    else
+      flash[:notice] = "User not found."
+      redirect_to(conversations_path)
     end
   end
 end
