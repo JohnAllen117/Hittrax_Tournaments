@@ -10,6 +10,8 @@ class ConversationsController < ApplicationController
         @users << admin
       end
     end
+    @conversations = Conversation.where("author_master_id = ? OR receiver_master_id = ?",
+      current_user.MasterID, current_user.MasterID)
   end
 
   def messages
