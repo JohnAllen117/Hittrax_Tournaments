@@ -9,6 +9,8 @@
     <%= f.input :conversation_id, as: :hidden, input_html: { value: "#{@conversation.id}" } %>
     <%= f.text_area :body %>
 
-    <%= f.submit %>
+    <%= f.button :button do %>
+      <%= fa_icon("envelope", text: "Send Message").html_safe %>
+    <% end %>
   <% end %>
 </div>
