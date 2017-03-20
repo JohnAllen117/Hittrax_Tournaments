@@ -6372,7 +6372,6 @@ ActiveRecord::Schema.define(version: 20170315214835) do
     t.string   "user_master_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
