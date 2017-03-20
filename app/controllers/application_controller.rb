@@ -2,16 +2,6 @@ class ApplicationController < ActionController::Base
   http_basic_authenticate_with name: "hittrax", password: "vKSa4k!B" if Rails.env.production?
   protect_from_forgery with: :exception
   helper_method :current_user
-  helper_method :mailbox
-
-  private
-  def mailbox
-    mailbox ||= current_user.mailbox
-  end
-
-  def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
-  end
 
   protected
   def current_user

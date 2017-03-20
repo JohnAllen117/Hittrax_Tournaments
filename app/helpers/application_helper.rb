@@ -13,8 +13,4 @@ module ApplicationHelper
         flash_type.to_s
     end
   end
-
-  def active_page(active_page)
-    @active == active_page ? "active" : ""
-  end
 end
