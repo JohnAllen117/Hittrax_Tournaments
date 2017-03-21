@@ -1,6 +1,5 @@
-<h1>Chatting with <%= "#{@conversation.with(current_user).FirstName} - #{@conversation.with(current_user).facility.CompanyName} " %></h1>
-
 <div class="container">
+  <h1>Chatting with <%= "#{@conversation.with(current_user).FirstName} - #{@conversation.with(current_user).facility.CompanyName} " %></h1>
   <div id="conversation-main">
     <div id="conversation-body">
       <%= render @conversation.personal_messages %>
