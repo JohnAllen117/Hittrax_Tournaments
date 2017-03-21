@@ -25,7 +25,7 @@ class RemoteTournamentsController < ApplicationController
       t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0, TS: DateTime.now, notifiable_type: 0)
       if t.valid?
         t.save!
-        n = Notification.create(notifiable_type: 0, notifiable_id: t.id)
+        n = Notification.create(notifiable_type: 0, notifiable_id: t.id, facility_master_id: invite)
         t.notifiable_id = n.id
         t.save!
       else
