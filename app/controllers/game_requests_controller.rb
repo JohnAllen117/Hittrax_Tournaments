@@ -1,14 +1,14 @@
 class GameRequestsController < ApplicationController
   def new
-    @game_request = GameRequest.new(home_team_facility_id: params[:home_team_facility_id],
+    @game_request = GameRequest.new(home_team_facility_id: current_user.SId,
       away_team_facility_id: params[:away_team_facility_id])
     @teams = []
-    Facility.find_by(MasterID: @game_request.home_team_facility_id).teams.each do |team|
+    Facility.find_by(SId: @game_request.home_team_facility_id).teams.each do |team|
       if team.present?
         @teams << team
       end
     end
-    Facility.find_by(MasterID: @game_request.away_team_facility_id).teams.each do |team|
+    Facility.find_by(SId: @game_request.away_team_facility_id).teams.each do |team|
       if team.present?
         @teams << team
       end
@@ -36,7 +36,7 @@ class GameRequestsController < ApplicationController
     @schedule.save!
 
     @game_request = GameRequest.new(
-      home_team_facility_id: params[:game_request][:home_team_facility_id],
+      home_team_facility_id: current_user.SId,
       away_team_facility_id: params[:game_request][:away_team_facility_id],
       schedule_id: @schedule.id,
       notifiable_type: 1

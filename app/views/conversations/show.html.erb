@@ -13,7 +13,7 @@
         <%= fa_icon("envelope", text: "Send Message").html_safe %>
       <% end %>
       <div class="btn">
-        <%= fa_icon("play")%> <%= link_to "Send a Game Request", new_game_request_path(home_team_facility_id: current_user.facility.MasterID, away_team_facility_id: @conversation.with(current_user).facility.MasterID), class: "btn" %>
+        <%= fa_icon("play")%> <%= link_to "Send a Game Request", new_game_request_path(home_team_facility_id: current_user.SId, away_team_facility_id: @conversation.with(current_user).SId), class: "btn" %>
       </div>
     <% end %>
   </div>
