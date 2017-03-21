@@ -1,0 +1,10 @@
+<h1>New message to <%= "#{@receiver.FirstName} - #{@reciever.facility.CompanyName}, #{@reciever.facility.State} " %></h1>
+
+<%= form_for @personal_message do |f| %>
+  <%= hidden_field_tag 'receiver_id', @receiver.MasterID %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.button fa_icon("envelope", text: "Send Message") %>
+<% end %>

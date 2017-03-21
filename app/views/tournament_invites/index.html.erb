@@ -1,15 +1,12 @@
 <ul>
   <% @tournament_invites.each do |invite| %>
-    <% if invite.accepted? %>
-      <li><%= link_to "#{invite.remote_tournament.name}", remote_tournament_path(invite.remote_tournament.id) %></li>
-    <% else %>
-      <li><%= "Accept Tournament Invite from #{invite.remote_tournament.name}?" %> <%= link_to new_tournament_team_path(remote_tournament_id: invite.remote_tournament.id, facility_id: invite.facility_id) do %>
+    <li>
+      <%= "Accept Tournament Invite from #{invite.remote_tournament.name}?" %> <%= link_to new_tournament_team_path(remote_tournament_id: invite.remote_tournament.id, facility_id: invite.facility_id) do %>
         <i class="fa fa-check" aria-hidden="true"></i>
       <% end %>
       <%= link_to edit_tournament_invite_path(invite, accepted: 2) do %>
         <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>
     </li>
-    <% end %>
   <% end %>
 </ul>

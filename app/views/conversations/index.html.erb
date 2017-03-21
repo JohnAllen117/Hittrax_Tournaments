@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-md-6">
+    <h1>Users</h1>
+    <ul><%= render @users %></ul>
+  </div>
+  <div class="col-md-6">
+    <h1>Active Conversations</h1>
+    <% @conversations.each do |conversation| %>
+      <% user = conversation.with(current_user) %>
+      <li>
+        <%= "#{user.FirstName} #{user.LastName} - #{user.facility.CompanyName}," %>
+        <%= user.facility.State.present? ? "#{user.facility.State}" : "[No State]" %>
+         | <%= link_to 'send a message', new_personal_message_path(receiver_id: user) %>
+       </li>
+    <% end %>
+  </div>
+</div>

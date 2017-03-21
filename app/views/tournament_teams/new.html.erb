@@ -1,5 +1,5 @@
 <% provide(:title, "Select The Teams") %>
-<h2>Please select the team(s) that will participate in the tournament.<h2>
+<h2>Please select the team(s) that will participate in the tournament.</h2>
 <%= simple_form_for(@tournament_team) do |f| %>
   <%= f.error_notification %>
   <%= f.input :team_master_id, collection: @teams, label: "Select Teams", as: :check_boxes %>

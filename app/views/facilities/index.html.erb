@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :CompanyName, 'Company Name', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :Phone, 'Phone Number', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :name, 'Last Name', default_order: :desc) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @facilities.each do |facility| %>
+      <tr>
+        <td><%= facility.CompanyName %></td>
+        <td><%= facility.Phone %></td>
+        <td><%= facility.Email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

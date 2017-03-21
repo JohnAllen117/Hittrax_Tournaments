@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 8ca8c95c6543c5da9b98a4e2747a0a4023d60bfc
+  specs:
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +58,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-timepicker-rails-addon (0.5.2)
+      railties (>= 3.1, < 6.0)
     brakeman (3.5.0)
     builder (3.2.3)
     bullet (5.5.0)
@@ -148,6 +161,8 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -258,11 +273,11 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.6)
     tins (1.13.2)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
+    tod (2.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2017.1)
+      tzinfo (>= 1.0.0)
     uglifier (3.1.1)
       execjs (>= 0.3.0, < 3)
     unicorn (5.2.0)
@@ -286,6 +301,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
+  bootstrap-timepicker-rails-addon
   brakeman
   bullet
   capybara
@@ -307,6 +323,7 @@ DEPENDENCIES
   pry-rails
   rails (= 5.0.1)
   rails_12factor
+  ransack!
   rspec-its
   rspec-rails
   sass-rails
@@ -314,7 +331,9 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   spring
-  turbolinks
+  tod
+  tzinfo
+  tzinfo-data
   uglifier
   unicorn
   yaml_db

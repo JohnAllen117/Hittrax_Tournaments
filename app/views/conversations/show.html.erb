@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Chatting with <%= "#{@conversation.with(current_user).FirstName} - #{@conversation.with(current_user).facility.CompanyName} " %></h1>
+  <div id="conversation-main">
+    <div id="conversation-body">
+      <%= render @conversation.personal_messages %>
+    </div>
+
+    <%= simple_form_for @personal_message do |f| %>
+      <%= f.input :conversation_id, as: :hidden, input_html: { value: "#{@conversation.id}" } %>
+      <%= f.text_area :body %>
+
+      <%= f.button :button do %>
+        <%= fa_icon("envelope", text: "Send Message").html_safe %>
+      <% end %>
+      <div class="btn">
+        <%= fa_icon("play")%> <%= link_to "Send a Game Request", new_game_request_path(home_team_facility_id: current_user.facility.MasterID, away_team_facility_id: @conversation.with(current_user).facility.MasterID), class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

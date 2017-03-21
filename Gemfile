@@ -3,7 +3,6 @@ ruby '2.4.0'
 
 gem 'rails', '5.0.1'
 gem 'mysql2', '>= 0.2.12'
-gem 'turbolinks'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -11,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'bootstrap-timepicker-rails-addon'
 gem 'autoprefixer-rails'
 gem 'json', '2.0.2'
 gem 'sdoc', group: :doc
@@ -21,7 +21,12 @@ gem 'pry-byebug'
 gem 'figaro'
 gem 'unicorn', group: 'production'
 gem 'rails_12factor'
+gem 'tod'
+gem 'tzinfo'
+gem 'tzinfo-data'
 gem 'font-awesome-rails'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
 
 group :development, :test do
   gem 'capybara'

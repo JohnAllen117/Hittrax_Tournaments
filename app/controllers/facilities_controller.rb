@@ -1,6 +1,12 @@
 class FacilitiesController < ApplicationController
   def show
     @facility = current_user.facility
+    @facility_availability = @facility.facility_availability
+  end
+
+  def index
+    @q = Facility.where(OptedIn: true).ransack(params[:q])
+    @facilities = @q.result(distinct: true).uniq
   end
 
   def edit

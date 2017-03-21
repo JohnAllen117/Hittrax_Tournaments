@@ -1,6 +1,7 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-sprockets";
 @import "bootstrap-overrides";
+@import "bootstrap-timepicker";
 @import "font-awesome";
 
 .navbar-default {
@@ -31,4 +32,16 @@
     height: 200px;
     overflow: scroll;
     border:1px solid black;
+}
+
+.availability-form{
+  text-align:center;
+}
+
+.day{
+  padding-right:10px;
+}
+
+.availability-checkbox{
+  background-color:red;
 }
