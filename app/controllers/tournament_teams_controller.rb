@@ -21,6 +21,11 @@ class TournamentTeamsController < ApplicationController
       end
     end
     tournament_invite.accepted!
+
+    n = tournament_invite.notification
+    n.seen = true
+    n.save
+
     redirect_to remote_tournament_path(tournament_invite.remote_tournament)
   end
 end

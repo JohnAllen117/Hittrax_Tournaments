@@ -6,4 +6,8 @@ class TournamentInvite < ApplicationRecord
   belongs_to :remote_tournament
   belongs_to :facility
   belongs_to :notifiable, polymorphic: true
+
+  def notification
+    Notification.find_by(notifiable_id: self.id, notifiable_type: 0)
+  end
 end
