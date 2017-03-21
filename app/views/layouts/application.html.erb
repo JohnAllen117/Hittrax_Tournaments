@@ -26,6 +26,9 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "Remote Facilities", facilities_path %></li>
         </ul>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Open Games", game_requests_path %></li>
+        </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? %>

@@ -1,4 +1,8 @@
 class GameRequestsController < ApplicationController
+  def index
+    @game_requests = GameRequest.where(away_team_facility_id: nil)
+  end
+
   def new
     @game_request = GameRequest.new(home_team_facility_id: current_user.SId,
       away_team_facility_id: params[:away_team_facility_id])
