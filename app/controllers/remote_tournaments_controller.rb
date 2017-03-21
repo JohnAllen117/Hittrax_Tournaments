@@ -22,8 +22,11 @@ class RemoteTournamentsController < ApplicationController
 
     tournament_invites = params[:remote_tournament][:tournament_invite][:facility_id].reject { |x| x.empty? }
     tournament_invites.each do |invite|
-      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0, TS: DateTime.now)
+      t = TournamentInvite.new(facility_id: invite, remote_tournament_id: @remote_tournament.id, accepted: 0, TS: DateTime.now, notifiable_type: 0)
       if t.valid?
+        t.save!
+        n = Notification.create(notifiable_type: 0, notifiable_id: t.id)
+        t.notifiable_id = n.id
         t.save!
       else
         flash[:notice] = "Failed to invite some facilities"
