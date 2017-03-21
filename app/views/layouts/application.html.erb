@@ -32,9 +32,9 @@
         <li><%= link_to "Inbox", conversations_path %></li>
           <% if TournamentInvite.where(facility_id: current_user.SId, accepted: 0).size > 0 %>
             <li class="dropdown">
-            <li><%= link_to "Notifications [#{TournamentInvite.where(facility_id: current_user.SId, accepted: 0).size}]", tournament_invites_path, style: "color: red" %></li>
+            <li><%= link_to "Notifications [#{Notification.where(facility_master_id: current_user.SId, accepted: 0).size}]", notifications_path, style: "color: red" %></li>
           <% else %>
-            <li><%= link_to "Notifications [#{TournamentInvite.where(facility_id: current_user.SId, accepted: 0).size}]", tournament_invites_path %></li>
+            <li><%= link_to "Notifications [#{Notification.where(facility_master_id: current_user.SId, accepted: 0).size}]", notifications_path %></li>
           <% end %>
         <% end %>
         <% if current_user.present? %>

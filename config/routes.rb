@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :personal_messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
   resources :game_requests, only: [:new, :create, :update]
+  resources :notifications, only: [:index, :edit]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -43,7 +43,7 @@ class GameRequestsController < ApplicationController
     )
     if @game_request.valid?
       @game_request.save!
-      @notification = Notification.new(notifiable_type: 1, notifiable_id: @game_request.id)
+      @notification = Notification.new(notifiable_type: 1, notifiable_id: @game_request.id, facility_master_id: @game_request.away_team_facility_id)
       @notification.save!
       @game_request.notifiable_id = @notification.id
       @game_request.save!
