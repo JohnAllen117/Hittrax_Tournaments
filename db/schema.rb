@@ -6367,12 +6367,12 @@ ActiveRecord::Schema.define(version: 20170321153519) do
   end
 
   create_table "game_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "schedule_id",                           null: false
-    t.string   "home_team_facility_id",                 null: false
-    t.string   "away_team_facility_id",                 null: false
-    t.boolean  "accepted",              default: false, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "schedule_id",                       null: false
+    t.string   "home_team_facility_id",             null: false
+    t.string   "away_team_facility_id",             null: false
+    t.integer  "accepted",              default: 0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "notifiable_id"
     t.integer  "notifiable_type"
     t.index ["notifiable_id", "notifiable_type"], name: "index_game_requests_on_notifiable_id_and_notifiable_type", using: :btree

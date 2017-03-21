@@ -4,7 +4,7 @@ class AddGameRequests < ActiveRecord::Migration[5.0]
       t.integer :schedule_id, null: false
       t.string :home_team_facility_id, null: false
       t.string :away_team_facility_id, null: false
-      t.boolean :accepted, null: false, default: false
+      t.integer :accepted, null: false, default: 0
 
       t.timestamps
     end

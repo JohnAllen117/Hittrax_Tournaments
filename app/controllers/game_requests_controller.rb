@@ -53,4 +53,8 @@ class GameRequestsController < ApplicationController
       redirect_to new_game_request_path
     end
   end
+
+  def update
+
+  end
 end
