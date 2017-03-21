@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :facility_availabilities, only: [:new, :create, :edit, :update]
   resources :personal_messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
+  resources :game_requests, only: [:new, :create, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
