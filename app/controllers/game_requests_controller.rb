@@ -54,7 +54,15 @@ class GameRequestsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @game_request = GameRequest.find_by(id: params[:id])
+    @notification = @game_request.notification
+    @game_request.accepted = params[:accepted].to_i
+    @notification.seen = 1
+    @game_request.save
+    @notification.save
 
+    flash[:notice] = "Game Request Accepted!"
+    redirect_to root_path
   end
 end

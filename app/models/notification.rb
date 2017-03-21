@@ -3,7 +3,7 @@ class Notification < ApplicationRecord
   has_many :game_requests, as: :notifiable
 
   def facility
-    Facility.find_by(MasterID: self.facility_master_id)
+    Facility.find_by(SId: self.facility_master_id)
   end
 
   def notifiable
