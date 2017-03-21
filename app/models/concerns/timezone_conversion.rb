@@ -13,12 +13,15 @@ module TimezoneConversion
     utc_time.strftime('%H:%M')
   end
 
-
   def convert_from_utc(local_time_zone, utc_time)
     utc_time = convert_time_string_to_tod(utc_time)
     utc_offset = get_time_zone_offset(local_time_zone)
     local_time = utc_time + utc_offset
     local_time.strftime('%H:%M')
+  end
+
+  def convert_from_utc_datetime(local_time_zone, utc_time)
+    utc_time.in_time_zone(local_time_zone)
   end
 
   def convert_time_string_to_tod(local_time)

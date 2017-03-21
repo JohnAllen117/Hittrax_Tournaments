@@ -1,4 +1,6 @@
 class GameRequest < ApplicationRecord
+  include TimezoneConversion
+  
   enum accepted: [:pending, :accepted, :rejected]
 
   def notification

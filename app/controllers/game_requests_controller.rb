@@ -25,7 +25,7 @@ class GameRequestsController < ApplicationController
     params[:schedule]["game_time(1i)"] + " " +
     params[:schedule]["game_time(4i)"] + ":" +
     params[:schedule]["game_time(5i)"]
-    game_time = DateTime.parse(game_time)
+    game_time = DateTime.parse(game_time).utc
 
     @schedule = Schedule.new(
       game_time: game_time,
