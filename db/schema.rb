@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321153519) do
+ActiveRecord::Schema.define(version: 20170321195929) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6369,7 +6369,7 @@ ActiveRecord::Schema.define(version: 20170321153519) do
   create_table "game_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "schedule_id",                       null: false
     t.string   "home_team_facility_id",             null: false
-    t.string   "away_team_facility_id",             null: false
+    t.string   "away_team_facility_id"
     t.integer  "accepted",              default: 0, null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
