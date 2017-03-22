@@ -6375,6 +6375,7 @@ ActiveRecord::Schema.define(version: 20170321195929) do
     t.datetime "updated_at",                        null: false
     t.integer  "notifiable_id"
     t.integer  "notifiable_type"
+    t.string   "message"
     t.index ["notifiable_id", "notifiable_type"], name: "index_game_requests_on_notifiable_id_and_notifiable_type", using: :btree
   end
 
