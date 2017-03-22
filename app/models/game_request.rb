@@ -1,7 +1,7 @@
 class GameRequest < ApplicationRecord
   include TimezoneConversion
-  
   enum accepted: [:pending, :accepted, :rejected]
+  belongs_to :schedule
 
   def notification
     Notification.find_by(notifiable_id: self.id, notifiable_type: self.notifiable_type)

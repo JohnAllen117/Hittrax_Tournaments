@@ -1,10 +1,12 @@
-<%= simple_form_for @game_request do |f| %>
-  <%= f.hidden_field :home_team_facility_id, value: @game_request.home_team_facility_id %>
-  <%= f.hidden_field :away_team_facility_id, value: @game_request.away_team_facility_id %>
-  <%= simple_fields_for @schedule do |g| %>
-    <%= g.input :game_time, as: :datetime, order: [:month, :day, :year], default: Time.now %>
-    <%= g.input :home_team_id, collection: @teams %>
-    <%= g.input :away_team_id, collection: @teams %>
+<div style="margin: 0 auto; width:855px;">
+  <%= simple_form_for @game_request do |f| %>
+    <%= f.hidden_field :home_team_facility_id, value: @game_request.home_team_facility_id %>
+    <%= f.hidden_field :away_team_facility_id, value: @game_request.away_team_facility_id %>
+    <%= simple_fields_for @schedule do |g| %>
+      <%= g.input :game_time, as: :datetime, order: [:month, :day, :year], default: Time.now %>
+      <%= g.input :home_team_id, collection: @teams %>
+    <% end %>
+    <%= f.input :message, as: :text, label: "Add a custom message about your team details." %>
+    <%= f.button :submit, "Schedule Game", class: "button expand" %>
   <% end %>
-  <%= f.button :submit, "Schedule Game", class: "button expand" %>
-<% end %>
+</div>

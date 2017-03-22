@@ -24,14 +24,8 @@ class RemoteTournament < ApplicationRecord
     # end
   end
 
-  def self.facilities
-    admin_sids = User.all.where(role: 1).pluck(:SId)
-    @facilities = []
-    admin_sids.each do |sid|
-      if Facility.find_by(SId: sid)
-        @facilities << Facility.find_by(SId: sid)
-      end
-    end
+  def self.facilities(current_user_sid)
+    @facilities = Facility.all.where(OptedIn: 1)
     @facilities = @facilities.sort_by{|x| x[:CompanyName]}.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
   end
 

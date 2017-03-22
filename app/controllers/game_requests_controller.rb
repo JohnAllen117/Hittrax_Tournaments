@@ -6,17 +6,14 @@ class GameRequestsController < ApplicationController
   def new
     @game_request = GameRequest.new(home_team_facility_id: current_user.SId,
       away_team_facility_id: params[:away_team_facility_id])
+
     @teams = []
     Facility.find_by(SId: @game_request.home_team_facility_id).teams.each do |team|
       if team.present?
         @teams << team
       end
     end
-    Facility.find_by(SId: @game_request.away_team_facility_id).teams.each do |team|
-      if team.present?
-        @teams << team
-      end
-    end
+
     if @teams.present?
       @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
     end
@@ -41,8 +38,8 @@ class GameRequestsController < ApplicationController
 
     @game_request = GameRequest.new(
       home_team_facility_id: current_user.SId,
-      away_team_facility_id: params[:game_request][:away_team_facility_id],
       schedule_id: @schedule.id,
+      message: params[:game_request][:message],
       notifiable_type: 1
     )
     if @game_request.valid?

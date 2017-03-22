@@ -1,2 +1,14 @@
 <h1>Open remote games available now!</h1>
 <%= link_to "Create a New Open Game", new_game_request_path, class: "btn btn-primary"%>
+<div class="container">
+  <% @game_requests.each do |game_request| %>
+  <span>
+    <%= Facility.find_by(SId: game_request.home_team_facility_id).CompanyName %>
+    [<%= Team.find_by(MasterID: game_request.schedule.home_team_id).Name %>]-
+    <%= game_request.message %>
+    <%= link_to edit_game_request_path(game_request) do %>
+      <%= fa_icon("arrow-right", text: "Challenge to a game.")%>
+    <% end %>
+  </span>
+  <% end %>
+</div>

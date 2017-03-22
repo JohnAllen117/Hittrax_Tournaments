@@ -3,7 +3,8 @@ class RemoteTournamentsController < ApplicationController
   def new
     @remote_tournament = RemoteTournament.new
     @tournament_invites = TournamentInvite.new
-    @facilities = RemoteTournament.facilities
+    @facilities = RemoteTournament.facilities(current_user.SId)
+    binding.pry
     @remote_tournament.start_date = DateTime.now
   end
 
@@ -72,7 +73,7 @@ class RemoteTournamentsController < ApplicationController
       @teams << t
     end
 
-    @facilities = @remote_tournament.facilities
+    @facilities = @remote_tournament.facilities(current_user.SId)
 
     if @teams.present?
       @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
