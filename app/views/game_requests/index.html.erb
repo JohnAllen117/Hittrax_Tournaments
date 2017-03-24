@@ -6,6 +6,7 @@
       <th>#</th>
       <th>Facility</th>
       <th>Message</th>
+      <th>Scheduled Time</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +20,9 @@
       </td>
       <td>
         <%= game_request.message %>
+      </td>
+      <td>
+        <%= game_request.schedule.TS.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
       </td>
       <td>
         <%= link_to new_active_request_path(game_request_id: game_request) do %>
