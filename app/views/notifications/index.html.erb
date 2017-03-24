@@ -9,7 +9,7 @@
   <tbody>
     <tr>
       <% @notifications.each_with_index do |notification, index| %>
-        <th scope="row"><%="#{index}"%></th>
+        <th scope="row"><%="#{index + 1}"%></th>
         <% if notification.notifiable_type == 0 %>
           <td>
             <%= "Accept Tournament Invite from #{notification.notifiable.remote_tournament.name}?" %>

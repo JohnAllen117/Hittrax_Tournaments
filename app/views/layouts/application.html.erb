@@ -20,11 +20,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if current_user.present? %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Facilities", facilities_path %></li>
+      </ul>
         <ul class="nav navbar-nav">
           <li><%= link_to "Tournaments", remote_tournaments_path %></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Remote Facilities", facilities_path %></li>
         </ul>
         <ul class="nav navbar-nav">
           <li><%= link_to "Open Games", game_requests_path %></li>

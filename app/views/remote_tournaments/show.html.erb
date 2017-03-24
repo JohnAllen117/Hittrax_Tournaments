@@ -28,7 +28,7 @@
     <% end %>
   </ul>
 <% end %>
-<% if @teams.present? %>
+<% if @teams.present? && @remote_tournament.company_id == current_user.SId %>
   <h1>Schedule a game!</h1>
   <%= simple_form_for Schedule.new do |f| %>
     <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
