@@ -1,10 +1,30 @@
-<div>
-  <%= link_to "Create a new tournament!", new_remote_tournament_path %>
-  <% if @remote_tournaments.present? %>
-    <ul>
-      <% @remote_tournaments.each do |tournament| %>
-        <li><%= link_to tournament.name, tournament %></li>
+<h1>Ongoing Remote Tournaments!</h1>
+<%= link_to "Create a new tournament!", new_remote_tournament_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Facility</th>
+      <th>Scheduled Time</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% if @remote_tournaments.present? %>
+        <% @remote_tournaments.each_with_index do |tournament, index| %>
+          <tr>
+            <th scope="row"><%="#{index}"%></th>
+            <td>
+              <%= link_to tournament.name, tournament %>
+            </td>
+            <td>
+              <%= tournament.facility.CompanyName %>
+            </td>
+            <td>
+              <%= tournament.start_date.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
+            </td>
+          </tr>
       <% end %>
-    </ul>
-  <% end %>
-</div>
+    <% end %>
+  </tbody>
+</table>

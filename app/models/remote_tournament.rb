@@ -24,6 +24,10 @@ class RemoteTournament < ApplicationRecord
     # end
   end
 
+  def facility
+    Facility.find_by(SId: self.company_id)
+  end
+
   def self.facilities(current_user_sid)
     @facilities = Facility.all.where(OptedIn: 1) #"OptedIn = ? AND SId != ?" 1, current_user_sid - alternate query to remove current user's facility
     @facilities = @facilities.sort_by{|x| x[:CompanyName]}.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
