@@ -68,14 +68,15 @@ class GameRequestsController < ApplicationController
   def edit
     @game_request = GameRequest.find_by(id: params[:id])
     @notification = @game_request.notification
+    @schedule = @game_request.schedule
+    @teams = current_user.facility.teams
+
+    if @teams.present?
+      @teams = @teams.map { |obj| [obj[:Name], obj[:MasterID]] }
+    end
 
     if params[:accepted].present? && params[:accepted].to_i == 1
-      @game_request.accepted = params[:accepted].to_i
-      @notification.seen = 1
-      @game_request.save
-      @notification.save
 
-      flash[:notice] = "Game Request Accepted!"
     elsif @game_request.accepted == 0
       @game_request.accepted = params[:accepted].to_i
       @notification.seen = 1
@@ -83,6 +84,7 @@ class GameRequestsController < ApplicationController
       @notification.save
 
       flash[:notice] = "Game Request Rejected."
+      redirect_to root_path
     else
       @active_notification = Notification.create(
         notifiable_type: 2,
@@ -96,8 +98,23 @@ class GameRequestsController < ApplicationController
       @active_request.save
       @active_notification.notifiable_id = @active_request.id
       @active_notification.save
-    end
 
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @game_request = GameRequest.find_by(id: params[:id])
+    @notification = @game_request.notification
+    @schedule = @game_request.schedule
+    @schedule.away_team_id = params[:game_request][:schedule][:away_team_id]
+    @game_request.accepted = 1
+    @notification.seen = 1
+    @game_request.save
+    @notification.save
+    @schedule.save
+
+    flash[:notice] = "Successfully accepted game request!"
     redirect_to root_path
   end
 end

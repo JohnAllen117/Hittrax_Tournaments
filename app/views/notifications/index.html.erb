@@ -24,7 +24,7 @@
           </td>
         <% elsif notification.notifiable_type == 1 %>
           <td>
-            <%= "Accept Game Request from #{notification.notifiable.facility.CompanyName}?" %>
+            <%= "Accept Game Request from #{notification.notifiable.facility.CompanyName}? - #{notification.notifiable.message}" %>
           </td>
           <td>
             <%= link_to edit_game_request_path(notification.notifiable, accepted: 1) do %>

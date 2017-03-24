@@ -1,0 +1,8 @@
+<div style="margin: 0 auto; width:855px;">
+  <%= simple_form_for @game_request do |f| %>
+    <%= f.simple_fields_for @schedule do |g| %>
+      <%= g.input :away_team_id, collection: @teams, label: "Choose a team to challenge the other facility." %>
+    <% end %>
+  <%= f.button :submit, "Accept the request!", class: "button expand" %>
+  <% end %>
+</div>
