@@ -28,15 +28,17 @@
     <% end %>
   </ul>
 <% end %>
-<% if @teams.present? && @remote_tournament.company_id == current_user.SId %>
-  <h1>Schedule a game!</h1>
-  <%= simple_form_for Schedule.new do |f| %>
-    <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
-    <%= f.input :game_time, as: :datetime, order: [:month, :day, :year], default: @remote_tournament.start_date %>
-    <%= f.input :home_team_id, collection: @teams %>
-    <%= f.input :away_team_id, collection: @teams %>
-    <%= f.button :submit, "Schedule Game", class: "button expand" %>
+<% if @remote_tournament.company_id == current_user.SId %>
+  <% if @teams.present? %>
+    <h1>Schedule a game!</h1>
+    <%= simple_form_for Schedule.new do |f| %>
+      <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
+      <%= f.input :game_time, as: :datetime, order: [:month, :day, :year], default: @remote_tournament.start_date %>
+      <%= f.input :home_team_id, collection: @teams %>
+      <%= f.input :away_team_id, collection: @teams %>
+      <%= f.button :submit, "Schedule Game", class: "button expand" %>
+    <% end %>
+  <% else %>
+    <h1>Sorry, no one's accepted your tournament requests yet! Check again later.</h1>
   <% end %>
-<% else %>
-  <h1>Sorry, no one's accepted your tournament requests yet! Check again later.</h1>
 <% end %>
