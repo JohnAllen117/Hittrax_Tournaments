@@ -1,44 +1,46 @@
-<h1> <%= @remote_tournament.name %> - <%= @remote_tournament.start_date.strftime('%B %e %Y at %l:%M %p') %> </h1>
-<%= link_to "Edit Tournament", edit_remote_tournament_path(@remote_tournament) %>
-<br/>
-<% if @facilities.present? %>
-  <h1>Invited Facilities</h1>
-  <ul>
-    <% @facilities.each do |facility| %>
-      <% @tournament_invite = facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament) %>
-      <li><%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
-        <% if @tournament_invite.accepted? %>
-          (Accepted)
-        <% elsif  @tournament_invite.rejected? %>
-          (Not Accepted)
-        <% else %>
-          (Pending)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-<% if @schedules.present? %>
-  <h2>Scheduled Games</h2>
-  <ul>
-    <% @schedules.each do |schedule| %>
-      <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
-        <li><%= "#{Team.find_by(MasterID: schedule.away_team_id).Name} at #{Team.find_by(MasterID: schedule.home_team_id).Name}: #{schedule.game_time.strftime("%A, %B %d, %Y %l:%M %p UTC")}" %>
+<div style="margin: 0 auto; width:855px;">
+  <h1> <%= @remote_tournament.name %> - <%= @remote_tournament.start_date.strftime('%B %e %Y at %l:%M %p') %> </h1>
+  <%= link_to "Edit Tournament", edit_remote_tournament_path(@remote_tournament) %>
+  <br/>
+  <% if @facilities.present? %>
+    <h1>Invited Facilities</h1>
+    <ul>
+      <% @facilities.each do |facility| %>
+        <% @tournament_invite = facility.tournament_invites.find_by(remote_tournament_id: @remote_tournament) %>
+        <li><%= "#{facility.CompanyName} - #{facility.City}, #{facility.State}" %>
+          <% if @tournament_invite.accepted? %>
+            (Accepted)
+          <% elsif  @tournament_invite.rejected? %>
+            (Not Accepted)
+          <% else %>
+            (Pending)
+          <% end %>
+        </li>
       <% end %>
-    <% end %>
-  </ul>
-<% end %>
-<% if @remote_tournament.company_id == current_user.SId %>
-  <% if @teams.present? %>
-    <h1>Schedule a game!</h1>
-    <%= simple_form_for Schedule.new do |f| %>
-      <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
-      <%= f.input :game_time, as: :datetime, order: [:month, :day, :year], default: @remote_tournament.start_date %>
-      <%= f.input :home_team_id, collection: @teams %>
-      <%= f.input :away_team_id, collection: @teams %>
-      <%= f.button :submit, "Schedule Game", class: "button expand" %>
-    <% end %>
-  <% else %>
-    <h1>Sorry, no one's accepted your tournament requests yet! Check again later.</h1>
+    </ul>
   <% end %>
-<% end %>
+  <% if @schedules.present? %>
+    <h2>Scheduled Games</h2>
+    <ul>
+      <% @schedules.each do |schedule| %>
+        <% if schedule.home_team_id.present? && schedule.away_team_id.present? %>
+          <li><%= "#{Team.find_by(MasterID: schedule.away_team_id).Name} at #{Team.find_by(MasterID: schedule.home_team_id).Name}: #{schedule.game_time.strftime("%A, %B %d, %Y %l:%M %p UTC")}" %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @remote_tournament.company_id == current_user.SId %>
+    <% if @teams.present? %>
+      <h1>Schedule a game!</h1>
+      <%= simple_form_for Schedule.new do |f| %>
+        <%= f.hidden_field :remote_tournament_id, value: @remote_tournament.id %>
+        <%= f.input :game_time, as: :datetime, order: [:month, :day, :year], default: @remote_tournament.start_date %>
+        <%= f.input :home_team_id, collection: @teams %>
+        <%= f.input :away_team_id, collection: @teams %>
+        <%= f.button :submit, "Schedule Game", class: "button expand" %>
+      <% end %>
+    <% else %>
+      <h1>Sorry, no one's accepted your tournament requests yet! Check again later.</h1>
+    <% end %>
+  <% end %>
+</div>
