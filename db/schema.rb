@@ -6318,9 +6318,14 @@ ActiveRecord::Schema.define(version: 20170324145322) do
   end
 
   create_table "active_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "game_request_id",                 null: false
-    t.integer "facility_id",                     null: false
-    t.boolean "accepted",        default: false
+    t.integer "game_request_id",                         null: false
+    t.integer "facility_id",                             null: false
+    t.integer "challenging_facility_id"
+    t.string  "team_master_id"
+    t.boolean "accepted",                default: false
+    t.string  "message"
+    t.integer "notifiable_id"
+    t.integer "notifiable_type",         default: 2
   end
 
   create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

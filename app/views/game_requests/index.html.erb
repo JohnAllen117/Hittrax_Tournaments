@@ -6,7 +6,7 @@
     <%= Facility.find_by(SId: game_request.home_team_facility_id).CompanyName %>
     [<%= Team.find_by(MasterID: game_request.schedule.home_team_id).Name %>]-
     <%= game_request.message %>
-    <%= link_to edit_game_request_path(game_request) do %>
+    <%= link_to new_active_request_path(game_request_id: game_request) do %>
       <%= fa_icon("arrow-right", text: "Challenge to a game.")%>
     <% end %>
   </span>

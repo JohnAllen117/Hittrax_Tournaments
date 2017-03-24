@@ -58,12 +58,25 @@ class GameRequestsController < ApplicationController
   def edit
     @game_request = GameRequest.find_by(id: params[:id])
     @notification = @game_request.notification
-    @game_request.accepted = params[:accepted].to_i
-    @notification.seen = 1
-    @game_request.save
-    @notification.save
+    @active_notification = Notification.create(
+      notifiable_type: 2,
+      facility_master_id: @game_request.home_team_facility_id
+    )
+    @active_request = ActiveRequest.new(
+      game_request_id: @game_request.id,
+      facility_id: current_user.SId,
+      notifiable_id: @active_notification.id
+    )
+    @active_request.save
+    @active_notification.notifiable_id = @active_request.id
+    @active_notification.save
 
-    flash[:notice] = "Game Request Accepted!"
+    # @game_request.accepted = params[:accepted].to_i
+    # @notification.seen = 1
+    # @game_request.save
+    # @notification.save
+    #
+    # flash[:notice] = "Game Request Accepted!"
     redirect_to root_path
   end
 end
