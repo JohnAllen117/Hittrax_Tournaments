@@ -1,16 +1,18 @@
-<% provide(:title, "Create New Tournament") %>
-<%= simple_form_for(@remote_tournament) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :start_date,  input_html: {value: @default_time }, as: :datetime, required: true %>
-  <%= f.input :company_id, value: current_user.CompanyId, as: :hidden %>
-  <div class="facility-form">
-    <%= f.fields_for @tournament_invites do |g| %>
-      <%= label_tag "Select Facilities" %>
-      <%= g.input :facility_id, collection: @facilities, label: false, as: :check_boxes %>
-    <% end %>
-  </div>
-  <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]}, include_blank: false %>
-  <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, include_blank: false %>
-  <%= f.button :submit, class: "button expand" %>
-<% end %>
+<div style="margin: 0 auto; width:855px;">
+  <% provide(:title, "Create New Tournament") %>
+  <%= simple_form_for(@remote_tournament) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :start_date,  input_html: {value: @default_time }, as: :datetime, required: true %>
+    <%= f.input :company_id, value: current_user.CompanyId, as: :hidden %>
+    <div class="facility-form", style="padding-left: 20px">
+      <%= f.fields_for @tournament_invites do |g| %>
+        <%= label_tag "Select Facilities" %>
+        <%= g.input :facility_id, collection: @facilities, label: false, as: :check_boxes %>
+      <% end %>
+    </div>
+    <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]}, include_blank: false %>
+    <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, include_blank: false %>
+    <%= f.button :submit, class: "button expand" %>
+  <% end %>
+</div>

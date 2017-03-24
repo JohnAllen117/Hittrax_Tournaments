@@ -3,7 +3,8 @@
     <tr>
       <th><%= sort_link(@q, :CompanyName, 'Company Name', default_order: :desc) %></th>
       <th><%= sort_link(@q, :Phone, 'Phone Number', default_order: :desc) %></th>
-      <th><%= sort_link(@q, :name, 'Last Name', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :name, 'Email', default_order: :desc) %></th>
+      <th>Challenge</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,11 @@
         <td><%= facility.CompanyName %></td>
         <td><%= facility.Phone %></td>
         <td><%= facility.Email %></td>
+        <td>
+          <%= link_to new_game_request_path(facility_id: facility.id) do %>
+            Send a Game Request <%= fa_icon("send")%>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

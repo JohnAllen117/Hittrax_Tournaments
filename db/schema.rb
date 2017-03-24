@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321153519) do
+ActiveRecord::Schema.define(version: 20170324145322) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6317,6 +6317,17 @@ ActiveRecord::Schema.define(version: 20170321153519) do
     t.string  "longitude", limit: 20
   end
 
+  create_table "active_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "game_request_id",                         null: false
+    t.integer "facility_id",                             null: false
+    t.integer "challenging_facility_id"
+    t.string  "team_master_id"
+    t.boolean "accepted",                default: false
+    t.string  "message"
+    t.integer "notifiable_id"
+    t.integer "notifiable_type",         default: 2
+  end
+
   create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "author_master_id"
     t.string   "receiver_master_id"
@@ -6369,12 +6380,13 @@ ActiveRecord::Schema.define(version: 20170321153519) do
   create_table "game_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "schedule_id",                       null: false
     t.string   "home_team_facility_id",             null: false
-    t.string   "away_team_facility_id",             null: false
+    t.string   "away_team_facility_id"
     t.integer  "accepted",              default: 0, null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "notifiable_id"
     t.integer  "notifiable_type"
+    t.string   "message"
     t.index ["notifiable_id", "notifiable_type"], name: "index_game_requests_on_notifiable_id_and_notifiable_type", using: :btree
   end
 

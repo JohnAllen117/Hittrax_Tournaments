@@ -1,0 +1,10 @@
+<div style="margin: 0 auto; width:855px;">
+  <%= simple_form_for @active_request do |f| %>
+    <%= f.hidden_field :facility_id, value: @game_request.home_team_facility_id %>
+    <%= f.hidden_field :challenging_facility_id, value: current_user.SId %>
+    <%= f.hidden_field :game_request_id, value: @game_request.id %>
+    <%= f.input :team_master_id, collection: @teams, label: "Choose a team to challenge the other facility." %>
+    <%= f.input :message, as: :text, label: "Add a custom message about your team details." %>
+    <%= f.button :submit, "Challenge to a game!", class: "button expand" %>
+  <% end %>
+</div>
