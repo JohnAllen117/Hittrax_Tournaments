@@ -36,7 +36,7 @@
           </td>
         <% elsif notification.notifiable_type == 2 %>
           <td>
-            <%= "#{notification.notifiable.facility.CompanyName} has challenged you to your remote game! - #{notification.notifiable.message}" %>
+            <%= "#{notification.notifiable.facility.CompanyName} has challenged you to a remote game! - #{notification.notifiable.message}" %>
           </td>
           <td>
             <%= link_to edit_active_request_path(notification.notifiable, accepted: 1) do %>

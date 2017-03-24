@@ -14,7 +14,7 @@
         <td><%= facility.Phone %></td>
         <td><%= facility.Email %></td>
         <td>
-          <%= link_to new_game_request_path(facility_id: facility.id) do %>
+          <%= link_to new_game_request_path(facility_id: facility.SId) do %>
             Send a Game Request <%= fa_icon("send")%>
           <% end %>
         </td>

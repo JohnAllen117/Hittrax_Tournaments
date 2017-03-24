@@ -36,7 +36,7 @@ class ActiveRequestsController < ApplicationController
     @game_notification = @game_request.notification
     @schedule = @game_request.schedule
 
-    if params[:accepted] = 1
+    if params[:accepted].present? && params[:accepted].to_i == 1
       @active_request.accepted = 1
       @game_request.accepted = 1
       @game_request.away_team_facility_id = @active_request.challenging_facility_id
@@ -62,7 +62,7 @@ class ActiveRequestsController < ApplicationController
       redirect_to notifications_path
     end
   end
-  
+
   private
   def active_request_params
     params.require(:active_request).permit(:facility_id, :challenging_facility_id, :team_master_id, :message, :game_request_id)

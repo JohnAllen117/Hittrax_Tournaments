@@ -42,12 +42,22 @@ class GameRequestsController < ApplicationController
       message: params[:game_request][:message],
       notifiable_type: 1
     )
+    if params[:game_request][:away_team_facility_id].present?
+      @game_request.away_team_facility_id = params[:game_request][:away_team_facility_id]
+    end
     if @game_request.valid?
       @game_request.save!
       @notification = Notification.new(notifiable_type: 1, notifiable_id: @game_request.id, facility_master_id: @game_request.away_team_facility_id)
       @notification.save!
       @game_request.notifiable_id = @notification.id
       @game_request.save!
+      if @game_request.away_team_facility_id.nil?
+        @active_request = ActiveRequest.new(
+          game_request_id: @game_request.id
+        )
+      end
+
+      flash[:notice] = "Game request sent."
       redirect_to conversations_path
     else
       flash[:notice] = "Failed to create the invite"
@@ -58,25 +68,36 @@ class GameRequestsController < ApplicationController
   def edit
     @game_request = GameRequest.find_by(id: params[:id])
     @notification = @game_request.notification
-    @active_notification = Notification.create(
-      notifiable_type: 2,
-      facility_master_id: @game_request.home_team_facility_id
-    )
-    @active_request = ActiveRequest.new(
-      game_request_id: @game_request.id,
-      facility_id: current_user.SId,
-      notifiable_id: @active_notification.id
-    )
-    @active_request.save
-    @active_notification.notifiable_id = @active_request.id
-    @active_notification.save
 
-    # @game_request.accepted = params[:accepted].to_i
-    # @notification.seen = 1
-    # @game_request.save
-    # @notification.save
-    #
-    # flash[:notice] = "Game Request Accepted!"
+    if params[:accepted].present? && params[:accepted].to_i == 1
+      @game_request.accepted = params[:accepted].to_i
+      @notification.seen = 1
+      @game_request.save
+      @notification.save
+
+      flash[:notice] = "Game Request Accepted!"
+    elsif @game_request.accepted == 0
+      @game_request.accepted = params[:accepted].to_i
+      @notification.seen = 1
+      @game_request.save
+      @notification.save
+
+      flash[:notice] = "Game Request Rejected."
+    else
+      @active_notification = Notification.create(
+        notifiable_type: 2,
+        facility_master_id: @game_request.home_team_facility_id
+      )
+      @active_request = ActiveRequest.new(
+        game_request_id: @game_request.id,
+        facility_id: current_user.SId,
+        notifiable_id: @active_notification.id
+      )
+      @active_request.save
+      @active_notification.notifiable_id = @active_request.id
+      @active_notification.save
+    end
+
     redirect_to root_path
   end
 end
