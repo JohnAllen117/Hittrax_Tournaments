@@ -1,32 +1,53 @@
-<ul>
-  <% @notifications.each do |notification| %>
-    <% if notification.notifiable_type == 0 %>
-    <li>
-      <%= "Accept Tournament Invite from #{notification.notifiable.remote_tournament.name}?" %> <%= link_to new_tournament_team_path(remote_tournament_id: notification.notifiable.remote_tournament.id, facility_id: notification.notifiable.facility_id) do %>
-        <i class="fa fa-check" aria-hidden="true"></i>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Message</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @notifications.each_with_index do |notification, index| %>
+        <th scope="row"><%="#{index}"%></th>
+        <% if notification.notifiable_type == 0 %>
+          <td>
+            <%= "Accept Tournament Invite from #{notification.notifiable.remote_tournament.name}?" %>
+          </td>
+          <td>
+            <%= link_to new_tournament_team_path(remote_tournament_id: notification.notifiable.remote_tournament.id, facility_id: notification.notifiable.facility_id) do %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to edit_tournament_invite_path(notification.notifiable, accepted: 2) do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        <% elsif notification.notifiable_type == 1 %>
+          <td>
+            <%= "Accept Game Request from #{notification.notifiable.facility.CompanyName}?" %>
+          </td>
+          <td>
+            <%= link_to edit_game_request_path(notification.notifiable, accepted: 1) do %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to edit_game_request_path(notification.notifiable, accepted: 2) do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        <% elsif notification.notifiable_type == 2 %>
+          <td>
+            <%= "#{notification.notifiable.facility.CompanyName} has challenged you to your remote game! - #{notification.notifiable.message}" %>
+          </td>
+          <td>
+            <%= link_to edit_active_request_path(notification.notifiable, accepted: 1) do %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to edit_active_request_path(notification.notifiable, accepted: 0) do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        <% end %>
+        </tr>
       <% end %>
-      <%= link_to edit_tournament_invite_path(notification.notifiable, accepted: 2) do %>
-        <i class="fa fa-times" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <% elsif notification.notifiable_type == 1 %>
-    <li>
-      <%= "Accept Game Request from #{notification.notifiable.facility.CompanyName}?" %> <%= link_to edit_game_request_path(notification.notifiable, accepted: 1) do %>
-        <i class="fa fa-check" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to edit_game_request_path(notification.notifiable, accepted: 2) do %>
-        <i class="fa fa-times" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <% elsif notification.notifiable_type == 2 %>
-    <li>
-      <%= "#{notification.notifiable.facility.CompanyName} has challenged you to your remote game! - #{notification.notifiable.message}" %> <%= link_to edit_active_request_path(notification.notifiable, accepted: 1) do %>
-        <i class="fa fa-check" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to edit_active_request_path(notification.notifiable, accepted: 0) do %>
-        <i class="fa fa-times" aria-hidden="true"></i>
-      <% end %>
-    <% end %>
-  </li>
-  <% end %>
-</ul>
+  </tbody>
+</table>

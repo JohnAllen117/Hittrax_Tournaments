@@ -1,14 +1,30 @@
 <h1>Open remote games available now!</h1>
 <%= link_to "Create a New Open Game", new_game_request_path, class: "btn btn-primary"%>
-<div class="container">
-  <% @game_requests.each do |game_request| %>
-  <span>
-    <%= Facility.find_by(SId: game_request.home_team_facility_id).CompanyName %>
-    [<%= Team.find_by(MasterID: game_request.schedule.home_team_id).Name %>]-
-    <%= game_request.message %>
-    <%= link_to new_active_request_path(game_request_id: game_request) do %>
-      <%= fa_icon("arrow-right", text: "Challenge to a game.")%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Facility</th>
+      <th>Message</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @game_requests.each_with_index do |game_request,index| %>
+    <tr>
+      <th scope="row"><%="#{index}"%></th>
+      <td>
+        <%= Facility.find_by(SId: game_request.home_team_facility_id).CompanyName %>
+        [<%= Team.find_by(MasterID: game_request.schedule.home_team_id).Name %>]
+      </td>
+      <td>
+        <%= game_request.message %>
+      </td>
+      <td>
+        <%= link_to new_active_request_path(game_request_id: game_request) do %>
+          <%= fa_icon("arrow-right", text: "Challenge to a game.")%>
+        <% end %>
+      </td>
     <% end %>
-  </span>
-  <% end %>
-</div>
+  </tbody>
+</table>
