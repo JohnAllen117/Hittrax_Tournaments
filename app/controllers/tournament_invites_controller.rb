@@ -10,9 +10,9 @@ class TournamentInvitesController < ApplicationController
     if t.save
       notification.seen = 1
       notification.save
-      if t.accepted == 1
+      if t.accepted == "accepted"
         flash[:notice] = "Invite Accepted"
-      elsif t.accepted == 2
+      elsif t.accepted == "rejected"
         flash[:notice] = "Invite Rejected"
       end
       redirect_to remote_tournament_path(t.remote_tournament)
