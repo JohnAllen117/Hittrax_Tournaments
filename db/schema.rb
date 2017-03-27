@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324145322) do
+ActiveRecord::Schema.define(version: 20170327194741) do
 
   create_table "AtBatPlays", primary_key: "MasterID", id: :string, limit: 50, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint   "Id"
@@ -6390,6 +6390,11 @@ ActiveRecord::Schema.define(version: 20170324145322) do
     t.index ["notifiable_id", "notifiable_type"], name: "index_game_requests_on_notifiable_id_and_notifiable_type", using: :btree
   end
 
+  create_table "game_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text   "description", limit: 65535
+  end
+
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "notifiable_id"
     t.integer  "notifiable_type"
@@ -6405,6 +6410,12 @@ ActiveRecord::Schema.define(version: 20170324145322) do
     t.string   "user_master_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "remote_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "game_rule_id"
+    t.integer "gameable_id"
+    t.integer "gameable_type"
   end
 
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
