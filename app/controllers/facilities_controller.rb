@@ -5,7 +5,7 @@ class FacilitiesController < ApplicationController
   end
 
   def index
-    @q = Facility.where("OptedIn = ? AND SId != ?", true, current_user.SId).ransack(params[:q])
+    @q = Facility.where("Facilities.OptedIn = ? AND Facilities.SId != ?", 1, current_user.SId).ransack(params[:q])
     @facilities = @q.result(distinct: true).uniq
   end
 
