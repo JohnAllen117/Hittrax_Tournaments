@@ -81,7 +81,8 @@ class RemoteTournamentsController < ApplicationController
   end
 
   def index
-    @remote_tournaments = RemoteTournament.where(company_id: current_user.CompanyId)
+    @q = RemoteTournament.where(company_id: current_user.CompanyId).ransack(params[:q])
+    @remote_tournaments = @q.result(distinct: true).uniq
   end
 
 

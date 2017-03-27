@@ -3,25 +3,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Facility</th>
-      <th>Scheduled Time</th>
+      <th><%= sort_link(@q, :start_date, 'Start Time', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :name) %></th>
+      <th><%= sort_link(@q, 'Company Name', :facility) %></th>
     </tr>
   </thead>
   <tbody>
       <% if @remote_tournaments.present? %>
         <% @remote_tournaments.each_with_index do |tournament, index| %>
           <tr>
-            <th scope="row"><%="#{index + 1}"%></th>
+            <td>
+              <%= tournament.start_date.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
+            </td>
             <td>
               <%= link_to tournament.name, tournament %>
             </td>
             <td>
               <%= tournament.facility.CompanyName %>
-            </td>
-            <td>
-              <%= tournament.start_date.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
             </td>
           </tr>
       <% end %>
