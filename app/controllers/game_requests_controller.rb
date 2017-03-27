@@ -1,6 +1,7 @@
 class GameRequestsController < ApplicationController
   def index
-    @game_requests = GameRequest.where(away_team_facility_id: nil)
+    @q = GameRequest.where(away_team_facility_id: nil).ransack(params[:q])
+    @game_requests = @q.result.includes(:schedule)
   end
 
   def new

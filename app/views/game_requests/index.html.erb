@@ -3,26 +3,24 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
+      <th>Scheduled Time</th>
       <th>Facility</th>
       <th>Message</th>
-      <th>Scheduled Time</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @game_requests.each_with_index do |game_request,index| %>
+    <% @game_requests.each do |game_request,index| %>
     <tr>
-      <th scope="row"><%="#{index + 1}"%></th>
+      <td>
+        <%= game_request.schedule.TS.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
+      </td>
       <td>
         <%= Facility.find_by(SId: game_request.home_team_facility_id).CompanyName %>
         [<%= Team.find_by(MasterID: game_request.schedule.home_team_id).Name %>]
       </td>
       <td>
         <%= game_request.message %>
-      </td>
-      <td>
-        <%= game_request.schedule.TS.in_time_zone(current_user.time_zone).strftime('%H:%M - %m/%d/%Y') %>
       </td>
       <td>
         <%= link_to new_active_request_path(game_request_id: game_request) do %>
