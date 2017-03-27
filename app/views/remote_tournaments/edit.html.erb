@@ -6,7 +6,7 @@
   <%= f.input :company_id, value: current_user.CompanyId, as: :hidden %>
   <div class="facility-form">
     <%= f.fields_for @tournament_invites do |g| %>
-      <%= label_tag "Select Facilities" %>
+      <%= label_tag "Invite Facilities" %>
       <%= g.input :facility_id, collection: @facilities, label: false, as: :check_boxes %>
     <% end %>
   </div>
