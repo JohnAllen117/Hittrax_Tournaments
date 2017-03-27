@@ -5,9 +5,16 @@ class TournamentInvitesController < ApplicationController
 
   def edit
     t = TournamentInvite.find_by(id: params[:id])
+    notification = t.notification
     t.accepted = params[:accepted].to_i
     if t.save
-      flash[:notice] = "Invite Accepted"
+      notification.seen = 1
+      notification.save
+      if t.accepted == 1
+        flash[:notice] = "Invite Accepted"
+      elsif t.accepted == 2
+        flash[:notice] = "Invite Rejected"
+      end
       redirect_to remote_tournament_path(t.remote_tournament)
     else
       flash[:notice] = "Sorry, an error has occured."
