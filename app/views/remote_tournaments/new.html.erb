@@ -11,6 +11,12 @@
         <%= g.input :facility_id, collection: @facilities, label: false, as: :check_boxes %>
       <% end %>
     </div>
+    <div class="facility-form", style="padding-left: 20px">
+      <%= f.fields_for @game_rules do |g| %>
+        <%= label_tag "Select Tournament Rules" %>
+        <%= g.input :name, collection: @game_rules, label: false, as: :check_boxes %>
+      <% end %>
+    </div>
     <%= f.input :format, collection: RemoteTournament.formats.keys.map {|key| [key.humanize, key]}, include_blank: false %>
     <%= f.input :playoff_type, collection: RemoteTournament.playoff_types.keys.map {|key| [key.humanize, key]}, include_blank: false %>
     <%= f.button :submit, class: "button expand" %>
