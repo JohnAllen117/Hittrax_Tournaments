@@ -6391,8 +6391,9 @@ ActiveRecord::Schema.define(version: 20170327194741) do
   end
 
   create_table "game_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.text   "description", limit: 65535
+    t.integer "game_rule_id"
+    t.integer "gameable_id"
+    t.integer "gameable_type"
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -6412,12 +6413,6 @@ ActiveRecord::Schema.define(version: 20170327194741) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "remote_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "game_rule_id"
-    t.integer "gameable_id"
-    t.integer "gameable_type"
-  end
-
   create_table "remote_tournaments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "company_id",                                                  null: false
     t.integer  "playoff_type",                                                null: false
@@ -6433,6 +6428,11 @@ ActiveRecord::Schema.define(version: 20170327194741) do
   create_table "remote_tournaments_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "remote_tournament_id"
     t.integer "team_id"
+  end
+
+  create_table "rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text   "description", limit: 65535
   end
 
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

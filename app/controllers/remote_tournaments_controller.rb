@@ -5,7 +5,8 @@ class RemoteTournamentsController < ApplicationController
     @tournament_invites = TournamentInvite.new
     @facilities = RemoteTournament.facilities(current_user.SId)
     @facilities = @facilities.map{|x| ["#{x.CompanyName} - #{x.State}", x.SId]}
-    @game_rules = GameRule.all
+    @game_rules = GameRule.new
+    @rules = Rule.all
     @remote_tournament.start_date = DateTime.now
   end
 
