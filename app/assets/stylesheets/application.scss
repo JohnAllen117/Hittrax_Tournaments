@@ -4,6 +4,18 @@
 @import "bootstrap-timepicker";
 @import "font-awesome";
 
+@font-face {
+  font-family:'ManifoldCF-Thin';
+  src:url(asset-path('fonts/manifoldcf/manifold-cf-thin.eot'));
+  src:url(asset-path('fonts/manifoldcf/manifold-cf-thin.eot?iefix') format('embedded-opentype')),
+      url('/assets/fonts/manifoldcf/manifold-cf-thin.woff2') format('woff2'),
+    url('/assets/fonts/manifoldcf/manifold-cf-thin.woff') format('woff'),
+    url('/assets/fonts/manifoldcf/manifold-cf-thin.ttf') format('truetype'),
+    url('/assets/fonts/manifoldcf/manifold-cf-thin.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .navbar-default {
   background-color: rgb(230, 99, 47);
   height: 70px;
@@ -12,7 +24,6 @@
 .navbar-link {
   color: white !important;
   background-color: rgb(230, 99, 47);
-  font-family: "arial";
   font-size: 14px;
   text-decoration: none;
 }
