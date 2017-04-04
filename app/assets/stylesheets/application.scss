@@ -28,6 +28,10 @@
   text-decoration: none;
 }
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: rgb(230, 99, 47) !important;
+}
+
 a.sort_link {
   color: #D44A33 !important;
 }
