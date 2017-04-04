@@ -8,7 +8,6 @@ class RemoteTournament < ApplicationRecord
   validates :playoff_type, presence: true
 
   has_many :schedules
-  has_many :facilities, through: :tournament_invites
   has_many :tournament_invites
   has_many :teams, through: :tournament_teams
   has_many :tournament_teams
@@ -30,7 +29,6 @@ class RemoteTournament < ApplicationRecord
 
   def self.facilities(current_user_sid)
     @facilities = Facility.all.where(OptedIn: 1) #"OptedIn = ? AND SId != ?" 1, current_user_sid - alternate query to remove current user's facility
-    @facilities = @facilities.map{ |x| ["#{x.CompanyName} - #{x.State}", x.SId] }
   end
 
   def get_facilities

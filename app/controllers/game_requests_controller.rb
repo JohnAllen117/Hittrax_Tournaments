@@ -22,8 +22,8 @@ class GameRequestsController < ApplicationController
   end
 
   def create
-    game_time = params[:schedule]["game_time(2i)"] + " " +
-    params[:schedule]["game_time(3i)"] + " " +
+    game_time = params[:schedule]["game_time(2i)"] + "/" +
+    params[:schedule]["game_time(3i)"] + "/" +
     params[:schedule]["game_time(1i)"] + " " +
     params[:schedule]["game_time(4i)"] + ":" +
     params[:schedule]["game_time(5i)"]
