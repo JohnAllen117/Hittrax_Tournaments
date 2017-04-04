@@ -37,8 +37,9 @@ class RemoteTournamentsController < ApplicationController
 
   def edit
     @remote_tournament = RemoteTournament.find_by(id: params[:id])
-    @tournament_invites = TournamentInvite.new
-    @facilities = RemoteTournament.facilities
+    @tournament_invites = @remote_tournament.tournament_invites
+    @facilities = @remote_tournament.get_facilities
+    @facilities = @facilities.map{|x| [x.CompanyName, x.SId]}.to_h
   end
 
   def update

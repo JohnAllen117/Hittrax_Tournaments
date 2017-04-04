@@ -5,8 +5,29 @@
 @import "font-awesome";
 
 .navbar-default {
-  background-color: #222;
+  background-color: rgb(230, 99, 47);
   height: 70px;
+}
+
+.navbar-link {
+  color: white !important;
+  background-color: rgb(230, 99, 47);
+  font-family: "arial";
+  font-size: 14px;
+  text-decoration: none;
+}
+
+a.sort_link {
+  color: #D44A33 !important;
+}
+
+.btn-primary {
+  background-color: #D44A33 !important;
+}
+
+.btn-default {
+  background-color: #D44A33 !important;
+  color: white;
 }
 
 .navbar-brand {

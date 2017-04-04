@@ -4,10 +4,13 @@ class TournamentInvite < ApplicationRecord
   validates :facility_id, presence: true
 
   belongs_to :remote_tournament
-  belongs_to :facility
   belongs_to :notifiable, polymorphic: true
 
   def notification
     Notification.find_by(notifiable_id: self.id, notifiable_type: 0)
+  end
+
+  def facility
+    Facility.find_by(SId: self.facility_id)
   end
 end
