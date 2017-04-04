@@ -1,0 +1,3 @@
+class GameRule < ApplicationRecord
+
+end
