@@ -10,7 +10,7 @@
   <tbody>
     <% @facilities.each do |facility| %>
       <tr>
-        <td><%= facility.CompanyName %></td>
+        <td><%= "#{facility.CompanyName} - (#{facility.facility_availability.time_zone})" %></td>
         <td><%= facility.Phone %></td>
         <td><%= facility.Email %></td>
         <td>
